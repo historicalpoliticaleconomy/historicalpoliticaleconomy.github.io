@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "hpedb"
+version = "0.1.0"
+description = "Database of political science journal article metadata"
+authors = ["Haney Maxwell <hmm2198@columbia.edu>"]
+packages = [{include = "hpedb", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+habanero = "^1.2"
+requests = "^2.31"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+pytest-mock = "^3"
+mypy = "^1"
+types-requests = "^2.31"
+types-tqdm = "^4"
+pytest-cov = "^6"
+
+[tool.poetry.scripts]
+hpedb = "hpedb.cli:main"
+hpedb-supplement = "hpedb.supplement:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+markers = ["e2e: integration tests that hit the real Crossref API"]
+
+[tool.mypy]
+strict = true
+mypy_path = "stubs"

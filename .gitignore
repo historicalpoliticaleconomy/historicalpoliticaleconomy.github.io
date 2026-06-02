@@ -1,0 +1,14 @@
+# Database
+*.db
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+dist/
+
+# Tools
+.pytest_cache/
+.coverage
+.coverage.*
+.mypy_cache/
