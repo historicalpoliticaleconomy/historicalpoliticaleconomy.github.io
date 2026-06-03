@@ -5,13 +5,24 @@ from habanero import Crossref
 from hpedb.types import ArticleRecord, AuthorRecord
 
 JOURNALS: dict[str, str] = {
-    "JOP":         "0022-3816",
-    "APSR":        "0003-0554",
-    "AJPS":        "0092-5853",
-    "QJE":         "0033-5533",
-    "AER":         "0002-8282",
-    "JPE":         "0022-3808",
-    "Econometrica":"0012-9682",
+    # Political science
+    "APSR":        "0003-0554",   # American Political Science Review
+    "AJPS":        "0092-5853",   # American Journal of Political Science
+    "JOP":         "0022-3816",   # Journal of Politics
+    "CPS":         "0010-4140",   # Comparative Political Studies
+    "WP":          "0043-8871",   # World Politics
+    "SAPD":        "0898-588X",   # Studies in American Political Development
+    # Economics
+    "AER":         "0002-8282",   # American Economic Review
+    "QJE":         "0033-5533",   # Quarterly Journal of Economics
+    "JPE":         "0022-3808",   # Journal of Political Economy
+    "Econometrica":"0012-9682",   # Econometrica
+    "RES":         "0034-6527",   # Review of Economic Studies
+    # Economic history
+    "JEH":         "0022-0507",   # Journal of Economic History
+    "EEH":         "0014-4983",   # Explorations in Economic History
+    "EHR":         "0013-0117",   # Economic History Review
+    "JHPE":        "2693-9290",   # Journal of Historical Political Economy
 }
 
 SELECT_FIELDS: list[str] = [

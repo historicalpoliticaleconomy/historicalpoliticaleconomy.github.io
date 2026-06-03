@@ -20,6 +20,10 @@ _DATAVERSE_SUBTREE: dict[str, str | None] = {
     "QJE":  "qje",
     "JOP":  None,
     "JPE":  None,
+    "CPS":  "cps",            # dataverse.harvard.edu/dataverse/cps
+    "WP":   "world-politics", # dataverse.harvard.edu/dataverse/world-politics
+    "RES":  "restat",         # dataverse.harvard.edu/dataverse/restat
+    "JHPE": "jhpe",           # dataverse.harvard.edu/dataverse/jhpe
 }
 
 # Zenodo community slug per journal (None = no community filter)
@@ -44,7 +48,12 @@ _REPO_DOI_RE = re.compile(
 
 _RATE_LIMIT_PAUSE = 1.0
 
-_ALL_SOURCES = set(_DATAVERSE_SUBTREE) | set(_ZENODO_COMMUNITY) | {"AER"}
+_ALL_SOURCES = set(_DATAVERSE_SUBTREE) | set(_ZENODO_COMMUNITY) | {
+    # AER, JEH, EEH use openICPSR (Cloudflare-blocked for direct scraping;
+    # Crossref reference scanning recovers their 10.3886/E... DOIs instead).
+    # EHR and SAPD have no mandatory replication repository; Crossref only.
+    "AER", "JEH", "EEH", "EHR", "SAPD",
+}
 
 
 def _dataverse_get(

@@ -56,11 +56,13 @@ def _argv(*extra: str) -> list[str]:
     return ["hpedb", "--from-year", "2020", "--mailto", _MAILTO, *extra]
 
 
-def test_from_year_required() -> None:
+def test_from_year_defaults_to_2010() -> None:
     with patch("sys.argv", ["hpedb", "--mailto", _MAILTO]):
-        with pytest.raises(SystemExit) as exc_info:
+        with patch("hpedb.cli.fetch_journal", return_value=[]) as mock_fetch:
             main()
-    assert exc_info.value.code == 2
+    # fetch_journal(cr, abbrev, issn, from_year, to_year) — from_year is index 3
+    assert mock_fetch.called
+    assert mock_fetch.call_args_list[0][0][3] == 2010
 
 
 def test_mailto_required() -> None:
