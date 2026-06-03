@@ -128,6 +128,13 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+function errorHref(doi) {
+  const body = `DOI: ${doi}\n\nDescribe the error:\n`;
+  return `mailto:hmm2198@columbia.edu`
+    + `?subject=${encodeURIComponent('HPE Error Report')}`
+    + `&body=${encodeURIComponent(body)}`;
+}
+
 function renderCard(entry) {
   const period     = formatPeriod(entry.period_start, entry.period_end);
   const regionTags = entry.regions.map(r => `<span class="tag">${escapeHtml(r)}</span>`).join('');
@@ -142,6 +149,7 @@ function renderCard(entry) {
       <div class="card-footer">
         <span class="card-authors">${escapeHtml(entry.authors || '')}</span>
         <div class="card-links">
+          <a class="btn-error" href="${errorHref(entry.doi)}">Report error</a>
           <a class="btn-article" href="https://doi.org/${entry.doi}" target="_blank" rel="noopener">Article ↗</a>
           <a class="btn-data" href="${escapeHtml(entry.replication_url)}" target="_blank" rel="noopener">Get Data</a>
         </div>

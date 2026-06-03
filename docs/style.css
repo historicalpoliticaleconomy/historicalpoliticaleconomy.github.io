@@ -292,3 +292,12 @@ main {
 }
 
 .btn-article:hover { color: var(--accent); text-decoration: underline; }
+
+.btn-error {
+  font-size: .72rem;
+  color: #9ca3af;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-error:hover { color: #dc2626; text-decoration: underline; }
