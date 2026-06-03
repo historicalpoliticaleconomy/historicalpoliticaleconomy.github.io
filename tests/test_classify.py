@@ -35,7 +35,7 @@ _ARTICLE_NO_ABSTRACT: ArticleRecord = {
 def _make_record(doi: str, is_hpe: bool = False) -> ClassificationRecord:
     return ClassificationRecord(
         doi=doi, is_hpe=is_hpe, period_start=None, period_end=None,
-        regions="[]", backend="openai", model="gpt-4o-mini",
+        regions="[]", countries="[]", backend="openai", model="gpt-4o-mini",
         classified_at="2026-01-01T00:00:00+00:00",
     )
 
@@ -61,39 +61,49 @@ def conn(tmp_path: Path) -> Generator[sqlite3.Connection, None, None]:
 
 def test_parse_valid_hpe_response() -> None:
     raw = json.dumps({"is_hpe": True, "period_start": 1801, "period_end": 1918,
-                      "regions": ["Western Europe"]})
+                      "regions": ["Western Europe"], "countries": ["United Kingdom"]})
     rec = parse_classification_response(raw, "10.1086/test001", "openai", "gpt-4o-mini")
+    assert rec is not None
     assert rec["is_hpe"] is True
     assert rec["period_start"] == 1801
     assert rec["period_end"] == 1918
     assert json.loads(rec["regions"]) == ["Western Europe"]
+    assert json.loads(rec["countries"]) == ["United Kingdom"]
 
 
 def test_parse_non_hpe_response() -> None:
-    raw = json.dumps({"is_hpe": False, "period_start": None, "period_end": None, "regions": []})
+    raw = json.dumps({"is_hpe": False, "period_start": None, "period_end": None,
+                      "regions": [], "countries": []})
     rec = parse_classification_response(raw, "10.1086/test002", "openai", "gpt-4o-mini")
+    assert rec is not None
     assert rec["is_hpe"] is False
     assert rec["period_start"] is None
     assert json.loads(rec["regions"]) == []
+    assert json.loads(rec["countries"]) == []
 
 
 def test_parse_missing_keys_uses_defaults() -> None:
     rec = parse_classification_response("{}", "10.1086/x", "claude", "claude-haiku-4-5-20251001")
+    assert rec is not None
     assert rec["is_hpe"] is False
     assert json.loads(rec["regions"]) == []
+    assert json.loads(rec["countries"]) == []
 
 
 def test_parse_markdown_fenced_json() -> None:
-    raw = '```json\n{"is_hpe": true, "period_start": 1800, "period_end": 1900, "regions": ["Western Europe"]}\n```'
+    raw = '```json\n{"is_hpe": true, "period_start": 1800, "period_end": 1900, "regions": ["Western Europe"], "countries": ["France"]}\n```'
     rec = parse_classification_response(raw, "10.1086/x", "claude", "claude-haiku-4-5-20251001")
+    assert rec is not None
     assert rec["is_hpe"] is True
     assert rec["period_start"] == 1800
     assert json.loads(rec["regions"]) == ["Western Europe"]
+    assert json.loads(rec["countries"]) == ["France"]
 
 
 def test_parse_markdown_fenced_json_with_trailing_text() -> None:
     raw = '```json\n{"is_hpe": false, "period_start": null, "period_end": null, "regions": []}\n```\n\n**Reasoning:** This article is not HPE.'
     rec = parse_classification_response(raw, "10.1086/x", "claude", "claude-haiku-4-5-20251001")
+    assert rec is not None
     assert rec["is_hpe"] is False
 
 
@@ -107,20 +117,50 @@ def test_parse_non_object_json_returns_none() -> None:
 
 def test_parse_invalid_regions_filtered() -> None:
     raw = json.dumps({"is_hpe": True, "period_start": 1800, "period_end": 1900,
-                      "regions": ["Western Europe", "NotARegion", "Global/Comparative"]})
+                      "regions": ["Western Europe", "NotARegion", "Global/Comparative"],
+                      "countries": []})
     rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
     assert json.loads(rec["regions"]) == ["Western Europe", "Global/Comparative"]
+
+
+def test_parse_countries_extracted() -> None:
+    raw = json.dumps({"is_hpe": True, "period_start": 1800, "period_end": 1900,
+                      "regions": ["Western Europe"], "countries": ["France", "Germany"]})
+    rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
+    assert json.loads(rec["countries"]) == ["France", "Germany"]
+
+
+def test_parse_unknown_countries_kept_with_warning(capsys: Any) -> None:
+    raw = json.dumps({"is_hpe": True, "period_start": 1500, "period_end": 1700,
+                      "regions": ["Western Europe"], "countries": ["France", "Holy Roman Empire"]})
+    rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
+    assert "Holy Roman Empire" in json.loads(rec["countries"])
+    captured = capsys.readouterr()
+    assert "Holy Roman Empire" in captured.out
+
+
+def test_parse_countries_empty_for_global() -> None:
+    raw = json.dumps({"is_hpe": True, "period_start": 1800, "period_end": 1900,
+                      "regions": ["Global/Comparative"], "countries": []})
+    rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
+    assert json.loads(rec["countries"]) == []
 
 
 def test_parse_non_integer_period_becomes_none() -> None:
     raw = json.dumps({"is_hpe": True, "period_start": "1800", "period_end": None, "regions": []})
     rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
     assert rec["period_start"] is None
 
 
 def test_parse_null_regions_field() -> None:
     raw = json.dumps({"is_hpe": False, "period_start": None, "period_end": None, "regions": None})
     rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
     assert json.loads(rec["regions"]) == []
 
 
@@ -128,6 +168,7 @@ def test_parse_non_list_regions_field() -> None:
     raw = json.dumps({"is_hpe": True, "period_start": None, "period_end": None,
                       "regions": "Western Europe"})
     rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
     assert json.loads(rec["regions"]) == []
 
 

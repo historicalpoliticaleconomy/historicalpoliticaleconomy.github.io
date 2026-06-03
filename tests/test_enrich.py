@@ -43,7 +43,7 @@ _UNKNOWN_JOURNAL_ARTICLE: ArticleRecord = {
 def _hpe_cls(doi: str) -> ClassificationRecord:
     return ClassificationRecord(
         doi=doi, is_hpe=True, period_start=1800, period_end=1900,
-        regions='["Western Europe"]', backend="claude",
+        regions='["Western Europe"]', countries='["United Kingdom"]', backend="claude",
         model="claude-haiku-4-5-20251001", classified_at="2026-01-01T00:00:00+00:00",
     )
 
@@ -142,12 +142,14 @@ def test_enrich_found_one_result(conn: sqlite3.Connection, mock_session: MagicMo
 
 def _first_call_params(mock_session: MagicMock) -> dict[str, str]:
     first = mock_session.get.call_args_list[0]
-    return first[1]["params"] if first[1] else first[0][1]
+    result: dict[str, str] = first[1]["params"] if first[1] else first[0][1]
+    return result
 
 
 def _last_call_params(mock_session: MagicMock) -> dict[str, str]:
     last = mock_session.get.call_args
-    return last[1]["params"] if last[1] else last[0][1]
+    result: dict[str, str] = last[1]["params"] if last[1] else last[0][1]
+    return result
 
 
 def test_enrich_query_uses_publication_id_field(conn: sqlite3.Connection, mock_session: MagicMock) -> None:

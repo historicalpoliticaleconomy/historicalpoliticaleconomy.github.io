@@ -36,6 +36,7 @@ def _cls(doi: str, is_hpe: bool) -> ClassificationRecord:
         period_start=1800 if is_hpe else None,
         period_end=1900 if is_hpe else None,
         regions='["Western Europe"]' if is_hpe else "[]",
+        countries='["United Kingdom"]' if is_hpe else "[]",
         backend="claude", model="claude-haiku-4-5-20251001",
         classified_at="2026-01-01T00:00:00+00:00",
     )
@@ -89,6 +90,13 @@ def test_export_replication_url_present(conn: sqlite3.Connection) -> None:
     _setup_hpe_with_url(conn)
     entries = export_hpe_articles(conn)
     assert entries[0]["replication_url"] == _URL
+
+
+def test_export_countries_parsed_as_list(conn: sqlite3.Connection) -> None:
+    _setup_hpe_with_url(conn)
+    entries = export_hpe_articles(conn)
+    assert isinstance(entries[0]["countries"], list)
+    assert entries[0]["countries"] == ["United Kingdom"]
 
 
 def test_export_authors_formatted(conn: sqlite3.Connection) -> None:

@@ -136,6 +136,24 @@ main {
 
 .submit-form button:hover { background: #1d4ed8; }
 
+/* ── Heatmap breadcrumb ──────────────────────────────────────────────── */
+.hm-breadcrumb {
+  font-size: .72rem;
+  color: var(--muted);
+  padding-bottom: .4rem;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.hm-bc-link {
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hm-bc-link:hover { text-decoration: underline; }
+
 /* ── Heatmap ─────────────────────────────────────────────────────────── */
 #heatmap {
   display: grid;
@@ -167,6 +185,16 @@ main {
   line-height: 1;
   align-self: center;
   transition: color 100ms;
+  cursor: pointer;
+}
+
+.hm-row-label:hover { color: var(--accent); }
+
+.hm-country-label {
+  font-size: .65rem;
+  color: var(--muted);
+  padding-left: .6rem;
+  cursor: default;
 }
 
 .hm-row-label.active {
@@ -240,6 +268,22 @@ main {
   color: #374a6d;
   padding: .07rem .42rem;
   border-radius: 10px;
+}
+
+.country-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  margin-bottom: .15rem;
+}
+
+.country-tag {
+  font-size: .62rem;
+  font-weight: 500;
+  background: #f0f2f8;
+  color: #5a6a8a;
+  padding: .05rem .38rem;
+  border-radius: 8px;
 }
 
 .card-title {

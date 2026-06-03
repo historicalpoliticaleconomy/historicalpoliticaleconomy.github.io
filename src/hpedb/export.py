@@ -10,7 +10,7 @@ from hpedb.db import init_classifications, init_db
 def export_hpe_articles(conn: sqlite3.Connection) -> list[dict[str, Any]]:
     articles = conn.execute("""
         SELECT a.doi, a.title, a.journal, a.year, a.abstract,
-               c.period_start, c.period_end, c.regions, c.replication_url
+               c.period_start, c.period_end, c.regions, c.countries, c.replication_url
         FROM articles a
         JOIN classifications c ON c.doi = a.doi
         WHERE c.is_hpe = 1 AND c.replication_url IS NOT NULL
@@ -44,7 +44,8 @@ def export_hpe_articles(conn: sqlite3.Connection) -> list[dict[str, Any]]:
             "period_start":    row[5],
             "period_end":      row[6],
             "regions":         json.loads(row[7] or "[]"),
-            "replication_url": row[8],
+            "countries":       json.loads(row[8] or "[]"),
+            "replication_url": row[9],
             "authors":         "; ".join(authors_by_doi[str(row[0])]),
         }
         for row in articles

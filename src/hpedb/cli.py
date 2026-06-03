@@ -15,9 +15,9 @@ def main() -> None:
     parser.add_argument(
         "--from-year",
         type=int,
-        required=True,
+        default=2010,
         metavar="YEAR",
-        help="Earliest publication year to include (inclusive)",
+        help="Earliest publication year to include (inclusive, default: 2010)",
     )
     parser.add_argument(
         "--to-year",

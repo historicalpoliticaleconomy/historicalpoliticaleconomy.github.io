@@ -64,6 +64,7 @@ CREATE TABLE IF NOT EXISTS classifications (
     period_start    INTEGER,
     period_end      INTEGER,
     regions         TEXT NOT NULL,
+    countries       TEXT NOT NULL DEFAULT '[]',
     backend         TEXT NOT NULL,
     model           TEXT NOT NULL,
     classified_at   TEXT NOT NULL,
@@ -74,10 +75,11 @@ CREATE TABLE IF NOT EXISTS classifications (
 
 def init_classifications(conn: sqlite3.Connection) -> None:
     conn.execute(_CREATE_CLASSIFICATIONS)
-    # Migration: add replication_url to pre-existing tables
     cols = {row[1] for row in conn.execute("PRAGMA table_info(classifications)").fetchall()}
     if "replication_url" not in cols:
         conn.execute("ALTER TABLE classifications ADD COLUMN replication_url TEXT")
+    if "countries" not in cols:
+        conn.execute("ALTER TABLE classifications ADD COLUMN countries TEXT NOT NULL DEFAULT '[]'")
     conn.commit()
 
 
@@ -87,9 +89,9 @@ def upsert_classification(
     conn.execute(
         """
         INSERT OR REPLACE INTO classifications
-            (doi, is_hpe, period_start, period_end, regions, backend, model, classified_at)
+            (doi, is_hpe, period_start, period_end, regions, countries, backend, model, classified_at)
         VALUES
-            (:doi, :is_hpe, :period_start, :period_end, :regions, :backend, :model, :classified_at)
+            (:doi, :is_hpe, :period_start, :period_end, :regions, :countries, :backend, :model, :classified_at)
         """,
         {**record, "is_hpe": int(record["is_hpe"])},
     )

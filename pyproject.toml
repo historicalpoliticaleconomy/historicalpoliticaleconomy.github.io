@@ -12,6 +12,7 @@ requests = "^2.31"
 tqdm = "^4"
 openai = ">=1.0"
 anthropic = ">=0.18"
+pycountry = "^26.2.16"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8"
@@ -33,7 +34,10 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-markers = ["e2e: integration tests that hit the real Crossref API"]
+markers = [
+    "e2e: integration tests that hit the real Crossref API",
+    "db: validation tests against the committed articles.db (expected to fail until --fresh reclassification)",
+]
 
 [tool.mypy]
 strict = true

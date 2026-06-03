@@ -8,6 +8,7 @@ from typing import Any, Literal
 
 import anthropic
 import openai
+import pycountry
 from anthropic.types import TextBlock
 from anthropic.types.messages.message_batch_succeeded_result import MessageBatchSucceededResult
 from openai.types.chat import ChatCompletion
@@ -18,9 +19,13 @@ from hpedb.types import ClassificationRecord
 Backend = Literal["openai", "claude"]
 
 VALID_REGIONS: frozenset[str] = frozenset({
-    "North America", "Latin America", "Western Europe", "Eastern Europe",
-    "Middle East & North Africa", "Sub-Saharan Africa", "South Asia",
-    "East Asia", "Southeast Asia", "Oceania", "Global/Comparative",
+    # UN M.49 sub-regions (https://unstats.un.org/unsd/methodology/m49/)
+    "Northern Africa", "Eastern Africa", "Middle Africa", "Southern Africa", "Western Africa",
+    "Northern America", "Caribbean", "Central America", "South America",
+    "Central Asia", "Eastern Asia", "South-eastern Asia", "Southern Asia", "Western Asia",
+    "Eastern Europe", "Northern Europe", "Southern Europe", "Western Europe",
+    "Australia and New Zealand", "Melanesia", "Micronesia", "Polynesia",
+    "Global/Comparative",
 })
 
 _DEFAULT_MODELS: dict[Backend, str] = {
@@ -72,13 +77,35 @@ _SYSTEM_PROMPT = (
     '  "is_hpe"       – boolean\n'
     '  "period_start" – integer year or null (BCE = negative; null if not HPE)\n'
     '  "period_end"   – integer year or null\n'
-    '  "regions"      – array from: ["North America", "Latin America", '
-    '"Western Europe", "Eastern Europe", "Middle East & North Africa", '
-    '"Sub-Saharan Africa", "South Asia", "East Asia", "Southeast Asia", '
-    '"Oceania", "Global/Comparative"]'
+    '  "regions"      – array of UN M.49 sub-regions the data covers; choose from:\n'
+    '                   ["Northern Africa", "Eastern Africa", "Middle Africa",\n'
+    '                    "Southern Africa", "Western Africa",\n'
+    '                    "Northern America", "Caribbean", "Central America", "South America",\n'
+    '                    "Central Asia", "Eastern Asia", "South-eastern Asia",\n'
+    '                    "Southern Asia", "Western Asia",\n'
+    '                    "Eastern Europe", "Northern Europe", "Southern Europe", "Western Europe",\n'
+    '                    "Australia and New Zealand", "Melanesia", "Micronesia", "Polynesia",\n'
+    '                    "Global/Comparative"]\n'
+    '  "countries"    – array of ISO 3166-1 English short names for the geographic areas\n'
+    '                   studied. Use the modern country name regardless of historical polity\n'
+    '                   (Weimar/DDR era → "Germany"; British Raj era → "India").\n'
+    '                   For dissolved multi-country states, list modern successors\n'
+    '                   (Yugoslavia → "Serbia", "Croatia", "Slovenia", etc.).\n'
+    '                   Use [] only for Global/Comparative papers.'
 )
 
 Article = tuple[str, str | None, str | None]  # (doi, title, abstract)
+
+# Build a set of known country names from pycountry for warn-and-keep validation
+_KNOWN_COUNTRIES: frozenset[str] = frozenset(
+    name
+    for c in pycountry.countries
+    for name in ([c.name] + ([c.common_name] if hasattr(c, "common_name") else []))
+)
+
+
+def _is_known_country(name: str) -> bool:
+    return name in _KNOWN_COUNTRIES
 
 
 def _user_message(title: str, abstract: str | None) -> str:
@@ -110,13 +137,22 @@ def parse_classification_response(
 
     period_start_raw = data.get("period_start")
     period_end_raw   = data.get("period_end")
+
     raw_regions: Any = data.get("regions") or []
     if not isinstance(raw_regions, list):
         raw_regions = []
     regions = [r for r in raw_regions if isinstance(r, str) and r in VALID_REGIONS]
-    invalid = [r for r in raw_regions if isinstance(r, str) and r not in VALID_REGIONS]
-    if invalid:
-        print(f"  [{doi}] Filtered unrecognised regions: {invalid}")
+    invalid_regions = [r for r in raw_regions if isinstance(r, str) and r not in VALID_REGIONS]
+    if invalid_regions:
+        print(f"  [{doi}] Unrecognised regions (filtered): {invalid_regions}")
+
+    raw_countries: Any = data.get("countries") or []
+    if not isinstance(raw_countries, list):
+        raw_countries = []
+    countries = [c for c in raw_countries if isinstance(c, str) and c]
+    unknown_countries = [c for c in countries if not _is_known_country(c)]
+    if unknown_countries:
+        print(f"  [{doi}] Unrecognised countries (kept): {unknown_countries}")
 
     return ClassificationRecord(
         doi=doi,
@@ -124,6 +160,7 @@ def parse_classification_response(
         period_start=int(period_start_raw) if isinstance(period_start_raw, int) else None,
         period_end=int(period_end_raw) if isinstance(period_end_raw, int) else None,
         regions=json.dumps(regions),
+        countries=json.dumps(countries),
         backend=backend,
         model=model,
         classified_at=datetime.now(timezone.utc).isoformat(),

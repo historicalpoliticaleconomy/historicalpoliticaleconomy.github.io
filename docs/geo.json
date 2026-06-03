@@ -1,0 +1,1493 @@
+{
+  "_source": "UN Statistics Division M.49 (https://unstats.un.org/unsd/methodology/m49/), country names from ISO 3166-1 via pycountry",
+  "countries": [
+    {
+      "name": "Algeria",
+      "alpha3": "DZA",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "Egypt",
+      "alpha3": "EGY",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "Libya",
+      "alpha3": "LBY",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "Morocco",
+      "alpha3": "MAR",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "Sudan",
+      "alpha3": "SDN",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "Tunisia",
+      "alpha3": "TUN",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "Western Sahara",
+      "alpha3": "ESH",
+      "continent": "Africa",
+      "subregion": "Northern Africa"
+    },
+    {
+      "name": "British Indian Ocean Territory",
+      "alpha3": "IOT",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Burundi",
+      "alpha3": "BDI",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Comoros",
+      "alpha3": "COM",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Djibouti",
+      "alpha3": "DJI",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Eritrea",
+      "alpha3": "ERI",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Ethiopia",
+      "alpha3": "ETH",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "French Southern Territories",
+      "alpha3": "ATF",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Kenya",
+      "alpha3": "KEN",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Madagascar",
+      "alpha3": "MDG",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Malawi",
+      "alpha3": "MWI",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Mauritius",
+      "alpha3": "MUS",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Mayotte",
+      "alpha3": "MYT",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Mozambique",
+      "alpha3": "MOZ",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Réunion",
+      "alpha3": "REU",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Rwanda",
+      "alpha3": "RWA",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Seychelles",
+      "alpha3": "SYC",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Somalia",
+      "alpha3": "SOM",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "South Sudan",
+      "alpha3": "SSD",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Uganda",
+      "alpha3": "UGA",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Tanzania",
+      "alpha3": "TZA",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Zambia",
+      "alpha3": "ZMB",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Zimbabwe",
+      "alpha3": "ZWE",
+      "continent": "Africa",
+      "subregion": "Eastern Africa"
+    },
+    {
+      "name": "Angola",
+      "alpha3": "AGO",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Cameroon",
+      "alpha3": "CMR",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Central African Republic",
+      "alpha3": "CAF",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Chad",
+      "alpha3": "TCD",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Congo",
+      "alpha3": "COG",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "DR Congo",
+      "alpha3": "COD",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Equatorial Guinea",
+      "alpha3": "GNQ",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Gabon",
+      "alpha3": "GAB",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Sao Tome and Principe",
+      "alpha3": "STP",
+      "continent": "Africa",
+      "subregion": "Middle Africa"
+    },
+    {
+      "name": "Botswana",
+      "alpha3": "BWA",
+      "continent": "Africa",
+      "subregion": "Southern Africa"
+    },
+    {
+      "name": "Eswatini",
+      "alpha3": "SWZ",
+      "continent": "Africa",
+      "subregion": "Southern Africa"
+    },
+    {
+      "name": "Lesotho",
+      "alpha3": "LSO",
+      "continent": "Africa",
+      "subregion": "Southern Africa"
+    },
+    {
+      "name": "Namibia",
+      "alpha3": "NAM",
+      "continent": "Africa",
+      "subregion": "Southern Africa"
+    },
+    {
+      "name": "South Africa",
+      "alpha3": "ZAF",
+      "continent": "Africa",
+      "subregion": "Southern Africa"
+    },
+    {
+      "name": "Benin",
+      "alpha3": "BEN",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Burkina Faso",
+      "alpha3": "BFA",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Cabo Verde",
+      "alpha3": "CPV",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "alpha3": "CIV",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Gambia",
+      "alpha3": "GMB",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Ghana",
+      "alpha3": "GHA",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Guinea",
+      "alpha3": "GIN",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Guinea-Bissau",
+      "alpha3": "GNB",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Liberia",
+      "alpha3": "LBR",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Mali",
+      "alpha3": "MLI",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Mauritania",
+      "alpha3": "MRT",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Niger",
+      "alpha3": "NER",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Nigeria",
+      "alpha3": "NGA",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Saint Helena, Ascension and Tristan da Cunha",
+      "alpha3": "SHN",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Senegal",
+      "alpha3": "SEN",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Sierra Leone",
+      "alpha3": "SLE",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Togo",
+      "alpha3": "TGO",
+      "continent": "Africa",
+      "subregion": "Western Africa"
+    },
+    {
+      "name": "Anguilla",
+      "alpha3": "AIA",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Antigua and Barbuda",
+      "alpha3": "ATG",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Aruba",
+      "alpha3": "ABW",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Bahamas",
+      "alpha3": "BHS",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Barbados",
+      "alpha3": "BRB",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Bonaire, Sint Eustatius and Saba",
+      "alpha3": "BES",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Virgin Islands, British",
+      "alpha3": "VGB",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Cayman Islands",
+      "alpha3": "CYM",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Cuba",
+      "alpha3": "CUB",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Curaçao",
+      "alpha3": "CUW",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Dominica",
+      "alpha3": "DMA",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Dominican Republic",
+      "alpha3": "DOM",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Grenada",
+      "alpha3": "GRD",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Guadeloupe",
+      "alpha3": "GLP",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Haiti",
+      "alpha3": "HTI",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Jamaica",
+      "alpha3": "JAM",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Martinique",
+      "alpha3": "MTQ",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Montserrat",
+      "alpha3": "MSR",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Puerto Rico",
+      "alpha3": "PRI",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Saint Barthélemy",
+      "alpha3": "BLM",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Saint Kitts and Nevis",
+      "alpha3": "KNA",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Saint Lucia",
+      "alpha3": "LCA",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Saint Martin (French part)",
+      "alpha3": "MAF",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Saint Vincent and the Grenadines",
+      "alpha3": "VCT",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Sint Maarten (Dutch part)",
+      "alpha3": "SXM",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Trinidad and Tobago",
+      "alpha3": "TTO",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Turks and Caicos Islands",
+      "alpha3": "TCA",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Virgin Islands, U.S.",
+      "alpha3": "VIR",
+      "continent": "Americas",
+      "subregion": "Caribbean"
+    },
+    {
+      "name": "Belize",
+      "alpha3": "BLZ",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Costa Rica",
+      "alpha3": "CRI",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "El Salvador",
+      "alpha3": "SLV",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Guatemala",
+      "alpha3": "GTM",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Honduras",
+      "alpha3": "HND",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Mexico",
+      "alpha3": "MEX",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Nicaragua",
+      "alpha3": "NIC",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Panama",
+      "alpha3": "PAN",
+      "continent": "Americas",
+      "subregion": "Central America"
+    },
+    {
+      "name": "Argentina",
+      "alpha3": "ARG",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Bolivia",
+      "alpha3": "BOL",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Bouvet Island",
+      "alpha3": "BVT",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Brazil",
+      "alpha3": "BRA",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Chile",
+      "alpha3": "CHL",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Colombia",
+      "alpha3": "COL",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Ecuador",
+      "alpha3": "ECU",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Falkland Islands (Malvinas)",
+      "alpha3": "FLK",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "French Guiana",
+      "alpha3": "GUF",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Guyana",
+      "alpha3": "GUY",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Paraguay",
+      "alpha3": "PRY",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Peru",
+      "alpha3": "PER",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "South Georgia and the South Sandwich Islands",
+      "alpha3": "SGS",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Suriname",
+      "alpha3": "SUR",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Uruguay",
+      "alpha3": "URY",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Venezuela",
+      "alpha3": "VEN",
+      "continent": "Americas",
+      "subregion": "South America"
+    },
+    {
+      "name": "Bermuda",
+      "alpha3": "BMU",
+      "continent": "Americas",
+      "subregion": "Northern America"
+    },
+    {
+      "name": "Canada",
+      "alpha3": "CAN",
+      "continent": "Americas",
+      "subregion": "Northern America"
+    },
+    {
+      "name": "Greenland",
+      "alpha3": "GRL",
+      "continent": "Americas",
+      "subregion": "Northern America"
+    },
+    {
+      "name": "Saint Pierre and Miquelon",
+      "alpha3": "SPM",
+      "continent": "Americas",
+      "subregion": "Northern America"
+    },
+    {
+      "name": "United States",
+      "alpha3": "USA",
+      "continent": "Americas",
+      "subregion": "Northern America"
+    },
+    {
+      "name": "Antarctica",
+      "alpha3": "ATA",
+      "continent": "Americas",
+      "subregion": "Northern America"
+    },
+    {
+      "name": "Kazakhstan",
+      "alpha3": "KAZ",
+      "continent": "Asia",
+      "subregion": "Central Asia"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "alpha3": "KGZ",
+      "continent": "Asia",
+      "subregion": "Central Asia"
+    },
+    {
+      "name": "Tajikistan",
+      "alpha3": "TJK",
+      "continent": "Asia",
+      "subregion": "Central Asia"
+    },
+    {
+      "name": "Turkmenistan",
+      "alpha3": "TKM",
+      "continent": "Asia",
+      "subregion": "Central Asia"
+    },
+    {
+      "name": "Uzbekistan",
+      "alpha3": "UZB",
+      "continent": "Asia",
+      "subregion": "Central Asia"
+    },
+    {
+      "name": "China",
+      "alpha3": "CHN",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "Hong Kong",
+      "alpha3": "HKG",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "Macao",
+      "alpha3": "MAC",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "North Korea",
+      "alpha3": "PRK",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "Japan",
+      "alpha3": "JPN",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "Mongolia",
+      "alpha3": "MNG",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "South Korea",
+      "alpha3": "KOR",
+      "continent": "Asia",
+      "subregion": "Eastern Asia"
+    },
+    {
+      "name": "Brunei Darussalam",
+      "alpha3": "BRN",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Cambodia",
+      "alpha3": "KHM",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Indonesia",
+      "alpha3": "IDN",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Laos",
+      "alpha3": "LAO",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Malaysia",
+      "alpha3": "MYS",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Myanmar",
+      "alpha3": "MMR",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Philippines",
+      "alpha3": "PHL",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Singapore",
+      "alpha3": "SGP",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Thailand",
+      "alpha3": "THA",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Timor-Leste",
+      "alpha3": "TLS",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Vietnam",
+      "alpha3": "VNM",
+      "continent": "Asia",
+      "subregion": "South-eastern Asia"
+    },
+    {
+      "name": "Afghanistan",
+      "alpha3": "AFG",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Bangladesh",
+      "alpha3": "BGD",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Bhutan",
+      "alpha3": "BTN",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "India",
+      "alpha3": "IND",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Iran",
+      "alpha3": "IRN",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Maldives",
+      "alpha3": "MDV",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Nepal",
+      "alpha3": "NPL",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Pakistan",
+      "alpha3": "PAK",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Sri Lanka",
+      "alpha3": "LKA",
+      "continent": "Asia",
+      "subregion": "Southern Asia"
+    },
+    {
+      "name": "Armenia",
+      "alpha3": "ARM",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Azerbaijan",
+      "alpha3": "AZE",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Bahrain",
+      "alpha3": "BHR",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Cyprus",
+      "alpha3": "CYP",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Georgia",
+      "alpha3": "GEO",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Iraq",
+      "alpha3": "IRQ",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Israel",
+      "alpha3": "ISR",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Jordan",
+      "alpha3": "JOR",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Kuwait",
+      "alpha3": "KWT",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Lebanon",
+      "alpha3": "LBN",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Oman",
+      "alpha3": "OMN",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Qatar",
+      "alpha3": "QAT",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Saudi Arabia",
+      "alpha3": "SAU",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Palestine",
+      "alpha3": "PSE",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Syria",
+      "alpha3": "SYR",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Türkiye",
+      "alpha3": "TUR",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "United Arab Emirates",
+      "alpha3": "ARE",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Yemen",
+      "alpha3": "YEM",
+      "continent": "Asia",
+      "subregion": "Western Asia"
+    },
+    {
+      "name": "Belarus",
+      "alpha3": "BLR",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Bulgaria",
+      "alpha3": "BGR",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Czechia",
+      "alpha3": "CZE",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Hungary",
+      "alpha3": "HUN",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Poland",
+      "alpha3": "POL",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Moldova",
+      "alpha3": "MDA",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Romania",
+      "alpha3": "ROU",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Russian Federation",
+      "alpha3": "RUS",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Slovakia",
+      "alpha3": "SVK",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Ukraine",
+      "alpha3": "UKR",
+      "continent": "Europe",
+      "subregion": "Eastern Europe"
+    },
+    {
+      "name": "Åland Islands",
+      "alpha3": "ALA",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Denmark",
+      "alpha3": "DNK",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Estonia",
+      "alpha3": "EST",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Faroe Islands",
+      "alpha3": "FRO",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Finland",
+      "alpha3": "FIN",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Guernsey",
+      "alpha3": "GGY",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Iceland",
+      "alpha3": "ISL",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Ireland",
+      "alpha3": "IRL",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Isle of Man",
+      "alpha3": "IMN",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Jersey",
+      "alpha3": "JEY",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Latvia",
+      "alpha3": "LVA",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Lithuania",
+      "alpha3": "LTU",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Norway",
+      "alpha3": "NOR",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Svalbard and Jan Mayen",
+      "alpha3": "SJM",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Sweden",
+      "alpha3": "SWE",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "United Kingdom",
+      "alpha3": "GBR",
+      "continent": "Europe",
+      "subregion": "Northern Europe"
+    },
+    {
+      "name": "Albania",
+      "alpha3": "ALB",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Andorra",
+      "alpha3": "AND",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "alpha3": "BIH",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Croatia",
+      "alpha3": "HRV",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Gibraltar",
+      "alpha3": "GIB",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Greece",
+      "alpha3": "GRC",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Holy See (Vatican City State)",
+      "alpha3": "VAT",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Italy",
+      "alpha3": "ITA",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Malta",
+      "alpha3": "MLT",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Montenegro",
+      "alpha3": "MNE",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "North Macedonia",
+      "alpha3": "MKD",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Portugal",
+      "alpha3": "PRT",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "San Marino",
+      "alpha3": "SMR",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Serbia",
+      "alpha3": "SRB",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Slovenia",
+      "alpha3": "SVN",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Spain",
+      "alpha3": "ESP",
+      "continent": "Europe",
+      "subregion": "Southern Europe"
+    },
+    {
+      "name": "Austria",
+      "alpha3": "AUT",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Belgium",
+      "alpha3": "BEL",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "France",
+      "alpha3": "FRA",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Germany",
+      "alpha3": "DEU",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Liechtenstein",
+      "alpha3": "LIE",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Luxembourg",
+      "alpha3": "LUX",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Monaco",
+      "alpha3": "MCO",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Netherlands",
+      "alpha3": "NLD",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Switzerland",
+      "alpha3": "CHE",
+      "continent": "Europe",
+      "subregion": "Western Europe"
+    },
+    {
+      "name": "Australia",
+      "alpha3": "AUS",
+      "continent": "Oceania",
+      "subregion": "Australia and New Zealand"
+    },
+    {
+      "name": "Christmas Island",
+      "alpha3": "CXR",
+      "continent": "Oceania",
+      "subregion": "Australia and New Zealand"
+    },
+    {
+      "name": "Cocos (Keeling) Islands",
+      "alpha3": "CCK",
+      "continent": "Oceania",
+      "subregion": "Australia and New Zealand"
+    },
+    {
+      "name": "Heard Island and McDonald Islands",
+      "alpha3": "HMD",
+      "continent": "Oceania",
+      "subregion": "Australia and New Zealand"
+    },
+    {
+      "name": "New Zealand",
+      "alpha3": "NZL",
+      "continent": "Oceania",
+      "subregion": "Australia and New Zealand"
+    },
+    {
+      "name": "Norfolk Island",
+      "alpha3": "NFK",
+      "continent": "Oceania",
+      "subregion": "Australia and New Zealand"
+    },
+    {
+      "name": "Fiji",
+      "alpha3": "FJI",
+      "continent": "Oceania",
+      "subregion": "Melanesia"
+    },
+    {
+      "name": "New Caledonia",
+      "alpha3": "NCL",
+      "continent": "Oceania",
+      "subregion": "Melanesia"
+    },
+    {
+      "name": "Papua New Guinea",
+      "alpha3": "PNG",
+      "continent": "Oceania",
+      "subregion": "Melanesia"
+    },
+    {
+      "name": "Solomon Islands",
+      "alpha3": "SLB",
+      "continent": "Oceania",
+      "subregion": "Melanesia"
+    },
+    {
+      "name": "Vanuatu",
+      "alpha3": "VUT",
+      "continent": "Oceania",
+      "subregion": "Melanesia"
+    },
+    {
+      "name": "Guam",
+      "alpha3": "GUM",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "Kiribati",
+      "alpha3": "KIR",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "Marshall Islands",
+      "alpha3": "MHL",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "Micronesia, Federated States of",
+      "alpha3": "FSM",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "Nauru",
+      "alpha3": "NRU",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "Northern Mariana Islands",
+      "alpha3": "MNP",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "Palau",
+      "alpha3": "PLW",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "United States Minor Outlying Islands",
+      "alpha3": "UMI",
+      "continent": "Oceania",
+      "subregion": "Micronesia"
+    },
+    {
+      "name": "American Samoa",
+      "alpha3": "ASM",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Cook Islands",
+      "alpha3": "COK",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "French Polynesia",
+      "alpha3": "PYF",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Niue",
+      "alpha3": "NIU",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Pitcairn",
+      "alpha3": "PCN",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Samoa",
+      "alpha3": "WSM",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Tokelau",
+      "alpha3": "TKL",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Tonga",
+      "alpha3": "TON",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Tuvalu",
+      "alpha3": "TUV",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    },
+    {
+      "name": "Wallis and Futuna",
+      "alpha3": "WLF",
+      "continent": "Oceania",
+      "subregion": "Polynesia"
+    }
+  ]
+}

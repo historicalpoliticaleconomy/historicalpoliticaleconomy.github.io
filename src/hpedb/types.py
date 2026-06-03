@@ -24,7 +24,8 @@ class ClassificationRecord(TypedDict):
     is_hpe: bool
     period_start: int | None
     period_end: int | None
-    regions: str       # JSON-encoded list[str]
+    regions: str    # JSON-encoded list[str]
+    countries: str  # JSON-encoded list[str]
     backend: str
     model: str
     classified_at: str  # ISO-8601
