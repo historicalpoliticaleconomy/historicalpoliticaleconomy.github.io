@@ -95,6 +95,8 @@ def fetch_journal(
     results: list[tuple[ArticleRecord, list[AuthorRecord]]] = []
     for page in pages:
         for item in page["message"]["items"]:
-            if item.get("DOI") and item.get("author"):
+            title_list: list[str] | None = item.get("title")
+            title: str | None = title_list[0] if title_list else None
+            if item.get("DOI") and item.get("author") and not (title and title.startswith("<i>")):
                 results.append(parse_item(item, abbrev))
     return results

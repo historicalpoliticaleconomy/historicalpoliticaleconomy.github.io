@@ -110,6 +110,21 @@ def test_fetch_journal_returns_parsed_items() -> None:
     assert len(authors) == 2
 
 
+def test_fetch_journal_skips_book_reviews() -> None:
+    book_review: dict[str, Any] = {**FULL_ITEM, "title": ["<i>Some Book</i>. By Author."]}
+    mock_cr = MagicMock()
+    mock_cr.works.return_value = [{"message": {"items": [book_review]}}]
+    results = fetch_journal(cast(Crossref, mock_cr), "JOP", "0022-3816", 2021, 2022)
+    assert results == []
+
+
+def test_fetch_journal_keeps_articles_without_italic_title() -> None:
+    mock_cr = MagicMock()
+    mock_cr.works.return_value = [{"message": {"items": [FULL_ITEM]}}]
+    results = fetch_journal(cast(Crossref, mock_cr), "JOP", "0022-3816", 2021, 2022)
+    assert len(results) == 1
+
+
 def test_fetch_journal_calls_works_with_correct_filters() -> None:
     mock_cr = MagicMock()
     mock_cr.works.return_value = [{"message": {"items": []}}]

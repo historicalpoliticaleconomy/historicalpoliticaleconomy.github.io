@@ -53,43 +53,46 @@ def test_export_empty_db(conn: sqlite3.Connection) -> None:
     assert export_hpe_articles(conn) == []
 
 
-def test_export_hpe_only(conn: sqlite3.Connection) -> None:
+_URL = "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/TEST"
+
+
+def _setup_hpe_with_url(conn: sqlite3.Connection) -> None:
     upsert_article(conn, _HPE)
-    upsert_article(conn, _NON_HPE)
     upsert_classification(conn, _cls(_HPE["doi"], True))
+    update_replication_url(conn, _HPE["doi"], _URL)
+
+
+def test_export_hpe_only(conn: sqlite3.Connection) -> None:
+    _setup_hpe_with_url(conn)
+    upsert_article(conn, _NON_HPE)
     upsert_classification(conn, _cls(_NON_HPE["doi"], False))
     entries = export_hpe_articles(conn)
     assert len(entries) == 1
     assert entries[0]["doi"] == _HPE["doi"]
 
 
-def test_export_regions_parsed_as_list(conn: sqlite3.Connection) -> None:
+def test_export_excludes_articles_without_url(conn: sqlite3.Connection) -> None:
     upsert_article(conn, _HPE)
     upsert_classification(conn, _cls(_HPE["doi"], True))
+    # No replication URL set — should not appear in export
+    assert export_hpe_articles(conn) == []
+
+
+def test_export_regions_parsed_as_list(conn: sqlite3.Connection) -> None:
+    _setup_hpe_with_url(conn)
     entries = export_hpe_articles(conn)
     assert isinstance(entries[0]["regions"], list)
     assert entries[0]["regions"] == ["Western Europe"]
 
 
-def test_export_replication_url_null_when_not_set(conn: sqlite3.Connection) -> None:
-    upsert_article(conn, _HPE)
-    upsert_classification(conn, _cls(_HPE["doi"], True))
+def test_export_replication_url_present(conn: sqlite3.Connection) -> None:
+    _setup_hpe_with_url(conn)
     entries = export_hpe_articles(conn)
-    assert entries[0]["replication_url"] is None
-
-
-def test_export_replication_url_present_when_set(conn: sqlite3.Connection) -> None:
-    upsert_article(conn, _HPE)
-    upsert_classification(conn, _cls(_HPE["doi"], True))
-    url = "https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/TEST"
-    update_replication_url(conn, _HPE["doi"], url)
-    entries = export_hpe_articles(conn)
-    assert entries[0]["replication_url"] == url
+    assert entries[0]["replication_url"] == _URL
 
 
 def test_export_authors_formatted(conn: sqlite3.Connection) -> None:
-    upsert_article(conn, _HPE)
-    upsert_classification(conn, _cls(_HPE["doi"], True))
+    _setup_hpe_with_url(conn)
     conn.execute(
         "INSERT INTO authors (doi, sequence, given, family) VALUES (?, ?, ?, ?)",
         (_HPE["doi"], 0, "John", "Smith"),
@@ -104,8 +107,7 @@ def test_export_authors_formatted(conn: sqlite3.Connection) -> None:
 
 
 def test_export_author_family_only(conn: sqlite3.Connection) -> None:
-    upsert_article(conn, _HPE)
-    upsert_classification(conn, _cls(_HPE["doi"], True))
+    _setup_hpe_with_url(conn)
     conn.execute(
         "INSERT INTO authors (doi, sequence, given, family) VALUES (?, ?, ?, ?)",
         (_HPE["doi"], 0, None, "Aristotle"),
@@ -115,21 +117,18 @@ def test_export_author_family_only(conn: sqlite3.Connection) -> None:
     assert entries[0]["authors"] == "Aristotle"
 
 
-def test_export_output_is_valid_json(conn: sqlite3.Connection, tmp_path: Path) -> None:
-    from hpedb.export import main
+def test_export_output_is_valid_json(tmp_path: Path) -> None:
     import sys
-    upsert_article(conn, _HPE)
-    upsert_classification(conn, _cls(_HPE["doi"], True))
-    conn.close()
+    from hpedb.export import main
 
     db_path = str(tmp_path / "test.db")
     out_path = str(tmp_path / "out.json")
 
-    # Re-open since conn is closed by fixture; use a fresh db
     c = init_db(db_path)
     init_classifications(c)
     upsert_article(c, _HPE)
     upsert_classification(c, _cls(_HPE["doi"], True))
+    update_replication_url(c, _HPE["doi"], _URL)
     c.close()
 
     old_argv = sys.argv

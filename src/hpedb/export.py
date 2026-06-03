@@ -13,7 +13,7 @@ def export_hpe_articles(conn: sqlite3.Connection) -> list[dict[str, Any]]:
                c.period_start, c.period_end, c.regions, c.replication_url
         FROM articles a
         JOIN classifications c ON c.doi = a.doi
-        WHERE c.is_hpe = 1
+        WHERE c.is_hpe = 1 AND c.replication_url IS NOT NULL
         ORDER BY a.year DESC, a.title
     """).fetchall()
 
