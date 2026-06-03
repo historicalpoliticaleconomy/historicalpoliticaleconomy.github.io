@@ -66,6 +66,7 @@ def supplement_abstracts(conn: sqlite3.Connection) -> tuple[int, int]:
                 )
             conn.commit()
             found += len(batch)
+            time.sleep(5)
 
     return found, len(dois)
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HPE Dataset Browser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Historical Political Economy Datasets</h1>
+    <p class="subtitle">
+      Replication datasets from peer-reviewed HPE research across leading political science
+      and economics journals. Click <strong>Get Data</strong> to access the replication archive.
+    </p>
+  </header>
+
+  <div class="layout">
+    <aside class="filters">
+      <h2>Filter</h2>
+
+      <section>
+        <h3>Historical Period</h3>
+        <div class="range-inputs">
+          <label>From <input type="number" id="period-from" placeholder="e.g. 1500"></label>
+          <label>To <input type="number" id="period-to" placeholder="e.g. 1950"></label>
+        </div>
+      </section>
+
+      <section>
+        <h3>Publication Year</h3>
+        <div class="range-inputs">
+          <label>From <input type="number" id="pub-from" placeholder="e.g. 2000"></label>
+          <label>To <input type="number" id="pub-to" placeholder="e.g. 2025"></label>
+        </div>
+      </section>
+
+      <section>
+        <h3>Journal</h3>
+        <select id="journal-filter">
+          <option value="">All journals</option>
+        </select>
+      </section>
+
+      <section>
+        <h3>Region</h3>
+        <div id="region-filters" class="checkbox-group"></div>
+      </section>
+
+      <section>
+        <label class="toggle-label">
+          <input type="checkbox" id="data-available">
+          Direct data link available
+        </label>
+      </section>
+
+      <button id="clear-filters">Clear filters</button>
+    </aside>
+
+    <main>
+      <p class="results-count" id="results-count"></p>
+      <ul id="results" class="results-list"></ul>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

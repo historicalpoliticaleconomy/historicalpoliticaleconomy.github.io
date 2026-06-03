@@ -5,9 +5,13 @@ from habanero import Crossref
 from hpedb.types import ArticleRecord, AuthorRecord
 
 JOURNALS: dict[str, str] = {
-    "JOP": "0022-3816",
-    "APSR": "0003-0554",
-    "AJPS": "0092-5853",
+    "JOP":         "0022-3816",
+    "APSR":        "0003-0554",
+    "AJPS":        "0092-5853",
+    "QJE":         "0033-5533",
+    "AER":         "0002-8282",
+    "JPE":         "0022-3808",
+    "Econometrica":"0012-9682",
 }
 
 SELECT_FIELDS: list[str] = [

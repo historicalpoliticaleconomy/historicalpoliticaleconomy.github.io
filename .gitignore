@@ -1,6 +1,8 @@
 # Database
 *.db
 
+.vscode/
+
 # Python
 .venv/
 __pycache__/
@@ -12,3 +14,8 @@ dist/
 .coverage
 .coverage.*
 .mypy_cache/
+
+*.pdf
+
+# Output logs
+*_output.txt

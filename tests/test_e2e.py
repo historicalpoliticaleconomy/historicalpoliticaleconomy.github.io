@@ -14,7 +14,7 @@ from hpedb.cli import main as cli_main
 from hpedb.supplement import main as supplement_main
 
 # Well-known stable DOIs (Crossref normalises DOIs to lowercase)
-KNOWN_JOP_DOI = "10.1086/706765"
+KNOWN_JOP_DOI  = "10.1086/706765"
 KNOWN_APSR_DOI = "10.1017/s0003055420000234"
 
 _MAILTO = "hmm2198@columbia.edu"
@@ -101,3 +101,5 @@ def test_supplement_pipeline(tmp_path: Path) -> None:
     assert jop_with_abstract > 0, "Semantic Scholar should have provided JOP abstracts"
     # APSR already had abstracts from Crossref; supplement should not have overwritten them
     assert apsr_with_abstract > 0
+
+

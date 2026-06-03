@@ -9,6 +9,9 @@ packages = [{include = "hpedb", from = "src"}]
 python = "^3.11"
 habanero = "^1.2"
 requests = "^2.31"
+tqdm = "^4"
+openai = ">=1.0"
+anthropic = ">=0.18"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8"
@@ -19,8 +22,11 @@ types-tqdm = "^4"
 pytest-cov = "^6"
 
 [tool.poetry.scripts]
-hpedb = "hpedb.cli:main"
+hpedb            = "hpedb.cli:main"
 hpedb-supplement = "hpedb.supplement:main"
+hpedb-classify   = "hpedb.classify:main"
+hpedb-enrich     = "hpedb.enrich:main"
+hpedb-export     = "hpedb.export:main"
 
 [build-system]
 requires = ["poetry-core"]

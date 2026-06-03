@@ -1,6 +1,6 @@
 import sqlite3
 
-from hpedb.types import ArticleRecord, AuthorRecord
+from hpedb.types import ArticleRecord, AuthorRecord, ClassificationRecord
 
 CREATE_ARTICLES = """
 CREATE TABLE IF NOT EXISTS articles (
@@ -55,6 +55,62 @@ def upsert_article(conn: sqlite3.Connection, record: ArticleRecord) -> None:
         record,
     )
     conn.commit()
+
+
+_CREATE_CLASSIFICATIONS = """
+CREATE TABLE IF NOT EXISTS classifications (
+    doi             TEXT PRIMARY KEY REFERENCES articles(doi) ON DELETE CASCADE,
+    is_hpe          INTEGER NOT NULL,
+    period_start    INTEGER,
+    period_end      INTEGER,
+    regions         TEXT NOT NULL,
+    backend         TEXT NOT NULL,
+    model           TEXT NOT NULL,
+    classified_at   TEXT NOT NULL,
+    replication_url TEXT
+)
+"""
+
+
+def init_classifications(conn: sqlite3.Connection) -> None:
+    conn.execute(_CREATE_CLASSIFICATIONS)
+    # Migration: add replication_url to pre-existing tables
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(classifications)").fetchall()}
+    if "replication_url" not in cols:
+        conn.execute("ALTER TABLE classifications ADD COLUMN replication_url TEXT")
+    conn.commit()
+
+
+def upsert_classification(
+    conn: sqlite3.Connection, record: ClassificationRecord
+) -> None:
+    conn.execute(
+        """
+        INSERT OR REPLACE INTO classifications
+            (doi, is_hpe, period_start, period_end, regions, backend, model, classified_at)
+        VALUES
+            (:doi, :is_hpe, :period_start, :period_end, :regions, :backend, :model, :classified_at)
+        """,
+        {**record, "is_hpe": int(record["is_hpe"])},
+    )
+    conn.commit()
+
+
+def update_replication_url(conn: sqlite3.Connection, doi: str, url: str) -> None:
+    conn.execute(
+        "UPDATE classifications SET replication_url = ? WHERE doi = ?",
+        (url, doi),
+    )
+    conn.commit()
+
+
+def get_unclassified_dois(conn: sqlite3.Connection) -> list[str]:
+    return [
+        str(row[0])
+        for row in conn.execute(
+            "SELECT doi FROM articles WHERE doi NOT IN (SELECT doi FROM classifications)"
+        ).fetchall()
+    ]
 
 
 def upsert_authors(

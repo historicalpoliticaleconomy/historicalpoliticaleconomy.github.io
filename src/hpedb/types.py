@@ -17,3 +17,14 @@ class AuthorRecord(TypedDict):
     sequence: int
     given: str | None
     family: str | None
+
+
+class ClassificationRecord(TypedDict):
+    doi: str
+    is_hpe: bool
+    period_start: int | None
+    period_end: int | None
+    regions: str       # JSON-encoded list[str]
+    backend: str
+    model: str
+    classified_at: str  # ISO-8601
