@@ -1,0 +1,1522 @@
+[
+  {
+    "doi": "10.1093/qje/qjag021",
+    "title": "Codification, Technology Absorption, and The Globalization of the Industrial Revolution",
+    "journal": "QJE",
+    "year": 2026,
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>This paper examines the global adoption of technology in the late nineteenth century. We construct several novel datasets to test the idea that the codification of technical knowledge in the vernacular was necessary for countries to absorb the technologies of the First Industrial Revolution. We find that comparative advantage shifted to industries that could benefit from these technologies in countries and colonies with access to codified technical knowledge, but not in other regions. Using the rapid and unprecedented codification of technical knowledge in Meiji Japan as a natural experiment, we show that this pattern emerged only after the Japanese government codified vast amounts of technical knowledge. Our findings shed new light on the frictions associated with technological diffusion and offer a novel explanation for why Meiji Japan was unique among non-Western countries in successfully industrializing during the first wave of globalization.</jats:p>",
+    "period_start": 1868,
+    "period_end": 1900,
+    "regions": [
+      "East Asia",
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/Z6DIBV",
+    "authors": "Juhász, R.; Sakabe, S.; Weinstein, D."
+  },
+  {
+    "doi": "10.1086/734538",
+    "title": "Democrats Versus Democracy: The Southern Response to the Voting Rights Act",
+    "journal": "JOP",
+    "year": 2026,
+    "abstract": null,
+    "period_start": 1965,
+    "period_end": 1975,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/NDONA4",
+    "authors": "Komisarchik, M."
+  },
+  {
+    "doi": "10.1111/ajps.70047",
+    "title": "Rulers on the road: Itinerant rule in the Holy Roman Empire, AD 919–1519",
+    "journal": "AJPS",
+    "year": 2026,
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Itinerant rule, rule exercised through traveling, was a common yet insufficiently researched, premodern form of governance. Studying the determinants of ruler itineraries in the Holy Roman Empire, AD 919–1519, we argue that rulers' visits targeted “marginal” elites. Powerful rulers could count on family members and thus targeted unrelated local elites. Weak emperors had to monitor their less loyal relatives and left unrelated nobles unvisited. We reconstruct emperors' itineraries from 72,665 dated and geolocated documents and measure territorial control by their relatives. Exploiting the weakening of imperial power through the Great Interregnum (1250–1273), we find that strong, pre‐1250 emperors frequented areas controlled by their relatives relatively less. In contrast, family control increased visits post‐1273. Causal identification rests on the discontinuous reduction of emperors' power through the Great Interregnum and differences in family relations between subsequent emperors. The results show strategic itinerant rule as an important but understudied form of governance.</jats:p>",
+    "period_start": 919,
+    "period_end": 1519,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/PZ2VKQ",
+    "authors": "Müller‐Crepon, C.; Neupert‐Wentz, C.; Kokkonen, A.; Møller, J."
+  },
+  {
+    "doi": "10.1111/ajps.70004",
+    "title": "Balancing bossism: State expansion in the face of elite capture",
+    "journal": "AJPS",
+    "year": 2025,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Central states have often relied on local elites to implement policies in peripheral areas. These strategies may allow otherwise weak states to impose their directives, but they can also be inefficient, particularly when a single elite commands total control over local politics (<jats:italic>monopolist capture</jats:italic>). We argue that weak states can overcome this equilibrium by creating new subnational positions with distinct appointment rules from existing ones (<jats:italic>balancing</jats:italic>). We evaluate our argument leveraging a natural experiment and novel data on 12,000 sub‐municipal units from turn‐of‐the‐twentieth‐century Peru. We exploit as‐if random variation in population‐based appointment rules for a justice of the peace, the chief institution through which monopolist capture was established. We provide evidence that the Peruvian government responded to monopolist capture by creating local‐level executive positions (lieutenant governors). We further demonstrate that this balancing allowed the state to conduct a 1902 education census, which was otherwise opposed and often blocked by entrenched elites.</jats:p>",
+    "period_start": 1900,
+    "period_end": 1902,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/I3WHUA",
+    "authors": "Callis, A.; Carter, C."
+  },
+  {
+    "doi": "10.1017/s0003055424001187",
+    "title": "Black Troops, White Rage, and Political Violence in the Postbellum American South",
+    "journal": "APSR",
+    "year": 2025,
+    "abstract": "<jats:p>How can governments in racially divided societies protect vulnerable populations from political violence after large-scale internal conflict? When the dominant majority is bent on perpetuating its power and privileges in the racial hierarchy, benevolence by government interveners is unlikely to curb oppressive violence against subordinate groups. There is thus no alternative to using military coercion to crush insurgents and their civilian supporters. However, failing to maintain this coercive apparatus can exacerbate violence over the long term by triggering racialized revenge dynamics, particularly in communities that were occupied by troops of the subordinate minority. To substantiate these claims, we show that different parts of the postbellum American South experienced uneven spikes in white supremacist violence following the end of federal military occupation in the 1870s: counties that had previously been occupied by Black troops witnessed higher incidences of anti-Black violence than other areas. This effect persisted for many decades, contributing to the dismal climate of violence that prevailed during the nadir of American race relations.</jats:p>",
+    "period_start": 1865,
+    "period_end": 1920,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/PZCXQZ",
+    "authors": "BYUN, J.; KWON, H."
+  },
+  {
+    "doi": "10.1086/734780",
+    "title": "Colluding against Workers",
+    "journal": "JPE",
+    "year": 2025,
+    "abstract": "Empirical models of labor market competition usually assume that employers set wages non-cooperatively, despite ample evidence of collusive wage-setting agreements. We propose an identification approach for labor market collusion that relies on production and cost data, and use it to study how employer collusion affected wage markdowns of 227 Belgian coal firms between 1845 and 1913. We are able to detect collusion through the 1897 coal cartel, an observable shock to collusion, without ex-ante knowledge of its timing, and find that it explains the fast growth in markdowns after 1900. JEL classification codes: N33, J42, L40",
+    "period_start": 1845,
+    "period_end": 1913,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/FG1JSE",
+    "authors": "Delabastita, V.; Rubens, M."
+  },
+  {
+    "doi": "10.1086/730750",
+    "title": "Democratization in the USA? The Impact of Antebellum Suffrage Qualifications on Politics and Policy",
+    "journal": "JOP",
+    "year": 2025,
+    "abstract": "Democratization in the USA? The Impact of Antebellum Suffrage Qualifications on Politics and Policy DAVID A. BATEMAN Did the first wave of democratization in America—the removal of property and taxpaying qualifications for free adult men—produce consequential changes in representation and policy? This paper leverages unique features of electoral institutions in particular states to empirically identify the impact of reform on enfranchisement rates, turnout, patterns of representation, and policy outcomes. I draw extensively on a uniquely comprehensive dataset of suffrage qualifications—corrected for common miscodings—and on both newly collected as well as currently underused data on state electoral results and legislative behavior, supplemented with more familiar data on federal politics. I find that there was a sizeable body of adult free men disenfranchised by restrictive property qualifications, the abolition of which had a significant but modest effect on turnout. The impact on patterns of representation and policy outcomes, however, was even more modest, and the null hypothesis cannot be confidently rejected for the entire US. I provide evidence that this attenuation of an effect in representation and policy outcomes was the result of a high degree of preference similarity between free adult men disenfranchised and enfranchised by restrictive qualifications.",
+    "period_start": 1790,
+    "period_end": 1860,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/SUCNTD",
+    "authors": "Bateman, D."
+  },
+  {
+    "doi": "10.1093/qje/qjaf054",
+    "title": "Enlightenment Ideals and Belief in Progress in the Run-up to the Industrial Revolution: A Textual Analysis",
+    "journal": "QJE",
+    "year": 2025,
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>We trace the evolution of the language of science, religion, and political economy in the centuries leading to the British Industrial Revolution. Using textual analysis of 264,443 works printed in England between 1500 and 1900, we test whether British culture manifested a belief in progress associated with science and industry. Our analysis yields three main findings. First, there was a separation in the languages of science and religion beginning in the mid-eighteenth century. Second, volumes using language at the nexus of science and political economy became more progress-oriented during the Enlightenment. Third, volumes using industrial language—especially those at the science-political economy nexus—were more progress-oriented beginning in the eighteenth century.</jats:p>",
+    "period_start": 1500,
+    "period_end": 1900,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/DQRO8L",
+    "authors": "Almelhem, A.; Iyigun, M.; Kennedy, A.; Rubin, J."
+  },
+  {
+    "doi": "10.1111/ajps.12970",
+    "title": "National identity after conquest",
+    "journal": "AJPS",
+    "year": 2025,
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Conquering powers routinely adopt state‐directed nationalization projects that seek to make the boundaries of the nation coterminous with the (newly expanded) boundaries of the state. To this end, they implement policies that elevate the economic status of individuals who embrace the occupier's national identity and discriminate against those who do not. This paper develops a formal model that illuminates when such policies succeed or fail. We show that the effectiveness of discrimination hinges on the perceived longevity of occupation. If occupier rule is expected to be short‐lived, discrimination will backfire, as dissident parents transmit the marginalized national identity to their children; intense intergenerational socialization more than compensates for the negative wealth effects of discrimination. If occupier rule is instead perceived to be long‐lasting, discrimination will achieve its intended aims. Case studies on the Chilean occupation of Tacna, Peru (1880–1929), and the Prussian occupation of Northern Schleswig (1866–1920) illustrate the logic.</jats:p>",
+    "period_start": 1866,
+    "period_end": 1929,
+    "regions": [
+      "Latin America",
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/BLVM1N",
+    "authors": "Carter, C.; Gingerich, D."
+  },
+  {
+    "doi": "10.1093/qje/qjaf045",
+    "title": "Political Foundations of Racial Violence in the Post-Reconstruction South",
+    "journal": "QJE",
+    "year": 2025,
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Election results act as powerful signals, shaping social behavior in ways that can be dramatic and even violent. This article shows how racial violence in the post-Reconstruction U.S. South was tied to the local performance of the anti-Black Democratic Party in presidential elections. Using a regression discontinuity design based on close presidential vote shares, we find that Southern counties where Democrats lost the popular vote between 1880 and 1900 were nearly twice as likely to experience Black lynchings in the following four years. Despite no corresponding changes in local office holding, these defeats were salient among local elites. We show that Southern newspapers, closely aligned with the Democratic Party, amplified narratives of Black criminality in the aftermath of Democratic losses. Such accusations were, in turn, frequently invoked by lynch mobs. These findings point to the strategic use of racial violence by Democratic elites, foreshadowing the institutionalized vote suppression of Jim Crow.</jats:p>",
+    "period_start": 1880,
+    "period_end": 1904,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/08YUBP",
+    "authors": "Testa, P.; Williams, J."
+  },
+  {
+    "doi": "10.1017/s0003055424001321",
+    "title": "Precolonial Elites and Colonial Redistribution of Political Power",
+    "journal": "APSR",
+    "year": 2025,
+    "abstract": "<jats:p>Studies of colonialism often associate indirect colonial rule with continuity of the precolonial institutions. Yet, we know less about how colonialism affected the distribution of power between precolonial domestic elites within nominally continuous institutions. We argue that colonial authorities will redistribute power toward elites that are the most congruent with the colonizer’s objectives. We test our theory on the British occupation of Egypt in 1882. Using an original dataset on members of the Egyptian parliament and a difference-in-differences empirical strategy, we show that the colonial authorities shifted parliamentary representation toward the (congruent) landed elite and away from the (oppositional) rural middle class. This shift was greater in cotton-producing provinces which were more exposed to colonial economic interest. Our results demonstrate that the colonial redistribution of power within precolonial institutions can reengineer the social-structural fabric of colonized societies.</jats:p>",
+    "period_start": 1882,
+    "period_end": 1920,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/TELPAY",
+    "authors": "HARTNETT, A.; SALEH, M."
+  },
+  {
+    "doi": "10.1086/734261",
+    "title": "Racial Diversity and Exclusionary Zoning: Evidence from the Great Migration",
+    "journal": "JOP",
+    "year": 2025,
+    "abstract": "Why do cities adopt and maintain laws that restrict land use, creating a shortage of affordable housing? Dominant explanations emphasize the economic incentives of homeowners to preserve their property values. The origins and racially disparate impacts of these laws suggest another motivating factor: the desire to maintain and further racial segregation by white residents. I characterize for the first time the extent of exclusionary zoning in the United States: across over 100 of the largest cities in the country, the median city allows multi-family housing to be built on only 12% of residential land. Then, leveraging exogenous factors for Black migration to Northern cities from 1940 to 1970, I show that increasing racial diversity causes cities to zone less land for multi-family housing. Analysis of public opinion surveys during this time period shows the Great Migration caused a racial backlash among urban white voters, which translated to policy action. This evidence suggests that exclusionary zoning was adopted to maintain racial segregation and that opposition to multi-family housing cannot just be explained by desire to maintain property values. I rule out alternative explanations of increased homeownership rates, different city institutions, or differences in federal intervention driving variation in zoning. These findings show how racial threat can be channeled into racialized public policy and provide a new explanation for inequality in housing markets today. ∗Post-doctoral fellow, University of California, Santa Barbara. asahn@berkeley.edu Thank you to Sarah Anzia, Katie Einstein, Jake Grumbach, Gabe Lenz, Paul Pierson, Hye Young You, and seminar participants at UC Berkeley, UCLA, Vanderbilt, and Yale and the 2019 American Political Science Association meeting for helpful feedback. Emma Aguayo, Amit Cohen, Jake Levy, Jocelyn Lombrera, Adrian Portillo, and Jack Sadler provided excellent research assistance. A previous version of this paper was titled “Why is Housing Unaffordable? Exclusionary Zoning and the Great Migration.”",
+    "period_start": 1940,
+    "period_end": 1970,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/H7NBXG",
+    "authors": "Sahn, A."
+  },
+  {
+    "doi": "10.1017/s0003055425101342",
+    "title": "State-Building and Rebellion in the Run-Up to the French Revolution",
+    "journal": "APSR",
+    "year": 2025,
+    "abstract": "<jats:p>Early modern European powers were beset by episodic unrest as they sought to consolidate their authority and build empires. We examine how growing state communication networks and the penetration of society impacted unrest by combining original and detailed parish-level data from pre-Revolutionary France on the expansion of the horse-post relay network with rebellion in this period. Using a staggered difference-in-differences framework, we find that new horse-post relays are associated with more local rebellion. We argue that the main mechanisms are the material consequences of state centralization. New horse-post relays are linked with more rebellion against state agents and associates—the military, police, tax collectors, and the judiciary—that conscripted civilians, enforced taxes and laws, and increasingly monopolized roads. Pre-existing state and administrative fragmentation also mediated this relationship. Our findings have implications for the scholarly understanding of the co-evolution of states and order.</jats:p>",
+    "period_start": 1600,
+    "period_end": 1789,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/M1XRXT",
+    "authors": "ALBERTUS, M.; GAY, V."
+  },
+  {
+    "doi": "10.1017/s000305542510097x",
+    "title": "Storm from the Steppes: Warfare and Succession Institutions in Pre-Modern Eurasia, 1000–1799 CE",
+    "journal": "APSR",
+    "year": 2025,
+    "abstract": "<jats:p>A prominent literature on pre-modern warfare and institution-building holds that intense military competition in pre-modern Europe encouraged institutional innovations—for example, centralized bureaucracies and monopolies on coercion—that empowered rulers and enhanced state capacity, with salutary effects on long-run political development. States that adopted these innovations were more likely to survive, whereas those that did not succumbed to invading armies. Yet links between geopolitical competitiveness and capacity building are largely theorized and tested based on the European historical experience. A broader view of that period reveals a more complicated picture. The dominant mode of warfare throughout much of medieval and early modern Eurasia, Inner Asian cavalry warfare (IACW), favored succession institutions that selected for competent military leaders at the expense of long, secure reigns and cumulative capacity-building potential. I explore these links between IACW, succession practices, and rule duration with a novel dataset of over 300 Eurasian dynasties.</jats:p>",
+    "period_start": 1000,
+    "period_end": 1799,
+    "regions": [
+      "Western Europe",
+      "Eastern Europe",
+      "Middle East & North Africa",
+      "South Asia",
+      "East Asia",
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/D1XSBR",
+    "authors": "SMITH, D."
+  },
+  {
+    "doi": "10.1257/aer.20230685",
+    "title": "The Debt-Inflation Channel of the German (Hyper)Inflation",
+    "journal": "AER",
+    "year": 2025,
+    "abstract": "<jats:p> This paper studies how a large increase in the price level is transmitted to the real economy through firm balance sheets. Using newly digitized macro- and micro-level data from the German inflation of 1919–1923, we show inflation led to a large reduction in real debt burdens and bankruptcies. Firms with higher nominal liabilities at the onset of inflation experienced a larger decline in interest expenses, a relative increase in their equity values, and higher employment during the inflation. The results are consistent with real effects of a debt-inflation channel that operates even when prices and wages are flexible. (JEL D22, E23, E31, G32, N14, N24) </jats:p>",
+    "period_start": 1919,
+    "period_end": 1923,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.3886/E220202V1",
+    "authors": "Brunnermeier, M.; Correia, S.; Luck, S.; Verner, E.; Zimmermann, T."
+  },
+  {
+    "doi": "10.1086/734269",
+    "title": "Warfare, Fiscal Gridlock, and State Formation During Europe’s Military Revolution",
+    "journal": "JOP",
+    "year": 2025,
+    "abstract": null,
+    "period_start": 1500,
+    "period_end": 1700,
+    "regions": [
+      "Western Europe",
+      "Eastern Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/SKBHD4",
+    "authors": "Cox, G.; Dincecco, M.; Onorato, M."
+  },
+  {
+    "doi": "10.1086/732944",
+    "title": "When Redistribution Backfires Politically: Theory and Evidence from Land Reform in Portugal",
+    "journal": "JOP",
+    "year": 2025,
+    "abstract": null,
+    "period_start": 1974,
+    "period_end": 1977,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/PBVGIB",
+    "authors": "Albertus, M.; Schouela, N."
+  },
+  {
+    "doi": "10.1017/s0003055424000431",
+    "title": "Civil Service Adoption in America: The Political Influence of City Employees",
+    "journal": "APSR",
+    "year": 2024,
+    "abstract": "<jats:p>At the turn of the twentieth century, most cities in America featured a patronage-based system of governance, but over the next few decades, patronage was replaced by civil service. Civil service restructured the relationship between elected officials and government employees, with employees benefiting from a variety of new protections. Yet in studying this change, scholars have largely ignored the role local employees themselves might have played in the transformation. We argue that city employees stood to benefit from civil service, and in places where they had agency and clout, they were important drivers of its adoption. We collected a dataset for more than 1,000 municipal governments, determining whether and when they adopted civil service and whether their employees were organized in an occupational organization. Our analysis of these new data shows the influence of city employees was an important contributor to the spread of civil service in American local government.</jats:p>",
+    "period_start": 1900,
+    "period_end": 1940,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/GIWOOO",
+    "authors": "ANZIA, S.; TROUNSTINE, J."
+  },
+  {
+    "doi": "10.1093/qje/qjae028",
+    "title": "Costs of Financing U.S. Federal Debt Under a Gold Standard: 1791-1933",
+    "journal": "QJE",
+    "year": 2024,
+    "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>From a new data set, we infer time series of term structures of yields on U.S. federal bonds during the gold standard era from 1791–1933 and use our estimates to reassess historical narratives about how the United States expanded its fiscal capacity. We show that U.S. debt carried a default risk premium until the end of the nineteenth century, when it started being priced as an alternative safe asset to U.K. debt. During the Civil War, investors expected the United States to return to a gold standard so the federal government was able to borrow without facing denomination risk. After the introduction of the National Banking System, the slope of the yield curve switched from down to up and the premium on U.S. debt with maturity less than one year disappeared.</jats:p>",
+    "period_start": 1791,
+    "period_end": 1933,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/3BLHJA",
+    "authors": "Payne, J.; Szőke, B.; Hall, G.; Sargent, T."
+  },
+  {
+    "doi": "10.1017/s0003055424000054",
+    "title": "Endogenous Colonial Borders: Precolonial States and Geography in the Partition of Africa",
+    "journal": "APSR",
+    "year": 2024,
+    "abstract": "<jats:p>We revise the conventional wisdom that Africa’s international borders were drawn arbitrarily. Europeans knew very little about most of Africa in the mid-1880s, but their self-interested goals of amassing territory prompted intensive examination of on-the-ground conditions as they formed borders. Europeans negotiated with African rulers to secure treaties and to learn about historical state frontiers, which enabled Africans to influence the border-formation process. Major water bodies, which shaped precolonial civilizations and trade, also served as focal points. We find support for these new theoretical implications using two original datasets. Quantitatively, we analyze border-location correlates using grid cells and an original spatial dataset on precolonial states. Qualitatively, we compiled information from treaties and diplomatic histories to code causal process observations for every bilateral border. Historical political frontiers directly affected 62% of all bilateral borders. Water bodies, often major ones, comprised the primary border feature much more frequently than straight lines.</jats:p>",
+    "period_start": 1880,
+    "period_end": 1914,
+    "regions": [
+      "Sub-Saharan Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/9QJVJ1",
+    "authors": "PAINE, J.; QIU, X.; RICART-HUGUET, J."
+  },
+  {
+    "doi": "10.1086/727606",
+    "title": "Enfranchisement and Representation: Evidence from the Introduction of “Quasi-Universal” Suffrage in Italy",
+    "journal": "JOP",
+    "year": 2024,
+    "abstract": "Does introducing de jure political equality affect legislative representation and the identity of elected politicians? This article exploits differences in enfranchisement rates across electoral districts to present evidence on the consequences of one of the most sizable franchise extensions in European history, the 1912 Italian reform, which trebled the electorate and left electoral rules and district boundaries unchanged. Enfranchisement increased the vote share of left-wing social reformers but had no impact on their parliamentary representation, on the parliamentary representation of the aristocracy and traditional elites, or on political competition. I document and analyze elite’s efforts to minimize the political impact of enfranchisement: social reformers were systematically defeated in districts that saw a surge in political violence as well as in districts where conservative candidates had signed a secret pact (the Gentiloni pact) with the Catholic Electoral Union. I discuss the implications of these findings for theories of democratization and elite persistence.",
+    "period_start": 1912,
+    "period_end": 1912,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/BOKBQQ",
+    "authors": "Larcinese, V."
+  },
+  {
+    "doi": "10.1086/729974",
+    "title": "Explaining Variation in Political Leadership by Marginalized Groups: Black Office-Holding and Contraband Camps",
+    "journal": "JOP",
+    "year": 2024,
+    "abstract": null,
+    "period_start": 1861,
+    "period_end": 1865,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.3886/E115861V1",
+    "authors": "Stewart, M.; Kitchens, K."
+  },
+  {
+    "doi": "10.1111/ajps.12901",
+    "title": "Fiscal legibility and state development: Theory and evidence from colonial Mexico",
+    "journal": "AJPS",
+    "year": 2024,
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>We examine how fiscal legibility, the ability of central authorities to observe local conditions for the purposes of taxation, shapes political centralization and state development. When rulers lack information about the periphery, they may benefit from ceding autonomy to tax‐collecting intermediaries to encourage fiscal performance. As information quality improves, rulers become better able to monitor and sanction local officials, allowing them to tighten control over taxation and establish more direct state presence. Centralization, in turn, encourages investment in improving fiscal legibility, leading to long‐term divergence in state development. We study the consequences of a technological innovation that dramatically improved the Spanish Crown's fiscal legibility in colonial Mexico: the discovery of the patio process to refine silver. We show that political centralization differentially accelerated in affected districts and that these areas subsequently saw disproportionate state investment in informational capacity, altering the trajectory of state development.</jats:p>",
+    "period_start": 1570,
+    "period_end": 1810,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/WGT8QV",
+    "authors": "Garfias, F.; Sellars, E."
+  },
+  {
+    "doi": "10.1086/728112",
+    "title": "Foreign Debt, Capital Controls, and Secondary Markets: Theory and Evidence from Nazi Germany",
+    "journal": "JPE",
+    "year": 2024,
+    "abstract": "We investigate how internal distribution motives can affect the implementation of an important macroeconomic policy: capital controls. To do this, we study one of history’s largest debt repatriations, which took place under strict capital controls in 1930s Germany, providing a wealth of quantitative and historical evidence. We show that the authorities kept private repatriations under strict control, thus avoiding detrimental macroeconomic effects, while allowing discretionary repatriations in order to reap internal political benefits. We formalize this mechanism in a model in which elite capture can affect optimal debt repatriations and the management of official reserves under capital controls.",
+    "period_start": 1930,
+    "period_end": 1939,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/KDAVKX",
+    "authors": "Papadia, A.; Schioppa, C."
+  },
+  {
+    "doi": "10.1111/ajps.12888",
+    "title": "From powerholders to stakeholders: State‐building with elite compensation in early medieval China",
+    "journal": "AJPS",
+    "year": 2024,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>How do rulers soften resistance by local powerholders to state‐building efforts? This paper highlights a strategy of compensation, where elites receive government offices in exchange for relinquishing their localist interests, and become uprooted and integrated into the national political system as stakeholders. We explore this strategy in the context of the Northern Wei Dynasty of China (386–534 CE) that terminated an era of state weakness during which aristocrats exercised local autonomy through strongholds. Exploiting a comprehensive state‐building reform in the late fifth century, we find that aristocrats from previously autonomous localities were disproportionately recruited into the bureaucracy as compensation for accepting stronger state presence. Three mechanisms of bureaucratic compensation facilitated state‐building. Offices received by those aristocrats: (1) carried direct benefits, (2) realigned their interests toward the ruler, and (3) mitigated credible commitment problems. Our findings shed light on the “First Great Divergence” between Late Antiquity Europe and Medieval China.</jats:p>",
+    "period_start": 386,
+    "period_end": 534,
+    "regions": [
+      "East Asia"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/AU1MVC",
+    "authors": "Chen, J.; Wang, E.; Zhang, X."
+  },
+  {
+    "doi": "10.1086/726930",
+    "title": "Gradual Franchise Extensions and Government Spending in Nineteenth-Century England",
+    "journal": "JOP",
+    "year": 2024,
+    "abstract": "This article investigates the effect of extending the franchise on government spending on public goods in nineteenth-century England and Wales. The effect of franchise extension is identified by exploiting extensive regional and temporal variation in the right to vote in municipal elections between 1867 and 1900. Semiparametric regressions show robust evidence of an inverted-U-shaped relationship: extending the right to vote from the rich to the middle class led to increased spending, but further franchise extensions—beyond around 50% of the adult male population—led to lower expenditure. Further, government spending was lower in towns where the poor were enfranchised by national reforms. A simple model shows that the inverted-U relationship can be explained by the trade-offs between public spending and private consumption faced by poor voters. These results suggest that enfranchising the poor may lead to smaller government, in contrast to the predictions of many theoretical models.",
+    "period_start": 1867,
+    "period_end": 1900,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/OTM5B5",
+    "authors": "Chapman, J."
+  },
+  {
+    "doi": "10.1017/s0003055423001466",
+    "title": "Late Homesteading: Native Land Dispossession through Strategic Occupation",
+    "journal": "APSR",
+    "year": 2024,
+    "abstract": "<jats:p>U.S. homesteading has been linked to establishing federal sovereignty over western lands threatened by the Confederacy, foreign powers, and the Indian Wars in the last half of the nineteenth century. However, the bulk of homesteading actually took place in the early twentieth century, long after these threats to federal ownership ceased. We argue that this “late homesteading” was also an effort to enforce federal rights, but in response to a different threat—a legal one. Questionable federal land policies in the late nineteenth century dispossessed massive amounts of Indigenous lands, and exposed the federal government to legal, rather than violent, conflict. Late homesteading was used to make the dispossession permanent, even in cases where a legal defeat eventually occurred. Examining the qualitative evidence, and using data on the universe of individual homesteads and federal land cessions across the 16 western states, we find evidence consistent with this hypothesis.</jats:p>",
+    "period_start": 1880,
+    "period_end": 1920,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/C8V44A",
+    "authors": "ALLEN, D.; LEONARD, B."
+  },
+  {
+    "doi": "10.1257/aer.20211523",
+    "title": "Loans for the “Little Fellow”: Credit, Crisis, and Recovery in the Great Depression",
+    "journal": "AER",
+    "year": 2024,
+    "abstract": "<jats:p> This paper identifies how bank branching benefited local economies during the Great Depression. Using archival data and narrative evidence, I show how Bank of America’s branch network in 1930s California created an internal capital market that diversified away local liquidity shortfalls, allowing the bank to maintain 49 percent higher credit growth from 1929 to 1933 than competing banks. The bank’s presence mitigated cites’ property value contractions and strengthened their recovery through 1940. Linked individual data show that the bank’s proximity to workers hastened the transition from agricultural employment to human-capital–intensive sectors in the 1930s, generating structural change and higher wages. (JEL E32, G01, G21, N12, N22, N92, R23) </jats:p>",
+    "period_start": 1929,
+    "period_end": 1940,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.3886/E199265V1",
+    "authors": "Quincy, S."
+  },
+  {
+    "doi": "10.1086/729967",
+    "title": "Resisting the Blood Tax: Coercive Capacity, Railroads, and Draft Evasion in Colonial West Africa",
+    "journal": "JOP",
+    "year": 2024,
+    "abstract": null,
+    "period_start": 1900,
+    "period_end": 1945,
+    "regions": [
+      "Sub-Saharan Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/97KSIK",
+    "authors": "Pruett, L."
+  },
+  {
+    "doi": "10.1257/aer.20230019",
+    "title": "Strengthening State Capacity: Civil Service Reform and Public Sector Performance during the Gilded Age",
+    "journal": "AER",
+    "year": 2024,
+    "abstract": "<jats:p> We use newly digitized records from the post office to study the effects of strengthened state capacity between 1875 and 1901. Exploiting the implementation of the Pendleton Act—a landmark statute that shielded bureaucrats from political interference—across US cities over two waves, we find that civil service reform reduced postal delivery errors and increased productivity. These improvements were most pronounced during election years when the reform dampened bureaucratic turnover. We provide suggestive evidence that reformed cities witnessed declining local partisan newspapers. Separating politics from administration, therefore, not only improved state effectiveness but also weakened the role of local politics. (JEL D24, D73, H83, J45, L82, L87, N41) </jats:p>",
+    "period_start": 1875,
+    "period_end": 1901,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.3886/E198825V1",
+    "authors": "Aneja, A.; Xu, G."
+  },
+  {
+    "doi": "10.1093/qje/qjae012",
+    "title": "The Ant and the Grasshopper: Seasonality and the Invention of Agriculture",
+    "journal": "QJE",
+    "year": 2024,
+    "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>The Neolithic revolution saw the independent development of agriculture among at least seven unconnected hunter-gatherer populations. I propose that the rapid spread of agricultural techniques resulted from increased climatic seasonality causing hunter-gatherers to adopt a sedentary lifestyle and store food for the season of scarcity. Their newfound sedentary lifestyle and storage habits facilitated the invention of agriculture. I present a model and support it with global climate data and Neolithic adoption dates, showing that greater seasonality increased the likelihood of agriculture’s invention and its speed of adoption by neighbors. This study suggests that seasonality patterns played a dominant role in determining our species’ transition to farming.</jats:p>",
+    "period_start": -10000,
+    "period_end": -3000,
+    "regions": [
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/WWYKMN",
+    "authors": "Matranga, A."
+  },
+  {
+    "doi": "10.1086/732524",
+    "title": "The Bank of Amsterdam and the Limits of Fiat Money",
+    "journal": "JPE",
+    "year": 2024,
+    "abstract": null,
+    "period_start": 1609,
+    "period_end": 1900,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/MGBR7G",
+    "authors": "Bolt, W.; Frost, J.; Shin, H.; Wierts, P."
+  },
+  {
+    "doi": "10.1257/aer.20220110",
+    "title": "The Dynamic Consequences of State Building: Evidence from the French Revolution",
+    "journal": "AER",
+    "year": 2024,
+    "abstract": "<jats:p> How do radical reforms shape economic development over time? In 1790, the French Constituent Assembly overhauled the kingdom’s organization to establish new local capitals. In some departments, the choice of local capitals over rival candidate cities was plausibly exogenous. We study how changes in administrative presence affect state capacity and development in the ensuing decades. In the short run, administrative proximity increases taxation and investments in law enforcement. In the long run, capitals obtain more public goods and grow faster. Our results shed light on the dynamic impacts of state building following one of history’s most ambitious administrative reforms. (JEL D70, H41, H71, O18, O43) </jats:p>",
+    "period_start": 1790,
+    "period_end": 1900,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.3886/E198461V1",
+    "authors": "Chambru, C.; Henry, E.; Marx, B."
+  },
+  {
+    "doi": "10.1086/727601",
+    "title": "The Economic Effects of Leaders’ Economic Interests: Evidence from Election by Lot in the Florentine Republic",
+    "journal": "JOP",
+    "year": 2024,
+    "abstract": "Do political leaders pursue their own parochial interests? Does the economic background of those in power affect the economy? Estimating the impact of leaders’ interests without bias is difficult given the nonrandom nature of transitions between leaders in most regimes. This article exploits a selection mechanism in the Florentine Republic that combines features of election and lottery to evaluate the causal impact of leaders’ economic interests. Coupling high-frequency data on the trading value of the Florentine currency with data on the guild association of each leader, I show that the export orientation of the Florentine executive, the standard-bearer of justice, had a large effect on the value of the city’s currency, the florin.",
+    "period_start": 1282,
+    "period_end": 1530,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/7PCO1L",
+    "authors": "Abramson, S."
+  },
+  {
+    "doi": "10.1017/s0003055424001102",
+    "title": "The Global Network of Liberty: Toward a New Framework for Understanding the History of Political Concepts",
+    "journal": "APSR",
+    "year": 2024,
+    "abstract": "<jats:p>This article contends that liberty was already a globally connected concept during the late Middle Ages, and the Euro-American Enlightenment conception of liberty was only one of the many products of the global medieval legacies. Developing a network approach to concepts and applying it to primary sources in ten languages across Afro-Eurasia, I map how thinkers from different parts of the world contributed to the formation of the network. Recognizing this global network of liberty allows researchers to rediscover overlooked conceptualizations of liberty—as evidenced by examples of the Mongol Empire and its translingual politics with/in Europe, Persia, and China. Once innovations in specific contexts are placed back into the global network, revealed are global patterns of valorizing liberty, considering it either essential to possess or warranting caution. Both the findings and methodologies presented here prompt scholars to revisit the foundations of modern political thought from a global standpoint.</jats:p>",
+    "period_start": 1300,
+    "period_end": 1700,
+    "regions": [
+      "Western Europe",
+      "Eastern Europe",
+      "Middle East & North Africa",
+      "South Asia",
+      "East Asia",
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/IQB5UR",
+    "authors": "YIN, S."
+  },
+  {
+    "doi": "10.1086/729959",
+    "title": "Transitional Justice and the Rule of Law: Tainted Judges and Accountability for Nazi Crimes in West Germany",
+    "journal": "JOP",
+    "year": 2024,
+    "abstract": null,
+    "period_start": 1945,
+    "period_end": 1965,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/EENNBW",
+    "authors": "Kern, H.; Vanberg, G."
+  },
+  {
+    "doi": "10.1093/qje/qjae046",
+    "title": "When Did Growth Begin? New Estimates of Productivity Growth in England from 1250 to 1870",
+    "journal": "QJE",
+    "year": 2024,
+    "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>We estimate productivity growth in England from 1250 to 1870. Real wages over this period were heavily influenced by plague-induced swings in the population. Our estimates account for these Malthusian dynamics. We find that productivity growth was zero before 1600. Productivity growth began in 1600—almost a century before the Glorious Revolution. Thus, the onset of productivity growth preceded the bourgeois institutional reforms of seventeenth-century England. We estimate productivity growth of 2% per decade between 1600 and 1800, increasing to 5% per decade between 1810 and 1860. Much of the increase in output growth during the Industrial Revolution is explained by structural change—the falling importance of land in production—rather than faster productivity growth. Stagnant real wages in the eighteenth and early nineteenth centuries—Engels’ Pause—is explained by rapid population growth putting downward pressure on real wages. Yet feedback from population growth to real wages is sufficiently weak to permit sustained deviations from the “iron law of wages” prior to the Industrial Revolution.</jats:p>",
+    "period_start": 1250,
+    "period_end": 1870,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/5EXFLU",
+    "authors": "Bouscasse, P.; Nakamura, E.; Steinsson, J."
+  },
+  {
+    "doi": "10.1111/ajps.12868",
+    "title": "“Restoration” and representation: Legislative consequences of Black disfranchisement in the American South, 1879–1916",
+    "journal": "AJPS",
+    "year": 2024,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>The elimination of Black voting in the U.S. South after Reconstruction is the most significant instance of democratic backsliding in American history. I use newly collected state legislative roll call data from the late nineteenth and early twentieth centuries, consisting of more than 19,400 unique roll calls, to explore Black disfranchisement's consequences for legislative representation. Using ideal point estimates in a panel design, I demonstrate that disfranchisement is associated with substantial changes in roll call voting. In states where competition between Democrats and Republicans structured roll call voting, disfranchisement precipitated shifts away from more‐Republican roll call records. In states already dominated by Democrats before disfranchisement, disfranchisement often led to relative shifts toward the agrarian, reform wing of the Democratic Party. These results demonstrate the centrality of Black disfranchisement for the creation of the Solid South and the significant impact of Black suffrage on southern politics in the years following Reconstruction.</jats:p>",
+    "period_start": 1879,
+    "period_end": 1916,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/5OUHOW",
+    "authors": "Olson, M."
+  },
+  {
+    "doi": "10.1017/s0003055423000473",
+    "title": "Bringing in the New Votes: Turnout of Women after Enfranchisement",
+    "journal": "APSR",
+    "year": 2023,
+    "abstract": "<jats:p>Under what conditions did newly enfranchised women turn out to vote at levels approaching men? This question is important because if women’s turnout lagged behind men’s, politicians’ incentives to advocate for women’s interests could remain weak even after suffrage. I argue that women’s turnout approached parity with men’s in localities with strong incentives to vote and to mobilize among the general population. This is because women faced barriers to voting and were, therefore, more likely to vote and be mobilized under the most favorable circumstances. I then propose that electoral competition determines the strength of voting and mobilization incentives and, therefore, the gender turnout gap. Using sex-separated turnout data in Norway, I demonstrate that the gap narrows in high-turnout competitive districts in systems with single-member districts and in high-turnout within-district strongholds in proportional systems. I probe generalizability of my findings in New Zealand, Austria, and Sweden.</jats:p>",
+    "period_start": 1913,
+    "period_end": 1930,
+    "regions": [
+      "Western Europe",
+      "Oceania"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/5CNOTD",
+    "authors": "MORGAN-COLLINS, M."
+  },
+  {
+    "doi": "10.1086/723975",
+    "title": "Designing Electoral Districts for Proportional Representation Systems: How Electoral Geography and Partisan Politics Constrain Proportionality and Create Bias",
+    "journal": "JOP",
+    "year": 2023,
+    "abstract": "Proportional representation (PR) electoral systems have become widespread because they are expected to ensure the representation of interests with small or geographically inefficiently distributed voter bases. Yet in reality, most PR systems consist of a large number of districts that vary substantially in size, and some have surprisingly low magnitude. Existing research shows that such differences matter greatly for political outcomes but offers no explanation for their origins. We argue that the design of electoral districts in newly adopted PR systems is systematically linked to electoral geography and partisan politics. If parties with concentrated voter bases can influence the design of the new electoral system, they will create a significant number of low-magnitude districts. In general, parties involved in designing districts benefit from electoral disproportionalities under the new PR rules. Empirically, we use newly collected district-level data for several Western European countries in the early twentieth century.",
+    "period_start": 1900,
+    "period_end": 1930,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/PLZ9LJ",
+    "authors": "Walter, A.; Emmenegger, P."
+  },
+  {
+    "doi": "10.1017/s0003055423000096",
+    "title": "From <i>Pluribus</i> to <i>Unum</i>? The Civil War and Imagined Sovereignty in Nineteenth-Century America",
+    "journal": "APSR",
+    "year": 2023,
+    "abstract": "<jats:p>Contestation over the structure and location of final sovereign authority—the right to make and enforce binding rules—occupies a central role in political development. Historically, war often settled these debates and institutionalized the victor’s vision of sovereignty. Yet sovereign authority requires more than institutions; it ultimately rests on the recognition of the governed. How does war shape imagined sovereignty? We explore the effect of warfare in the United States, where the debate over two competing visions of sovereignty erupted into the American Civil War. We exploit the grammatical shift in the “United States” from a plural to a singular noun as a measure of imagined sovereignty, drawing upon two large textual corpuses: newspapers (1800–99) and congressional speeches (1851–99). We demonstrate that war shapes imagined sovereignty, but for the North only. Our results further suggest that Northern Republicans played an important role as ideational entrepreneurs in bringing about this shift.</jats:p>",
+    "period_start": 1800,
+    "period_end": 1899,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/74QEO9",
+    "authors": "LEE, M.; ZHANG, N.; HERCHENRÖDER, T."
+  },
+  {
+    "doi": "10.1086/723986",
+    "title": "From Investiture to Worms: European Development and the Rise of Political Authority",
+    "journal": "JOP",
+    "year": 2023,
+    "abstract": "The endogenous consequences of competition between the Roman Catholic Church and lay political rulers set into motion by the Investiture Controversy contribute new insights into European economic, political, and religious development. The resolution of the Investiture Controversy in the concordats of London (1107), Paris (1107), and Worms (1122) resulted in an increase in the bargaining power of lay rulers over the selection of bishops in wealthier dioceses relative to poorer dioceses. Empirical evidence exploiting the timing of the adoption of the concordats interacted with a variety of time-invariant measures of diocesan wealth yields results consistent with this account—adoption of the concordats led bishops to become more aligned with lay political authorities in wealthier dioceses relative to poorer dioceses. These findings suggest the incentives created by the concordats played a role, hundreds of years before the Protestant Reformation, in the rise of lay political authority and its association with economic prosperity.",
+    "period_start": 1100,
+    "period_end": 1122,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/JBXFCE",
+    "authors": "Bueno de Mesquita, B.; Bueno de Mesquita, E."
+  },
+  {
+    "doi": "10.1257/aer.20211509",
+    "title": "Heroes and Villains: The Effects of Heroism on Autocratic Values and Nazi Collaboration in France",
+    "journal": "AER",
+    "year": 2023,
+    "abstract": "<jats:p>We measure how a network of heroes can legitimize and diffuse extreme political behaviors. We exploit newly declassified intelligence files, novel voting data, and regimental histories to show that home municipalities of French line regiments arbitrarily rotated under Philippe Pétain’s generalship through the heroic World War I battlefield of Verdun diverge politically thereafter, particularly following Pétain’s own overt espousal of authoritarian views. Further, under Pétain’s collaborationist Vichy regime (1940–1944), they raise 7 percent more active Nazi collaborators per capita. These effects extend across all forms of Nazi collaboration and diffuse beyond the veterans themselves. (JEL D72, D74, N34, N44, Z13)</jats:p>",
+    "period_start": 1916,
+    "period_end": 1944,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.3886/E182706V1",
+    "authors": "Cagé, J.; Dagorret, A.; Grosjean, P.; Jha, S."
+  },
+  {
+    "doi": "10.1017/s0003055423000205",
+    "title": "Impartial Administration and Peaceful Agrarian Reform: The Foundations for Democracy in Scandinavia",
+    "journal": "APSR",
+    "year": 2023,
+    "abstract": "<jats:p>Why was the route to democracy in Scandinavia extraordinarily stable? This paper answers this question by studying Scandinavia’s eighteenth- and early nineteenth-century peaceful agrarian reforms, which contributed to auspicious state–society relations that made democracy progress relatively smoothly. Based on comparisons with contemporary France and Prussia and process-tracing evidence, the paper shows that Scandinavia achieved relatively extensive and peaceful agrarian reforms because of relatively high levels of meritocratic recruitment to the central administration and state control over local administration, which ensured impartial policymaking and implementation. These findings challenge prevailing theories of democratization, demonstrating that the Scandinavian countries represent an alternative, amicable path to democracy led by civil servants who attempt to transform their country socioeconomically. Thus, strong state-cum-weak society countries likely have better odds of achieving stable democracy than weak state-cum-weak society countries. However, building bureaucratic state administrations alongside autonomous political societies is probably a safer road to democracy.</jats:p>",
+    "period_start": 1700,
+    "period_end": 1830,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/3GTZRX",
+    "authors": "ANDERSEN, D."
+  },
+  {
+    "doi": "10.1257/aer.20201919",
+    "title": "The Economic Origins of Government",
+    "journal": "AER",
+    "year": 2023,
+    "abstract": "<jats:p>We test between cooperative and extractive theories of the origins of government. We use river shifts in southern Iraq as a natural experiment, in a new archeological panel dataset. A shift away creates a local demand for a government to coordinate because private river irrigation needs to be replaced with public canals. It disincentivizes local extraction as land is no longer productive without irrigation. Consistent with a cooperative theory of government, a river shift away led to state formation, canal construction, and the payment of tribute. We argue that the first governments coordinated between extended households which implemented public good provision. (JEL D72, H11, H41, N45, N55, Q15)</jats:p>",
+    "period_start": -4000,
+    "period_end": -2500,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://doi.org/10.3886/184167EV1",
+    "authors": "Allen, R.; Bertazzini, M.; Heldring, L."
+  },
+  {
+    "doi": "10.1017/s0003055423000278",
+    "title": "Tilly Goes to Church: The Religious and Medieval Roots of European State Fragmentation",
+    "journal": "APSR",
+    "year": 2023,
+    "abstract": "<jats:p>The starting point for many analyses of European state development is the historical fragmentation of territorial authority. The dominant bellicist explanation for state formation argues that this fragmentation was an unintended consequence of imperial collapse, and that warfare in the early modern era overcame fragmentation by winnowing out small polities and consolidating strong states. Using new data on papal conflict and religious institutions, I show instead that political fragmentation was the outcome of deliberate choices, that it is closely associated with papal conflict, and that political fragmentation persisted for longer than the bellicist explanations would predict. The medieval Catholic Church deliberately and effectively splintered political power in Europe by forming temporal alliances, funding proxy wars, launching crusades, and advancing ideology to ensure its autonomy and power. The roots of European state formation are thus more religious, older, and intentional than often assumed.</jats:p>",
+    "period_start": 1000,
+    "period_end": 1500,
+    "regions": [
+      "Western Europe",
+      "Eastern Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/DWQLIB",
+    "authors": "GRZYMALA-BUSSE, A."
+  },
+  {
+    "doi": "10.1017/s0003055421001490",
+    "title": "Blood is Thicker Than Water: Elite Kinship Networks and State Building in Imperial China",
+    "journal": "APSR",
+    "year": 2022,
+    "abstract": "<jats:p>A long tradition in social sciences scholarship has established that kinship-based institutions undermine state building. I argue that kinship networks, when geographically dispersed, cross-cut local cleavages and align the incentives of self-interested elites in favor of building a strong state, which generates scale economies in providing protection and justice throughout a large territory. I evaluate this argument by examining elite preferences related to a state-building reform in eleventh century China. I map politicians’ kinship networks using their tomb epitaphs and collect data on their political allegiances from archival materials. A statistical analysis demonstrates that a politician’s support for state building increases with the geographic size of his kinship network, controlling for a number of individual, family, and regional characteristics. My findings highlight the importance of elite social structure in facilitating state development and help to advance our understanding of state building in China—a useful, yet understudied, counterpoint to the Eurocentric literature.</jats:p>",
+    "period_start": 1000,
+    "period_end": 1100,
+    "regions": [
+      "East Asia"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/C1SWYV",
+    "authors": "WANG, Y."
+  },
+  {
+    "doi": "10.1086/715245",
+    "title": "Distributional Consequences of Philanthropic Contributions to Public Goods: Self-Serving Elite in Ottoman Istanbul",
+    "journal": "JOP",
+    "year": 2022,
+    "abstract": "While philanthropy is seen as a critical instrument for wealth redistribution in countries with low state capacity or weak welfare institutions, there is little empirical evidence of its distributional consequences. What are the incentives of the rich to philanthropically invest in local public goods? How do these incentives shape inequalities in access to services across ethnic and social groups? I answer these questions by exploiting the fact that fountains in Ottoman Istanbul, a city with rigid religious and social cleavages, were built by the Muslim elite’s private initiatives through the waqf system. Using data on water provision from 1868, I find that elites used philanthropy to benefit themselves disproportionately. Elite neighborhoods were more likely to have water access and had more fountains. Also, Muslim communities were better endowed than non-Muslim communities. I conclude that philanthropy can reproduce or even exacerbate inequalities in access to essential services.",
+    "period_start": 1868,
+    "period_end": 1868,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/JTKVX2",
+    "authors": "Cansunar, A."
+  },
+  {
+    "doi": "10.1017/s0003055422000247",
+    "title": "Education or Indoctrination? The Violent Origins of Public School Systems in an Era of State-Building",
+    "journal": "APSR",
+    "year": 2022,
+    "abstract": "<jats:p>Why do modern states regulate and provide mass education? This article proposes a theory of education as a state-building tool that is deployed when mass violence threatens the state’s viability. Experiencing mass violence can heighten national elites’ anxiety about the masses’ moral character and raise concerns about the efficacy of repression or concessions alone to maintain social order. In this context, a mass education system designed to teach obedience can become an attractive policy tool to prevent future rebellion and promote long-term order. Consistent with the theory, I detect a cross-national pattern of primary education expansion following civil wars in Europe and Latin America. In a complementary study of the 1859 Chilean civil war, I show that the central government responded by expanding primary schooling in rebel provinces not as a concession but to teach obedience and respect for authority. The theory helps explain why nondemocracies often expanded mass education.</jats:p>",
+    "period_start": 1800,
+    "period_end": 1900,
+    "regions": [
+      "Western Europe",
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/LKE1WQ",
+    "authors": "PAGLAYAN, A."
+  },
+  {
+    "doi": "10.1257/aer.20191528",
+    "title": "Employment Structure and the Rise of the Modern Tax System",
+    "journal": "AER",
+    "year": 2022,
+    "abstract": "<jats:p> This paper builds a new microdatabase that covers 100 countries at all income levels and long-run time series in the United States (1870–2010) and Mexico ( 1960–2010) to document how the modern tax system arises over development. I establish a new set of stylized facts, which show that the income tax exemption threshold decreases in the income distribution as a country develops, tracking growth in the employee share of employment that occurs gradually further down the income distribution. Additional evidence supports the interpretation that the rise in third-party covered income through increases in employee share drives expansions of the income tax base over development. (JEL D31, H23, H24, H71, J22, J23, N40) </jats:p>",
+    "period_start": 1870,
+    "period_end": 2010,
+    "regions": [
+      "North America",
+      "Latin America",
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.3886/E143801V1",
+    "authors": "Jensen, A."
+  },
+  {
+    "doi": "10.1086/717757",
+    "title": "Hierarchical Oversight and the Value of Public Office: Evidence from Colonial Peru",
+    "journal": "JOP",
+    "year": 2022,
+    "abstract": "The article examines how different appointment mechanisms, namely, office selling, impacted the performance of government officials in colonial Peru. Results show that entry by sales into the audiencia—a high-level institution with provincial oversight duties—worsened local governance in at least two ways: first, it led to a surge in the value of provincial positions, which capture the (illicit) returns from office. Second, it increased the likelihood of spontaneous rebellions against colonial authorities. These outcomes are likely driven by the type of official entering the audiencia—one less likely to rein in provincial officials due to the nature of their social and economic connections. The findings imply that the potential for profitable complementarities across layers of government can help us understand why and when office selling may lead to inefficient outcomes.",
+    "period_start": 1500,
+    "period_end": 1800,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/18XSG8",
+    "authors": "Guardado, J."
+  },
+  {
+    "doi": "10.1257/aer.20200885",
+    "title": "How Merchant Towns Shaped Parliaments: From the Norman Conquest of England to the Great Reform Act",
+    "journal": "AER",
+    "year": 2022,
+    "abstract": "<jats:p>We study the emergence of urban self-governance in the late medieval period. We focus on England after the Norman Conquest of 1066, building a novel comprehensive dataset of 554 medieval towns. During the Commercial Revolution (twelfth to thirteenth centuries), many merchant towns obtained Farm Grants: the right of self-governed tax collection and law enforcement. Self-governance, in turn, was a stepping stone for parliamentary representation: Farm Grant towns were much more likely to be summoned directly to the medieval English Parliament than otherwise similar towns. We also show that self-governed towns strengthened the role of Parliament and shaped national institutions over the subsequent centuries. (JEL D02, D72, D73, K11, K34, N43, N93)</jats:p>",
+    "period_start": 1066,
+    "period_end": 1832,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.3886/E166222V1",
+    "authors": "Angelucci, C.; Meraglia, S.; Voigtländer, N."
+  },
+  {
+    "doi": "10.1257/aer.20180124",
+    "title": "Information Networks and Collective Action: Evidence from the Women’s Temperance Crusade",
+    "journal": "AER",
+    "year": 2022,
+    "abstract": "<jats:p>How do social interactions shape collective action, and how are they mediated by networked information technologies? We answer these questions studying the Temperance Crusade, a wave of anti-liquor protest activity spreading across 29 states between 1873 and 1874. Relying on exogenous variation in network links generated by railroad accidents, we provide causal evidence of social interactions driving the diffusion of the movement, mediated by rail and telegraph information about neighboring activity. Local newspaper coverage of the crusade was a key channel mediating these effects. Using an event-study methodology, we find strong complementarities between rail and telegraph networks in driving the movement’s spread. (JEL D83, J16, L92, L96, N31, N41, N71)</jats:p>",
+    "period_start": 1873,
+    "period_end": 1874,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.3886/E144141V1",
+    "authors": "García-Jimeno, C.; Iglesias, A.; Yildirim, P."
+  },
+  {
+    "doi": "10.1111/ajps.12700",
+    "title": "Parliamentary Constraints and Long‐Term Development: Evidence from the Duchy of Württemberg",
+    "journal": "AJPS",
+    "year": 2022,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Did parliamentary constraints foster economic activity or was activity the cause of constraints? This article addresses the first part of this question by examining the long‐term effects of belonging to the Duchy of Württemberg wherein the parliament placed considerable checks on the various dukes from 1495 to 1796. I use a geographic natural experiment and compare areas just inside of the Duchy with adjacent areas outside of it. Economically similar prior to 1495, areas within the Duchy had a higher degree of urbanization and commercialization in the subsequent period. I provide further evidence that this difference reflects three mechanisms: local representation in parliament, improved local public‐goods provision, and attraction of upper‐tail human capital.</jats:p>",
+    "period_start": 1495,
+    "period_end": 1796,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/CZDGR2",
+    "authors": "Doucette, J."
+  },
+  {
+    "doi": "10.1257/aer.20201283",
+    "title": "Rebel on the Canal: Disrupted Trade Access and Social Conflict in China, 1650–1911",
+    "journal": "AER",
+    "year": 2022,
+    "abstract": "<jats:p>This paper examines the effects of the abandonment of China’s Grand Canal—the world’s largest and oldest artificial waterway—which served as a disruption to regional trade access. Using an original dataset covering 575 counties over 262 years, we show that the canal’s abandonment contributed to the social turmoil that engulfed North China in the nineteenth century. Counties along the canal experienced an additional 117 percent increase in rebelliousness after the canal’s closure relative to their non-canal counterparts. Our findings highlight the important role that continued access to trade routes plays in reducing conflict. (JEL D74, N75, N95, O18, O22, R12, R42)</jats:p>",
+    "period_start": 1650,
+    "period_end": 1911,
+    "regions": [
+      "East Asia"
+    ],
+    "replication_url": "https://doi.org/10.3886/E157781V1",
+    "authors": "Cao, Y.; Chen, S."
+  },
+  {
+    "doi": "10.1086/716299",
+    "title": "Solving Collective Action Problems under Separated and Shared Powers: The Benefits of Consolidating Executive Budgetary Powers, 1895–1940",
+    "journal": "JOP",
+    "year": 2022,
+    "abstract": "The Budget and Accounting Act of 1921 consolidated executive budgetary powers within the presidency and Congress. I evaluate how the Act reforms altered the nature of executive budgetary influence, using an original historical database from fiscal years 1895 to 1940. I show that these reforms were not only consistent with both political branches’ objective to empower presidents to rein in profligate executive budget proposals under the decentralized budgetary system but also afforded presidents greater budgetary influence when seeking higher funding levels relative to Congress. This mutually beneficial power-sharing arrangement between the president and Congress stands in contrast with existing accounts that these reforms favored one branch at the expense of the other. Finally, I offer evidence that this arrangement was made possible by solving collective action problems within the executive branch that reduced the capacity of seasoned agency heads to shape budgetary outcomes during the postreform era.",
+    "period_start": 1895,
+    "period_end": 1940,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/AYFAFF",
+    "authors": "Krause, G."
+  },
+  {
+    "doi": "10.1086/718372",
+    "title": "The Origin of the State: Land Productivity or Appropriability?",
+    "journal": "JPE",
+    "year": 2022,
+    "abstract": "The conventional theory about the origin of the state is that the adoption of farming increased land productivity, which led to the production of food surplus. This surplus was a prerequisite for the emergence of tax-levying elites and, eventually, states. We challenge this theory and propose that hierarchy arose as a result of the shift to dependence on appropriable cereal grains. Our empirical investigation, utilizing multiple data sets spanning several millennia, demonstrates a causal effect of the cultivation of cereals on hierarchy, without finding a similar effect for land productivity. We further support our claims with several case studies.",
+    "period_start": -10000,
+    "period_end": 1500,
+    "regions": [
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/6KG67M",
+    "authors": "Mayshar, J.; Moav, O.; Pascali, L."
+  },
+  {
+    "doi": "10.1086/716285",
+    "title": "The Popular Origins of Legislative Jurisdictions: Petitions and Standing Committee Formation in Colonial Virginia and the Early US House",
+    "journal": "JOP",
+    "year": 2022,
+    "abstract": "Committee formation in early American legislatures happened when those assemblies were inundated with petitions, a relationship unexamined in institutional political science. We develop a model where a floor creates committees to respond to topic-specific petitions, predicting committee creation when petitions (1) are topically specific, (2) are spread across constituencies, and (3) have complex subject matter, and predicting committee appointments from petition-heavy constituencies. Analysis of case studies and with two original data sets—petitions sent to the Virginia House of Burgesses from 1766 to 1769, and over 100,000 petitions sent to Congress and recorded in the House Journal (1789–1875)—shows that petitions, their complexity, and their geographic dispersion predict committee creation. Our theoretical argument helps reinterpret the entropy of political agendas and the origins of standing committees in American legislatures.",
+    "period_start": 1766,
+    "period_end": 1875,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/Z550EO",
+    "authors": "Schneer, B.; Resch, T.; Blackhawk, M.; Carpenter, D."
+  },
+  {
+    "doi": "10.1093/qje/qjac041",
+    "title": "Web of Power: How Elite Networks Shaped War and Politics in China",
+    "journal": "QJE",
+    "year": 2022,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Scholars have argued that powerful individuals can exert influence on the path of a nation’s development. Yet the process through which people can have an effect on macro-level political economy outcomes remains unclear. This study uses the deadliest civil war in modern history, the Taiping Rebellion (1850–1864), to elucidate how one person—Zeng Guofan—used his personal elite networks to organize an army to suppress the rebellion, and how these networks would affect the nation’s power distribution. Two findings stand out: (i) counties that already had more prewar elites in Zeng’s networks experienced an increase in soldier deaths after he took power; and (ii) postwar political power shifted significantly toward the home counties of these elites, creating a less balanced national-level power distribution. Our findings highlight how micro-level elite networks can influence national politics and societal power distribution, shedding new light on the relationship between elites, war, and the state.</jats:p>",
+    "period_start": 1850,
+    "period_end": 1864,
+    "regions": [
+      "East Asia"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/0H4HG2",
+    "authors": "Bai, Y.; Jia, R.; Yang, J."
+  },
+  {
+    "doi": "10.1111/ajps.12585",
+    "title": "Capital Meets Democracy: The Impact of Franchise Extension on Sovereign Bond Markets",
+    "journal": "AJPS",
+    "year": 2021,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>By giving political rights to poor voters, do democratic political institutions pose a risk to concentrated wealth held in the form of financial capital? This article draws lessons from the reaction of sovereign bond markets to franchise extensions between 1800 and 1920. If franchise extension transferred political power from economic and financial elites to workers, as redistributive theories of democratization suggest, then this should have resulted in a fall in the market price (increase in the yield) of a country's bonds. Exploiting the asynchronous timing of franchise reforms across countries, we provide evidence that franchise extension contributed to large increases in the premium demanded by investors to hold sovereign debt, reflecting investor fears of default. However, bond markets became less sensitive to franchise extensions over time, a pattern potentially due to the structure of inequality and the strategic adoption of institutions which protected financial interests.</jats:p>",
+    "period_start": 1800,
+    "period_end": 1920,
+    "regions": [
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/WR97GH",
+    "authors": "DASGUPTA, A.; ZIBLATT, D."
+  },
+  {
+    "doi": "10.1086/711179",
+    "title": "Dyadic Representation in the American North and South: The Case of Prohibition",
+    "journal": "JOP",
+    "year": 2021,
+    "abstract": "A persistent question in the study of American political history has been the capacity of one-party government in the American South to represent its voting citizens. In this article, we use county-level returns from prohibition referendums to create measures of citizen preferences for prohibition at the legislative district level for both the South and the non-South. We then examine the relationship between these preferences and roll call votes on alcohol-related issues in the US House and on votes to ratify the Eighteenth Amendment in state legislatures. We find strong relationships between preferences and roll call voting in both the North and South and find no consistent evidence that responsiveness is higher or lower in the South than the North. This indicates that, on at least one salient issue, a competitive party system was not a precondition for legislative representation in the one-party South.",
+    "period_start": 1900,
+    "period_end": 1920,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/Q0CNZA",
+    "authors": "Olson, M.; Snyder, J."
+  },
+  {
+    "doi": "10.1111/ajps.12573",
+    "title": "Father Founders: Did Child Gender Affect Voting at the Constitutional Convention?",
+    "journal": "AJPS",
+    "year": 2021,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>How did child gender affect deliberations and voting at the 1787 U.S. Constitutional Convention? Though recent scholarship has found profound and far‐reaching influence of child gender upon the beliefs and behavior of modern parents, there is no reason to believe that this is only an important consideration in the present. Leveraging the natural experiment of child gender, we test whether the gender of a delegate's children influenced his voting. We hypothesize that fathers of sons would favor creating a strong national government because they could more easily envision their sons holding places in the emergent empire (especially younger sons). Using new data on delegates’ children, we find statistically and substantively significant results: having sons indeed predicts delegates’ favoring a stronger, centralized national government (with daughters showing an opposite effect). These differences are sufficiently large to have likely affected the Convention's proceedings and therefore the U.S. Constitution.</jats:p>",
+    "period_start": 1787,
+    "period_end": 1787,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/ENVKCB",
+    "authors": "Pope, J.; Schmidt, S."
+  },
+  {
+    "doi": "10.1086/711175",
+    "title": "From Conquest to Centralization: Domestic Conflict and the Transition to Direct Rule",
+    "journal": "JOP",
+    "year": 2021,
+    "abstract": "Why do governments centralize control over regions? We present a theory of the transition from indirect to direct rule, focusing on the strategic interaction between a ruler and local potentates who provide civil order in exchange for a share of tax revenue. When the threat of rebellion from below falls and elites become less crucial intermediaries, the ruler is able to centralize power, replacing local potentates with direct agents of the state and investing in a fiscal bureaucracy for future state development. We assess the theory using subnational data from sixteenth- and seventeenth-century Mexico around the time of a dramatic demographic collapse, which undermined the threat of domestic conflict. Using a difference-in-differences approach and an instrumental variables empirical strategy based on the climate shocks associated with a virulent series of epidemics, we show that state centralization occurred faster in areas experiencing a more dramatic decline in population.",
+    "period_start": 1500,
+    "period_end": 1700,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/K1LJOL",
+    "authors": "Garfias, F.; Sellars, E."
+  },
+  {
+    "doi": "10.1017/s0003055421000526",
+    "title": "Swords and Plowshares: Property Rights, Collective Action, and Nonstate Governance in the Jewish Community of Palestine 1920–1948",
+    "journal": "APSR",
+    "year": 2021,
+    "abstract": "<jats:p>Developing states lacking a monopoly over the use of force are commonly seen as having failed to live up to the ideal Weberian sovereign type. Yet rather than being a calling card of anarchy, the devolution of important state functions to subnational actors is a rational strategy for developing states to effectively provide important public goods. The case study of the Jewish Community of Palestine demonstrates one instance where subnational communities provided public goods. This study highlights the causal effect of property rights within institutions to drive behavior consistent with the provision of public and private goods. Analyzing temporal and institutional variation across two agricultural communities demonstrates a unique strategy of subnational governance and public goods provision in a developing state. Devolution of public goods provision to subnational actors may be an alternative strategy of governance for developing states that are not yet able to effectively provide important public goods.</jats:p>",
+    "period_start": 1920,
+    "period_end": 1948,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/COFHJL",
+    "authors": "MUCHLINSKI, D."
+  },
+  {
+    "doi": "10.3982/ecta17265",
+    "title": "Taxing Identity: Theory and Evidence From Early Islam",
+    "journal": "Econometrica",
+    "year": 2021,
+    "abstract": "<jats:p>A ruler who does not identify with a social group, whether on religious, ethnic, cultural, or socioeconomic grounds, is confronted with a trade‐off between taking advantage of the out‐group population's eagerness to maintain its identity and inducing it to “comply” (conversion, quitting, exodus, or any other way to accommodate the ruler's own identity). This paper first nests economists' extraction model, in which rulers are revenue‐maximizers, within a more general identity‐based model, in which rulers care also about inducing people to lose their identity, both in a static and an evolving environment. This paper then constructs novel data sources to test the implications of both models in the context of Egypt's conversion to Islam between 641 and 1170. The evidence supports the identity‐based model.</jats:p>",
+    "period_start": 641,
+    "period_end": 1170,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://www.econometricsociety.org/publications/econometrica/2021/07/01/taxing-identity-theory-and-evidence-early-islam",
+    "authors": "Saleh, M.; Tirole, J."
+  },
+  {
+    "doi": "10.1086/711130",
+    "title": "The Budgetary Origins of Fiscal-Military Prowess",
+    "journal": "JOP",
+    "year": 2021,
+    "abstract": "This paper evaluates the budgetary origins of fiscal-military prowess, taking early modern Europe as a laboratory. We first review evidence that states adopting credible budgets accrued substantial advantages in raising taxes and loans. Since victory in war during the early modern period was largely a matter of outspending one’s opponent, credible budgets should also have conferred an advantage in winning wars. Exploiting new panel data on 10 major European powers over several centuries, we show that credible budgets led to significantly larger wartime expenditures and, thus, better chances of winning. To the best of our knowledge, this is the first systematic examination of its kind. Since credible budgets could be adopted by decidedly nondemocratic polities, ours is a theory of limited government—rather than participative democracy—leading to military strength. That said, we discuss the implications of our analysis for the modern debate over the democratic victory thesis.",
+    "period_start": 1500,
+    "period_end": 1800,
+    "regions": [
+      "Western Europe",
+      "Eastern Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/EVCSCQ",
+    "authors": "Cox, G.; Dincecco, M."
+  },
+  {
+    "doi": "10.1017/s000305542100023x",
+    "title": "The Two-Pronged Middle Class: The Old Bourgeoisie, New State-Engineered Middle Class, and Democratic Development",
+    "journal": "APSR",
+    "year": 2021,
+    "abstract": "<jats:p>We contribute to research on the democratic role of middle classes. Our paper distinguishes between middle classes emerging autonomously during gradual capitalist development and those fabricated rapidly as part of state-led modernization. To make the case for a conceptual distinction between these groups within one national setting, we employ author-assembled historical district data, survey, and archival materials for pre-Revolutionary Russia and its feudal estates. Our analysis reveals that the bourgeois estate of<jats:italic>meshchane</jats:italic>covaries with post-communist democratic competitiveness and media freedoms, our proxies of regional democratic variations. We propose two causal pathways explaining the puzzling persistence of social structure despite the Bolsheviks’ leveling ideology and post-communist autocratic consolidation: (a) processes at the juncture of familial channels of human capital transmission and the revolutionaries’ modernization drive and (b) entrepreneurial value transmission outside of state policy. Our findings help refine recent work on political regime orientations of public-sector-dependent societies subjected to authoritarian modernization.</jats:p>",
+    "period_start": 1850,
+    "period_end": 1917,
+    "regions": [
+      "Eastern Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/JO8C7A",
+    "authors": "LANKINA, T.; LIBMAN, A."
+  },
+  {
+    "doi": "10.1111/ajps.12611",
+    "title": "When State Building Backfires: Elite Coordination and Popular Grievance in Rebellion",
+    "journal": "AJPS",
+    "year": 2021,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>We examine the complementary influence of elite politics, popular grievances, and central government weakness on rebellion. Efforts to strengthen the central state often come at the expense of the elite intermediaries charged with maintaining local political control. By driving a wedge between local elites and the central government, centralizing reforms can reduce intermediaries' willingness to repress mobilization, providing an opening for popular rebellion during both localized and national crises. For a given level of commoner grievance, revolts from below are thus more likely to be attempted and more likely to spread where elites' incentives to enforce order have been diminished. We formalize these ideas and provide supportive evidence using subnational data on rebellion, tax centralization, and drought in colonial Mexico from the late seventeenth century to the War of Independence.</jats:p>",
+    "period_start": 1680,
+    "period_end": 1821,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/EBIHBT",
+    "authors": "Garfias, F.; Sellars, E."
+  },
+  {
+    "doi": "10.1093/qje/qjaa034",
+    "title": "Banking Crises Without Panics*",
+    "journal": "QJE",
+    "year": 2020,
+    "abstract": "<jats:title>Abstract</jats:title>\n               <jats:p>We examine historical banking crises through the lens of bank equity declines, which cover a broad sample of episodes of banking distress with and without banking panics. To do this, we construct a new data set on bank equity returns and narrative information on banking panics for 46 countries over the period of 1870 to 2016. We find that even in the absence of panics, large bank equity declines are associated with substantial credit contractions and output gaps. Although panics are an important amplification mechanism, our results indicate that panics are not necessary for banking crises to have severe economic consequences. Furthermore, panics tend to be preceded by large bank equity declines, suggesting that panics are the result, rather than the cause, of earlier bank losses. We use bank equity returns to uncover a number of forgotten historical banking crises and create a banking crisis chronology that distinguishes between bank equity losses and panics.</jats:p>",
+    "period_start": 1870,
+    "period_end": 2016,
+    "regions": [
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/ECC9GE",
+    "authors": "Baron, M.; Verner, E.; Xiong, W."
+  },
+  {
+    "doi": "10.1111/ajps.12552",
+    "title": "Bringing War Back in: Victory and State Formation in Latin America",
+    "journal": "AJPS",
+    "year": 2020,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Scholars have often dismissed the effect of war on state formation in regions like Latin America, where mobilization for war is deemed insufficiently intense and international conflict fails to out‐select weaker states. Against this conventional wisdom, I contend that wars can affect state‐building trajectories in a postwar period through the different state institutions that result from victory and defeat. After reconsidering the role of war outcomes in classical bellicist theory I use difference‐in‐differences analysis to identify the effect of losing vis‐à‐vis winning a war on levels of state capacity in a panel of Latin America (1865–1913). I then illustrate my causal mechanisms in case studies of the Paraguayan War (1864–1870) and the War of the Pacific (1879–1883) and apply the synthetic control method to these cases. Although out‐selection of losers obscures the effect of war outcomes in European history, Latin America illuminates their long‐term consequences.</jats:p>",
+    "period_start": 1865,
+    "period_end": 1913,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/8LKROK",
+    "authors": "Schenoni, L."
+  },
+  {
+    "doi": "10.1017/s0003055420000568",
+    "title": "Buying Power: Electoral Strategy before the Secret Vote",
+    "journal": "APSR",
+    "year": 2020,
+    "abstract": "<jats:p>Research on clientelism emphasizes the use of brokers to mobilize voters. To utilize these agents efficiently, politicians must learn about brokers’ relative abilities and allocate scarce resources accordingly. Drawing upon a hand-coded dataset based on the archives of Gustavo Capanema, a powerful mid-twentieth-century congressman from Minas Gerais, Brazil, this paper offers the first direct evidence of such learning dynamics. The analysis concentrates on Brazil’s pre-secret ballot era, a time when measuring broker performance was particularly straightforward. Consistent with theories of political learning, the data demonstrate that resource flows to local machines were contingent on the deviation between actual and expected votes received in previous elections. Moreover, given politicians’ ability to discern mobilization capacity, payments to brokers were highly effective in bringing out the vote.</jats:p>",
+    "period_start": 1930,
+    "period_end": 1960,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/QIWQWL",
+    "authors": "GINGERICH, D."
+  },
+  {
+    "doi": "10.1017/s000305542000026x",
+    "title": "Censorship as Reward: Evidence from Pop Culture Censorship in Chile",
+    "journal": "APSR",
+    "year": 2020,
+    "abstract": "<jats:p>Censorship has traditionally been understood as a way for dictators to silence opposition. By contrast, this article develops and tests the theory that certain forms of censorship—in particular, prohibitions on popular culture—serve not only to limit political information but also to reward dictators’ supporters. Using text analysis of all 8,000 films reviewed for distribution during Chile’s dictatorship, I demonstrate that rather than focusing only on sensitive political topics, censors banned movies containing content considered immoral. Through a combination of qualitative and quantitative evidence, I show that these patterns cannot be explained by masked political content, distributor self-censorship, or censor preferences. Instead, they reflect the regime’s use of censorship as a reward for supporters, particularly conservative Catholic groups. My findings suggest that even repressive measures can be used in part to maintain support for authoritarian regimes.</jats:p>",
+    "period_start": 1973,
+    "period_end": 1990,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/QQ2FV9",
+    "authors": "ESBERG, J."
+  },
+  {
+    "doi": "10.1111/ajps.12524",
+    "title": "Literacy and State–Society Interactions in Nineteenth‐Century France",
+    "journal": "AJPS",
+    "year": 2020,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Modern states are distinguished by the breadth and depth of public regulation over private affairs. This aspect of state capacity and state power is predicated on frequent and dense encounters between the state and the population it seeks to control. We argue that literacy in the language of state administration facilitates state–society interaction by lowering the transaction costs of those encounters. We support this claim with evidence drawing upon detailed historical data from nineteenth‐century France during a crucial period of state and nation building. Focusing on the specific domain of French marriage regulations, we find that increasing literacy predicts greater popular involvement with local authorities across French regions over time. These results demonstrate that literacy plays an important role in political development not solely by enhancing loyalty to the state, as the literature has recognized, but also by lowering linguistic and human capital barriers to state–society interaction.</jats:p>",
+    "period_start": 1800,
+    "period_end": 1900,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/YQSBOA",
+    "authors": "Zhang, N.; Lee, M."
+  },
+  {
+    "doi": "10.1017/s0003055420000933",
+    "title": "Slavery, Reconstruction, and Bureaucratic Capacity in the American South",
+    "journal": "APSR",
+    "year": 2020,
+    "abstract": "<jats:p>\n                    Conventional political economy models predict taxation will increase after franchise expansion to low-income voters. Yet, contrary to expectations, in ranked societies—where social status is a cleavage—elites can instead build cross-class coalitions to undertake a strategy of\n                    <jats:italic>bureaucratic weakening</jats:italic>\n                    to limit future redistributive taxation. We study a case where status hierarchies were particularly extreme: the post-Civil War American South. During Reconstruction, under federal oversight, per capita taxation was higher in counties where slavery had been more extensive before the war, as predicted by standard theoretical models. After Reconstruction ended, however, taxes fell and bureaucratic capacity was weaker where slavery had been widespread. Moreover, higher intrawhite economic inequality was associated with lower taxes and weaker capacity after Reconstruction in formerly high-slavery counties. These findings on the interaction between intrawhite economic inequality and pre-War slavery suggest that elites built cross-class coalitions against taxation where whites sought to protect their racial status.\n                  </jats:p>",
+    "period_start": 1861,
+    "period_end": 1900,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/BC2HEO",
+    "authors": "SURYANARAYAN, P.; WHITE, S."
+  },
+  {
+    "doi": "10.1111/ajps.12541",
+    "title": "Trade and Political Fragmentation on the Silk Roads: The Economic Effects of Historical Exchange between China and the Muslim East",
+    "journal": "AJPS",
+    "year": 2020,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>The Silk Roads stretched across Eurasia, connecting East and West for centuries. At its height, the network of trade routes enabled merchants to travel from China to the Mediterranean Sea, carrying with them high‐value commercial goods, the exchange of which encouraged urban growth and prosperity. We examine the extent to which urban centers thrived or withered as a function of shocks to trade routes, particularly political fragmentation along natural travel paths. We find that political fragmentation along the roads to Aleppo and historic Chang'an — major terminus locations for cross‐regional trade—damaged city growth. These conclusions contribute to our understanding of how a premodern international system operated through an examination of exchange between the two most developed world regions of the medieval and early modern periods, China and the Muslim East.</jats:p>",
+    "period_start": 600,
+    "period_end": 1500,
+    "regions": [
+      "East Asia",
+      "Middle East & North Africa",
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/8MV984",
+    "authors": "Blaydes, L.; Paik, C."
+  },
+  {
+    "doi": "10.1086/703132",
+    "title": "A Race to the Middle: The Politics of Interstate Cost Distribution and Welfare State Expansion",
+    "journal": "JOP",
+    "year": 2019,
+    "abstract": "Previous research on welfare state development in federal states has claimed that interstate competition induces a race to the bottom with regard to social expenditure. While existing research has focused on the impact of migration inflows of poor households on states with high provision of social expenditure, it has remained silent with regard to migration outflows. In this article, I argue that migration outflows are associated with increased social expenditure if eligibility restrictions for social benefits between states are relaxed. Facing outflows of workers and the unemployed, low-spending states respond with increases in social expenditure to retain a sufficient workforce and counteract rising wage levels. As a result, states with higher levels of outward migration are catching up with more generous states instead of engaging in a race to the bottom. To support my claim, I use a time-series cross-sectional data set of Swiss cantons covering the period 1930–75.",
+    "period_start": 1930,
+    "period_end": 1975,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/8JW4Q7",
+    "authors": "Walter, A."
+  },
+  {
+    "doi": "10.1111/ajps.12438",
+    "title": "Ballot Reform as Suffrage Restriction: Evidence from Brazil's Second Republic",
+    "journal": "AJPS",
+    "year": 2019,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Few innovations in democratic institutional design are considered as fundamental as the introduction of voting through the use of a uniform, official, and secret ballot. One account claims that the official ballot liberates dependent voters from the dictates of local elites, thereby enhancing democratic competition. Another argues that in contexts of widespread illiteracy, its adoption may be tantamount to a suffrage restriction. This article adjudicates between these views by drawing upon an original data set of municipal‐level voting returns from Brazil's Second Republic (1945–1964). The unique staggered rollout of the official ballot during this period permits one to assess its impact with unprecedented accuracy. The article finds that the primary consequence of ballot reform was suffrage restriction. Rather than liberating poor and dependent voters, the official ballot made it exceedingly difficult for these individuals to vote. Moreover, parliamentary debates indicate that this was an anticipated and intended effect of the reform.</jats:p>",
+    "period_start": 1945,
+    "period_end": 1964,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/BZ9Z2D",
+    "authors": "Gingerich, D."
+  },
+  {
+    "doi": "10.1086/700105",
+    "title": "Elite Coalitions, Limited Government, and Fiscal Capacity Development: Evidence from Bourbon Mexico",
+    "journal": "JOP",
+    "year": 2019,
+    "abstract": "Limited government supported by elite coalitions can facilitate the development of fiscal capacity by tying rulers’ hands and enhancing their credibility. This paper presents evidence of the effect of the Mining Tribunal, an institution for the mining elite in late colonial Mexico that credibly constrained the Spanish Crown, on the development of fiscal capacity. The mining elite resisted the development of a strong fiscal state that was controlled by unconstrained Crown authorities. However, when mine owners were granted the ability to organize and protect their economic interests through a corporation, they ceased resisting. This enabled the Crown to invest in strengthening its fiscal capacity and raise more taxes from sectors other than mining. Difference-in-differences estimates using detailed fiscal data from regional royal treasuries indicate that this institution led to a substantial increase in the resources assigned to civil administration, as well as in revenues from nonmining production and trade.",
+    "period_start": 1776,
+    "period_end": 1821,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/RQFCQH",
+    "authors": "Garfias, F."
+  },
+  {
+    "doi": "10.1111/ajps.12466",
+    "title": "Land Reform and Civil Conflict: Theory and Evidence from Peru",
+    "journal": "AJPS",
+    "year": 2019,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>How does land reform impact civil conflict? This article examines this question in the prominent case of Peru by leveraging original data on all land expropriations under military rule from 1969 to 1980 and event‐level data from the Peruvian Truth and Reconciliation Commission on rural killings during Peru's internal conflict from 1980 to 2000. Using a geographic regression discontinuity design that takes advantage of Peru's regional approach to land reform through zones that did not entirely map onto major preexisting administrative boundaries, I find that greater land reform dampened subsequent conflict. Districts in core areas of land reform zones that received intense land reform witnessed less conflict relative to comparable districts in adjacent peripheral areas where less land reform occurred. Further tests suggest that land reform mitigated conflict by facilitating counterinsurgency and intelligence gathering, building local organizational capacity later used to deter violence, undercutting the Marxist left, and increasing opportunity costs to supporting armed groups.</jats:p>",
+    "period_start": 1969,
+    "period_end": 2000,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/KKQFKA",
+    "authors": "Albertus, M."
+  },
+  {
+    "doi": "10.1017/s0003055419000285",
+    "title": "The Fingerprints of Fraud: Evidence from Mexico’s 1988 Presidential Election",
+    "journal": "APSR",
+    "year": 2019,
+    "abstract": "<jats:p>This paper investigates the opportunities for non-democratic regimes to rely on fraud by documenting the alteration of vote tallies during the 1988 presidential election in Mexico. In particular, I study how the alteration of vote returns came after an electoral reform that centralized the vote-counting process. Using an original image database of the vote-tally sheets for that election and applying Convolutional Neural Networks (CNN) to analyze the sheets, I find evidence of blatant alterations in about a third of the tallies in the country. This empirical analysis shows that altered tallies were more prevalent in polling stations where the opposition was not present and in states controlled by governors with grassroots experience of managing the electoral operation. This research has implications for understanding the ways in which autocrats control elections as well as for introducing a new methodology to audit the integrity of vote tallies.</jats:p>",
+    "period_start": 1988,
+    "period_end": 1988,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/NNNPOU",
+    "authors": "CANTÚ, F."
+  },
+  {
+    "doi": "10.1093/qje/qjz009",
+    "title": "Trade, Merchants, and the Lost Cities of the Bronze Age*",
+    "journal": "QJE",
+    "year": 2019,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>We analyze a large data set of commercial records produced by Assyrian merchants in the nineteenth century BCE. Using the information from these records, we estimate a structural gravity model of long-distance trade in the Bronze Age. We use our structural gravity model to locate lost ancient cities. In many cases, our estimates confirm the conjectures of historians who follow different methodologies. In some instances, our estimates confirm one conjecture against others. We also structurally estimate ancient city sizes and offer evidence in support of the hypothesis that large cities tend to emerge at the intersections of natural transport routes, as dictated by topography. Finally, we document persistent patterns in the distribution of city sizes across four millennia, find a distance elasticity of trade in the Bronze Age close to modern estimates, and show suggestive evidence that the distribution of ancient city sizes, inferred from trade data, is well approximated by Zipf’s law.</jats:p>",
+    "period_start": -1900,
+    "period_end": -1800,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/P81WBZ",
+    "authors": "Barjamovic, G.; Chaney, T.; Coşar, K.; Hortaçsu, A."
+  },
+  {
+    "doi": "10.1111/ajps.12489",
+    "title": "Victorian Voting: The Origins of Party Orientation and Class Alignment",
+    "journal": "AJPS",
+    "year": 2019,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Much of what we know about the alignment of voters with parties comes from mass surveys of the electorate in the postwar period or from aggregate electoral data. Using individual elector‐level panel data from nineteenth‐century United Kingdom poll books, we reassess the development of a party centered electorate. We show that (a) the electorate was party‐centered by the time of the extension of the franchise in 1867, (b) a decline in candidate‐centered voting is largely attributable to changes in the behavior of the working class, and (c) the enfranchised working class aligned with the Liberal left. This early alignment of the working class with the left cannot entirely be explained by a decrease in vote buying. The evidence suggests instead that the alignment was based on the programmatic appeal of the Liberals. We argue that these facts can plausibly explain the subsequent development of the party system.</jats:p>",
+    "period_start": 1800,
+    "period_end": 1867,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/AH2PEI",
+    "authors": "Dewan, T.; Meriläinen, J.; Tukiainen, J."
+  },
+  {
+    "doi": "10.1111/ajps.12475",
+    "title": "Why Underachievers Dominate Secret Police Organizations: Evidence from Autocratic Argentina",
+    "journal": "AJPS",
+    "year": 2019,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Autocrats depend on a capable secret police. Anecdotal evidence, however, often characterizes agents as surprisingly mediocre in skill and intellect. To explain this puzzle, this article focuses on the career incentives underachieving individuals face in the regular security apparatus. Low‐performing officials in hierarchical organizations have little chance of being promoted or filling lucrative positions. To salvage their careers, these officials are willing to undertake burdensome secret police work. Using data on all 4,287 officers who served in autocratic Argentina (1975–83), we study biographic differences between secret police agents and the entire recruitment pool. We find that low‐achieving officers were stuck within the regime hierarchy, threatened with discharge, and thus more likely to join the secret police for future benefits. The study demonstrates how state bureaucracies breed mundane career concerns that produce willing enforcers and cement violent regimes. This has implications for the understanding of autocratic consolidation and democratic breakdown.</jats:p>",
+    "period_start": 1975,
+    "period_end": 1983,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/PGFOXW",
+    "authors": "Scharpf, A.; Gläßel, C."
+  },
+  {
+    "doi": "10.1017/s0003055418000886",
+    "title": "“Judge Lynch” in the Court of Public Opinion: Publicity and the De-legitimation of Lynching",
+    "journal": "APSR",
+    "year": 2019,
+    "abstract": "<jats:p>How does violence become publicly unacceptable? I address this question in the context of lynching in the United States. Between 1880 and the 1930s, public discourse about lynching moved from open or tacit endorsement to widespread condemnation. I argue this occurred because of increasing publicity for lynchings. While locals justified nearby lynchings, publicity exposed lynching to distant, un-supportive audiences and allowed African Americans to safely articulate counternarratives and condemnations. I test this argument using data on lynchings, rail networks, and newspaper coverage of lynchings in millions of issues across thousands of newspapers. I find that lynchings in counties with greater access to publicity (via rail networks) saw more and geographically dispersed coverage, that distant coverage was more critical, and that increased risk of media exposure may have reduced the incidence of lynching. I discuss how publicity could be a mechanism for strengthening or weakening justifications of violence in other contexts.</jats:p>",
+    "period_start": 1880,
+    "period_end": 1930,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/QTOIQF",
+    "authors": "WEAVER, M."
+  },
+  {
+    "doi": "10.1111/ajps.12378",
+    "title": "Coalitional Instability and the Three‐Fifths Compromise",
+    "journal": "AJPS",
+    "year": 2018,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Were the initial apportionments of the U.S. House of Representatives and the U.S. Senate inevitable? This article determines the coalitional stability of apportionment rules considered at the Constitutional Convention assuming the Convention limited itself to the rules proposed. Using each state's vote share as a measure of state preference, we find that the stability of legislative apportionment depended upon the states making decisions. Equal apportionment was in equilibrium with 13 states present, as in the Continental Congress, but when Rhode Island and New Hampshire were absent during the first third of the Convention, all rules were in a top cycle. With New York departing near the middle of the Convention, equal apportionment and the Three‐Fifths Clause both became stable, and the Great Compromise was reached. We conclude that the Great Compromise was partly the result of historical contingency (i.e., which states participated), rather than necessity.</jats:p>",
+    "period_start": 1787,
+    "period_end": 1787,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/6IOACK",
+    "authors": "Ballingrud, G.; Dougherty, K."
+  },
+  {
+    "doi": "10.1086/696621",
+    "title": "How the West Was Won: Competition, Mobilization, and Women’s Enfranchisement in the United States",
+    "journal": "JOP",
+    "year": 2018,
+    "abstract": null,
+    "period_start": 1800,
+    "period_end": 1920,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/EVYI2H",
+    "authors": "Teele, D."
+  },
+  {
+    "doi": "10.1017/s000305541800045x",
+    "title": "Office-Selling, Corruption, and Long-Term Development in Peru",
+    "journal": "APSR",
+    "year": 2018,
+    "abstract": "<jats:p>The paper uses a unique hand-collected dataset of the prices at which the Spanish Crown sold colonial provincial governorships in seventeenth and eighteenth century Peru to examine the impact of colonial officials on long-run development. Combining provincial characteristics with exogenous variation in appointment criteria due to the timing of European wars, I first show that provinces with greater extraction potential tended to fetch higher prices and attract worse buyers. In the long run, these high-priced provinces have lower household consumption, schooling, and public good provision. The type of governors ruling these provinces likely exacerbated political conflict, ethnic segregation, and undermined institutional trust among the population.</jats:p>",
+    "period_start": 1600,
+    "period_end": 1800,
+    "regions": [
+      "Latin America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/TI5BPV",
+    "authors": "GUARDADO, J."
+  },
+  {
+    "doi": "10.1093/qje/qjy011",
+    "title": "Religious Competition and Reallocation: the Political Economy of Secularization in the Protestant Reformation*",
+    "journal": "QJE",
+    "year": 2018,
+    "abstract": null,
+    "period_start": 1500,
+    "period_end": 1700,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/QULALN",
+    "authors": "Cantoni, D.; Dittmar, J.; Yuchtman, N."
+  },
+  {
+    "doi": "10.1017/s0003055417000636",
+    "title": "Social and Institutional Origins of Political Islam",
+    "journal": "APSR",
+    "year": 2018,
+    "abstract": "<jats:p>Under what conditions did the first Islamist movements organize? Which social and institutional contexts facilitated such mobilization? A sizable literature points to social and demographic changes, Western encroachment into Muslim societies, and the availability of state and economic infrastructure. To test these hypotheses, we match a listing of Muslim Brotherhood branches founded in interwar Egypt with contemporaneous census data on over 4,000 subdistricts. A multilevel analysis shows that Muslim Brotherhood branches were more likely in subdistricts connected to the railway and where literacy was higher. Branches were less likely in districts with large European populations, and where state administration was more extensive. Qualitative evidence also points to the railway as key to the movement’s propagation. These findings challenge the orthodoxy that contact between Muslims and the West spurred the growth of organized political Islam, and instead highlight the critical role of economic and state infrastructure in patterning the early contexts of Islamist activism.</jats:p>",
+    "period_start": 1919,
+    "period_end": 1939,
+    "regions": [
+      "Middle East & North Africa"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/UJYEAD",
+    "authors": "BROOKE, S.; KETCHLEY, N."
+  },
+  {
+    "doi": "10.1017/s000305541800014x",
+    "title": "The Birth of Pork: Local Appropriations in America’s First Century",
+    "journal": "APSR",
+    "year": 2018,
+    "abstract": "<jats:p>After describing a newly assembled dataset consisting of almost 9,000 local appropriations made by the U.S. Congress between 1789 and 1882, we test competing accounts of the politics surrounding them before offering a more nuanced, historically contingent view of the emergence of the pork barrel. We demonstrate that for most of this historical period—despite contemporary accusations of crass electoral motives—the pattern of appropriations is largely inconsistent with accounts of distributive politics grounded in a logic of legislative credit-claiming. Instead, support for appropriations in the House mapped cleanly onto the partisan/ideological structure of Congress for most of this period, and only in the 1870s produced the universalistic coalitions commonly associated with pork-barrel spending. We trace this shift to two historical factors: the emergence of a solid Democratic South, and growth in the fraction of appropriations funding recurrent expenditures on extant projects rather than new starts.</jats:p>",
+    "period_start": 1789,
+    "period_end": 1882,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/SAPQYS",
+    "authors": "GORDON, S.; SIMPSON, H."
+  },
+  {
+    "doi": "10.1086/690949",
+    "title": "Bowling for Fascism: Social Capital and the Rise of the Nazi Party",
+    "journal": "JPE",
+    "year": 2017,
+    "abstract": null,
+    "period_start": 1920,
+    "period_end": 1933,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/EE6I7N",
+    "authors": "Satyanath, S.; Voigtländer, N.; Voth, H."
+  },
+  {
+    "doi": "10.1093/qje/qjx026",
+    "title": "Clans, Guilds, and Markets: Apprenticeship Institutions and Growth in the Preindustrial Economy*",
+    "journal": "QJE",
+    "year": 2017,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>In the centuries leading up to the Industrial Revolution, Western Europe gradually pulled ahead of other world regions in terms of technological creativity, population growth, and income per capita. We argue that superior institutions for the creation and dissemination of productive knowledge help explain the European advantage. We build a model of technological progress in a preindustrial economy that emphasizes the person-to-person transmission of tacit knowledge. The young learn as apprentices from the old. Institutions such as the family, the clan, the guild, and the market organize who learns from whom. We argue that medieval European institutions such as guilds, and specific features such as journeymanship, can explain the rise of Europe relative to regions that relied on the transmission of knowledge within closed kinship systems (extended families or clans).</jats:p>",
+    "period_start": 1000,
+    "period_end": 1750,
+    "regions": [
+      "Western Europe",
+      "Global/Comparative"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/67KTKX",
+    "authors": "de la Croix, D.; Doepke, M.; Mokyr, J."
+  },
+  {
+    "doi": "10.1017/s0003055417000454",
+    "title": "Collective Action and Representation in Autocracies: Evidence from Russia’s Great Reforms",
+    "journal": "APSR",
+    "year": 2017,
+    "abstract": "<jats:p>We explore the relationship between capacity for collective action and representation in autocracies with data from Imperial Russia. Our primary empirical exercise relates peasant representation in new institutions of local self-government to the frequency of peasant unrest in the decade prior to reform. To correct for measurement error in the unrest data and other sources of endogeneity, we exploit idiosyncratic variation in two determinants of peasant unrest: the historical incidence of serfdom and religious polarization. We find that peasants were granted less representation in districts with more frequent unrest in preceding years—a relationship consistent with the Acemoglu-Robinson model of political transitions and inconsistent with numerous other theories of institutional change. At the same time, we observe patterns of redistribution in subsequent years that are inconsistent with the commitment mechanism central to the Acemoglu-Robinson model. Building on these results, we discuss possible directions for future theoretical work.</jats:p>",
+    "period_start": 1860,
+    "period_end": 1880,
+    "regions": [
+      "Eastern Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/X7AMNO",
+    "authors": "DOWER, P.; FINKEL, E.; GEHLBACH, S.; NAFZIGER, S."
+  },
+  {
+    "doi": "10.1086/688077",
+    "title": "Congressional Candidates in the Era of Party Ballots",
+    "journal": "JOP",
+    "year": 2017,
+    "abstract": null,
+    "period_start": 1828,
+    "period_end": 1900,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/K8SC39",
+    "authors": "Carson, J.; Sievert, J."
+  },
+  {
+    "doi": "10.1111/ajps.12328",
+    "title": "Elite Influence? Religion and the Electoral Success of the Nazis",
+    "journal": "AJPS",
+    "year": 2017,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>In Weimar Germany, the Catholic Church vehemently warned ordinary parishioners about the dangers of extremist parties. We establish that constituencies' religious composition is a key empirical predictor of Nazi vote shares—dwarfing the explanatory power of any other demographic or socioeconomic variable. Even after carefully accounting for observational differences, Catholics were far less likely to vote for the NSDAP than their Protestant counterparts. The evidence suggests that this disparity was, in large part, due to the sway of the Catholic Church and its dignitaries. At the same time, we show that attempts to immunize Catholics against the radical left failed to achieve the desired result. To explain the puzzling asymmetry in the Church's influence at the ballot box, we develop a simple theoretical framework of elite influence in electoral politics.</jats:p>",
+    "period_start": 1919,
+    "period_end": 1933,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/J2FA5R",
+    "authors": "Spenkuch, J.; Tillmann, P."
+  },
+  {
+    "doi": "10.1017/s000305541600071x",
+    "title": "It’s Not Just What You Have, but Who You Know: Networks, Social Proximity to Elites, and Voting in State and Local Elections",
+    "journal": "APSR",
+    "year": 2017,
+    "abstract": "<jats:p>Individual-level studies of electoral turnout and vote choice have focused largely on personal attributes as explanatory variables. We argue that scholars should also consider the social network in which individuals are embedded, which may influence voting through variation in individuals’ social proximity to elites. Our analysis rests on newly discovered historical records revealing the individual votes of all electors in the 1859 statewide elections in Alexandria, Virginia and the 1874 municipal elections in Newport, Kentucky, paired with archival work identifying the social relations of the cities’ populations. We also replicate our core findings using survey data from a modern municipal election. We show that individuals more socially proximate to elites turn out at a higher rate and individuals more socially proximate to a given political party’s elites vote disproportionately for that party. These results suggest an overlooked social component of voting and provide a rare nineteenth-century test of modern voting theories.</jats:p>",
+    "period_start": 1859,
+    "period_end": 1874,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/UTAP1V",
+    "authors": "PIETRYKA, M.; DEBATS, D."
+  },
+  {
+    "doi": "10.1111/ajps.12326",
+    "title": "Making Washington Work: Legislative Entrepreneurship and the Personal Vote from the Gilded Age to the Great Depression",
+    "journal": "AJPS",
+    "year": 2017,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Studies of bill sponsorship in the modern Congress highlight the effects of constituency characteristics, seniority, and committee membership. These studies, however, are limited in their ability to assess the effects of institutions. We provide the first systematic study of bill sponsorship in the premodern House of Representatives. In doing so, we take advantage of this period's expansive legislative agenda and variation in electoral system rules. Using matching and event count models, we estimate the effects of institutions, electoral competition, and members’ institutional positions and political experiences on their sponsorship of different types of bills. We find that two reforms—the Australian ballot and nominating primary—increased sponsorship of bills designed to cultivate personal votes, thereby contributing to the growth in private legislation and bills aimed at local constituencies. Our results establish these reforms as a major event shaping lawmaking activity and, with it, the character of contemporary representation.</jats:p>",
+    "period_start": 1870,
+    "period_end": 1933,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/EL6ZCZ",
+    "authors": "Finocchiaro, C.; MacKenzie, S."
+  },
+  {
+    "doi": "10.1086/683612",
+    "title": "Democratization and Linguistic Complexity: The Effect of Franchise Extension on Parliamentary Discourse, 1832–1915",
+    "journal": "JOP",
+    "year": 2016,
+    "abstract": null,
+    "period_start": 1832,
+    "period_end": 1915,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/DDQDMS",
+    "authors": "Spirling, A."
+  },
+  {
+    "doi": "10.3982/ecta13448",
+    "title": "Elite Recruitment and Political Stability: The Impact of the Abolition of China's Civil Service Exam",
+    "journal": "Econometrica",
+    "year": 2016,
+    "abstract": null,
+    "period_start": 1905,
+    "period_end": 1920,
+    "regions": [
+      "East Asia"
+    ],
+    "replication_url": "https://www.econometricsociety.org/publications/econometrica/2016/03/01/elite-recruitment-and-political-stability-impact-abolition",
+    "authors": "Bai, Y.; Jia, R."
+  },
+  {
+    "doi": "10.3982/ecta11484",
+    "title": "Democratization Under the Threat of Revolution: Evidence From the Great Reform Act of 1832",
+    "journal": "Econometrica",
+    "year": 2015,
+    "abstract": null,
+    "period_start": 1832,
+    "period_end": 1832,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://www.econometricsociety.org/publications/econometrica/2015/03/01/democratization-under-threat-revolution-evidence-great-reform",
+    "authors": "Aidt, T.; Franck, R."
+  },
+  {
+    "doi": "10.3982/ecta10876",
+    "title": "The Economics of Density: Evidence From the Berlin Wall",
+    "journal": "Econometrica",
+    "year": 2015,
+    "abstract": null,
+    "period_start": 1945,
+    "period_end": 1989,
+    "regions": [
+      "Eastern Europe"
+    ],
+    "replication_url": "https://www.econometricsociety.org/publications/econometrica/2015/11/01/economics-density-evidence-berlin-wall",
+    "authors": "Ahlfeldt, G.; Redding, S.; Sturm, D.; Wolf, N."
+  },
+  {
+    "doi": "10.1086/680208",
+    "title": "Voting for a Founding: Testing the Effect of Economic Interests at the Federal Convention of 1787",
+    "journal": "JOP",
+    "year": 2015,
+    "abstract": null,
+    "period_start": 1787,
+    "period_end": 1787,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/WZCKQ7",
+    "authors": "Pope, J.; Treier, S."
+  },
+  {
+    "doi": "10.1111/ajps.12088",
+    "title": "An Integrated Theory of Budgetary Politics and Some Empirical Tests: The U.S. National Budget, 1791–2010",
+    "journal": "AJPS",
+    "year": 2014,
+    "abstract": "<jats:p>We develop a general theory of budgetary politics and examine its implications on a new data set on U.S. government expenditures from 1791 to 2010. We draw on three major approaches to budgeting: decision‐making theories, primarily incrementalism and serial processing; policy process models; and path dependency. We show that the incrementalist budget model is recursive and that its solution is exponential growth, and isolate three periods in which it operates in pure form. The equilibrium periods are separated by critical junctures, associated with wars or economic collapse. We assess policy process dynamics by examining the deviations within equilibrium periods. We offer three takeaways: (1) exponential incrementalism is fundamental to a theory of budgeting; (2) disjoint shifts in the level of exponential incrementalism are caused only by critical moments; (3) temporally localized dynamics cause bends in the exponential path, longer returns to the path within budgetary eras, and annual punctuations in budget changes.</jats:p>",
+    "period_start": 1791,
+    "period_end": 2010,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/R3KIIF",
+    "authors": "Jones, B.; Zalányi, L.; Érdi, P."
+  },
+  {
+    "doi": "10.1093/qje/qju007",
+    "title": "Medieval Universities, Legal Institutions, and the Commercial Revolution *",
+    "journal": "QJE",
+    "year": 2014,
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>We present new data documenting medieval Europe’s Commercial Revolution using information on the establishment of markets in Germany. We use these data to test whether medieval universities played a causal role in expanding economic activity, examining the foundation of Germany’s first universities after 1386 following the papal schism. We find that the trend rate of market establishment breaks upward in 1386 and this break is greatest where the distance to a university shrank most. There is no differential pre-1386 trend associated with the reduction in distance to a university, and there is no break in trend in 1386 where university proximity did not change. These results are robust to estimating a variety of specifications that address concerns about the endogeneity of university location. Universities provided training in newly rediscovered Roman and canon law; students with legal training served in positions that reduced the uncertainty of trade in the Middle Ages. We argue that training in the law, and the consequent development of legal and administrative institutions, was an important channel linking universities and greater economic activity in medieval Germany.</jats:p>",
+    "period_start": 1386,
+    "period_end": 1500,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/VZRPFO",
+    "authors": "Cantoni, D.; Yuchtman, N."
+  },
+  {
+    "doi": "10.1111/ajps.12090",
+    "title": "Ministerial Responsiveness in Westminster Systems: Institutional Choices and House of Commons Debate, 1832–1915",
+    "journal": "AJPS",
+    "year": 2014,
+    "abstract": "<jats:p>In Westminster systems, governments enjoy strong agenda‐setting powers but are accountable to an inquisitorial opposition. This article provides insights into the origins of this arrangement from the British House of Commons, drawing primarily on a new data set of a half million parliamentary speeches. We show that, according to a novel measure we develop, government ministers became more responsive to opposition members of parliament in the same period that the government's agenda power was most conclusively strengthened—roughly, the two decades culminating in Balfour's “railway timetable” of 1902. We argue that this increase in responsiveness helps to explain why opposition members of parliament acceded to reductions in their procedural power. We thus highlight a link between government strength and opposition scrutiny in the historical development of the Westminster system.</jats:p>",
+    "period_start": 1832,
+    "period_end": 1915,
+    "regions": [
+      "Western Europe"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/23063",
+    "authors": "Eggers, A.; Spirling, A."
+  },
+  {
+    "doi": "10.1017/s000305541400029x",
+    "title": "When Canvassers Became Activists: Antislavery Petitioning and the Political Mobilization of American Women",
+    "journal": "APSR",
+    "year": 2014,
+    "abstract": "<jats:p>Examining an original dataset of more than 8,500 antislavery petitions sent to Congress (1833–1845), we argue that American women's petition canvassing conferred skills and contacts that empowered their later activism. We find that women canvassers gathered 50% or more signatures (absolute and per capita) than men while circulating the same petition requests in the same locales. Supplementary evidence (mainly qualitative) points to women's persuasive capacity and network building as the most plausible mechanisms for this increased efficacy. We then present evidence that leaders in the women's rights and reform campaigns of the nineteenth century were previously active in antislavery canvassing. Pivotal signers of the Seneca Falls Declaration were antislavery petition canvassers, and in an independent sample of post–Civil War activists, women were four times more likely than men to have served as identifiable antislavery canvassers. For American women, petition canvassing—with its patterns of persuasion and networking—shaped legacies in political argument, network formation, and organizing.</jats:p>",
+    "period_start": 1833,
+    "period_end": 1845,
+    "regions": [
+      "North America"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/27176",
+    "authors": "CARPENTER, D.; MOORE, C."
+  },
+  {
+    "doi": "10.1111/ajps.12074",
+    "title": "How Governments Shape the Risk of Civil Violence: India's Federal Reorganization, 1950–56",
+    "journal": "AJPS",
+    "year": 2013,
+    "abstract": "<jats:p>Governments are absent from empirical studies of civil violence, except as static sources of grievance. The influence that government policy accommodations and threats of repression have on internal violence is difficult to verify without a means to identify potential militancy that did not happen. I use a within‐country research design to address this problem. During India's reorganization as a linguistic federation, every language group could have sought a state. I show that representation in the ruling party conditioned the likelihood of a violent statehood movement. Prostatehood groups that were politically advantaged over the interests opposed to them were peacefully accommodated. Statehood movements similar in political importance to their opponents used violence. Very politically disadvantaged groups refrained from mobilization, anticipating repression. These results call into question the search for a monotonic relationship between grievances and violence and the omission of domestic politics from prominent theories of civil conflict.</jats:p>",
+    "period_start": 1950,
+    "period_end": 1956,
+    "regions": [
+      "South Asia"
+    ],
+    "replication_url": "https://doi.org/10.7910/DVN/5CVUVU",
+    "authors": "Lacina, B."
+  }
+]
