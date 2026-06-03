@@ -35,42 +35,47 @@ _POLL_INTERVAL = 30  # seconds between batch status polls
 # Annual Review of Political Science 26(1).
 # DOI: 10.1146/annurev-polisci-051921-102440
 _SYSTEM_PROMPT = (
-    "You are a political science researcher. Classify the article below for the "
-    "subfield of Historical Political Economy (HPE): research whose PRIMARY "
-    "contribution is the extended analysis of a particular historical place and "
-    "time — not merely the use of historical facts as instruments or controls for "
-    "contemporary outcomes.\n\n"
-    "An article IS HPE if the historical period itself is the object of study: "
-    "state formation, historical elections and legislatures, colonial institutions "
-    "and their direct operation (not just their modern legacy), labor coercion "
-    "(slavery/serfdom), pre-industrial political economy, religion and early state "
-    "building, land reform, historical conflict. Persistence papers count as HPE "
-    "only when the historical period is analyzed in depth as the primary explanatory "
-    "mechanism — e.g., documenting how and why a historical institution operated, "
-    "not merely instrumenting a contemporary outcome with a historical fact.\n\n"
-    "An article is NOT HPE if:\n"
-    "  - It is a field experiment, survey experiment, or RCT, even in a "
-    "historical-sounding context.\n"
-    "  - It is a cross-national or cross-regional panel study whose main "
-    "contribution is explaining contemporary political behavior (voting, "
-    "legislative activity, public opinion, regime transitions after 1990) "
-    "and historical data appear only as baseline controls.\n"
-    "  - It studies long-run effects of a historical event but does not analyze "
-    "the historical period itself — e.g., using a colonial-era border or "
-    "institution as an instrument for a contemporary outcome without examining "
-    "how or why that institution operated historically.\n"
-    "  - It is primarily a theoretical or methodological contribution, even if "
-    "motivated by historical examples.\n\n"
-    "Return ONLY valid JSON with exactly these keys:\n"
+    "You are a political science researcher. Classify the article as Historical "
+    "Political Economy (HPE) or not.\n\n"
+    "HPE = empirical research that substantively analyzes a historical period, "
+    "institution, or phenomenon. Persistence papers (historical variation explaining "
+    "contemporary outcomes) count as HPE when the paper seriously documents the "
+    "historical phenomenon itself — not merely uses it as an instrument.\n\n"
+    "YES HPE — direct historical study:\n"
+    "  North & Weingast (1989) on 17th-c. English fiscal institutions; "
+    "Van Zanden et al. (2012) on European parliaments 1188–1789; "
+    "Aidt & Franck (2019) on the Great Reform Act of 1832; "
+    "Chaney (2013) on economic shocks and Islamic political power in medieval Egypt; "
+    "Wang (2022) on kinship networks and state-building in imperial China.\n\n"
+    "YES HPE — persistence papers:\n"
+    "  Alesina, Giuliano & Nunn (2013) on plough use and gender roles; "
+    "Nunn & Wantchekon (2011) on the slave trade and mistrust in Africa; "
+    "Valencia (2019) on Jesuit missions and human capital in South America; "
+    "Becker & Woessmann (2009) on Protestant Reformation and literacy; "
+    "Michalopoulos & Papaioannou (2013) on pre-colonial institutions and African development.\n\n"
+    "NOT HPE:\n"
+    "  - Historical variable used only as an IV or control, with no substantive "
+    "analysis of the historical variation itself.\n"
+    "  - Experiments (field, lab, or survey), even with historical-sounding topics: "
+    "e.g., Tannenwald-style studies of nuclear taboos with experimental evidence; "
+    "field experiments on social contact and prejudice in contemporary settings.\n"
+    "  - Theoretical or normative philosophy papers, even if drawing on historical "
+    "thinkers or examples: e.g., papers reconstructing Dewey's theory of coercion, "
+    "or normative debates about democratic citizenship.\n"
+    "  - Contemporary electoral, behavioral, or opinion studies, even with long "
+    "panel data: e.g., studies of partisan polarization, vote share, electoral fraud "
+    "in recent decades, or cross-national partisanship activation — these study "
+    "contemporary political behavior, not historical phenomena.\n"
+    "  - Studies of contemporary outcomes (voting, public opinion, regime type) "
+    "where historical data appear only as baseline controls.\n\n"
+    "Return ONLY valid JSON:\n"
     '  "is_hpe"       – boolean\n'
-    '  "period_start" – integer year or null (historical period the DATA analyzes;\n'
-    '                   null if is_hpe is false; negative for BCE)\n'
-    '  "period_end"   – integer year or null (same; null if is_hpe is false)\n'
-    '  "regions"      – array of strings (what the DATA covers); choose from:\n'
-    '                   ["North America", "Latin America", "Western Europe",\n'
-    '                    "Eastern Europe", "Middle East & North Africa",\n'
-    '                    "Sub-Saharan Africa", "South Asia", "East Asia",\n'
-    '                    "Southeast Asia", "Oceania", "Global/Comparative"]'
+    '  "period_start" – integer year or null (BCE = negative; null if not HPE)\n'
+    '  "period_end"   – integer year or null\n'
+    '  "regions"      – array from: ["North America", "Latin America", '
+    '"Western Europe", "Eastern Europe", "Middle East & North Africa", '
+    '"Sub-Saharan Africa", "South Asia", "East Asia", "Southeast Asia", '
+    '"Oceania", "Global/Comparative"]'
 )
 
 Article = tuple[str, str | None, str | None]  # (doi, title, abstract)
