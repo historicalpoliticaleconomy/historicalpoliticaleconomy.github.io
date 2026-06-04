@@ -136,6 +136,14 @@ main {
 
 .submit-form button:hover { background: #1d4ed8; }
 
+/* ── Heatmap animation ───────────────────────────────────────────────── */
+@keyframes hmFadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+#heatmap.hm-fade-in { animation: hmFadeIn 180ms ease-out; }
+
 /* ── Heatmap breadcrumb ──────────────────────────────────────────────── */
 .hm-breadcrumb {
   font-size: .72rem;
@@ -149,10 +157,16 @@ main {
 .hm-bc-link {
   color: var(--accent);
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-.hm-bc-link:hover { text-decoration: underline; }
+.hm-bc-link:hover { color: #1d4ed8; }
+
+.hm-bc-current {
+  color: var(--text);
+  font-weight: 500;
+}
 
 /* ── Heatmap ─────────────────────────────────────────────────────────── */
 #heatmap {

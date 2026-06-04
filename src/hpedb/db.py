@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS authors (
 
 def init_db(path: str) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
+    conn.execute("PRAGMA journal_mode=WAL")
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute(CREATE_ARTICLES)
     conn.execute(CREATE_AUTHORS)
@@ -54,7 +55,6 @@ def upsert_article(conn: sqlite3.Connection, record: ArticleRecord) -> None:
         """,
         record,
     )
-    conn.commit()
 
 
 _CREATE_CLASSIFICATIONS = """
@@ -123,4 +123,3 @@ def upsert_authors(
         "INSERT INTO authors (doi, sequence, given, family) VALUES (?, ?, ?, ?)",
         [(doi, a["sequence"], a.get("given"), a.get("family")) for a in authors],
     )
-    conn.commit()

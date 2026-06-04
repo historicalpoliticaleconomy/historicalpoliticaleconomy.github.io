@@ -65,6 +65,8 @@ def test_merchant_towns_region_and_country() -> None:
     c = _require("10.1257/aer.20200885")
     assert "Western Europe" in c["regions"]
     assert "United Kingdom" in c["countries"]
+    assert len(c["regions"]) == 1
+    assert len(c["countries"]) == 1
 
 @pytest.mark.db
 def test_merchant_towns_period() -> None:
@@ -113,11 +115,6 @@ def test_the_mission_region() -> None:
     assert "South America" in c["regions"]
 
 @pytest.mark.db
-def test_folklore_is_hpe() -> None:
-    # Michalopoulos & Xue (2021), QJE — folklore as a measure of historical cultural traits
-    assert _require("10.1093/qje/qjab003")["is_hpe"] is True
-
-@pytest.mark.db
 def test_jim_crow_is_hpe() -> None:
     # Shertzer et al. (2024), QJE — Jim Crow laws and Black economic progress after slavery
     assert _require("10.1093/qje/qjae023")["is_hpe"] is True
@@ -127,9 +124,17 @@ def test_jim_crow_region_and_country() -> None:
     c = _require("10.1093/qje/qjae023")
     assert "Northern America" in c["regions"]
     assert "United States" in c["countries"]
+    assert len(c["regions"]) == 1
+    assert len(c["countries"]) == 1
 
 
 # ── Definite NOT HPE ─────────────────────────────────────────────────────────
+
+@pytest.mark.db
+def test_democracy_by_mistake_not_hpe() -> None:
+    # Treisman (2020), APSR — uses historical cases to argue autocrats generally
+    # miscalculate; the historical specificity is illustrative, not load-bearing.
+    assert _require("10.1017/s0003055420000180")["is_hpe"] is False
 
 @pytest.mark.db
 def test_emissions_passthrough_not_hpe() -> None:

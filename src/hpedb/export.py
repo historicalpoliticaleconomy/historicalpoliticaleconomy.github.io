@@ -13,7 +13,13 @@ def export_hpe_articles(conn: sqlite3.Connection) -> list[dict[str, Any]]:
                c.period_start, c.period_end, c.regions, c.countries, c.replication_url
         FROM articles a
         JOIN classifications c ON c.doi = a.doi
-        WHERE c.is_hpe = 1 AND c.replication_url IS NOT NULL
+        WHERE c.is_hpe = 1
+          AND c.replication_url IS NOT NULL
+          AND LOWER(a.title) NOT LIKE '%corrigendum%'
+          AND LOWER(a.title) NOT LIKE '%erratum%'
+          AND LOWER(a.title) NOT LIKE '%errata%'
+          AND LOWER(a.title) NOT LIKE '%retraction%'
+          AND LOWER(a.title) NOT LIKE '%retracted%'
         ORDER BY a.year DESC, a.title
     """).fetchall()
 

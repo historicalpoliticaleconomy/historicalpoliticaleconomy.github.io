@@ -11,7 +11,6 @@ let CONTINENTS = [];
 /** @type {Map<string, string[]>} continent → subregion names */
 let CONTINENT_SUBREGIONS = new Map();
 
-// Continent display order (M.49 major areas)
 const CONTINENT_ORDER = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 const BUCKETS = [
@@ -27,16 +26,15 @@ const BUCKETS = [
 ];
 
 // Heatmap drill-down state: 0=continents, 1=subregions, 2=countries
-let heatmapLevel    = 0;
-let focusContinent  = null;
-let focusSubregion  = null;
+let heatmapLevel   = 0;
+let focusContinent = null;
+let focusSubregion = null;
 
-// Article filter state (mutually exclusive)
-let selectedCell    = null; // { rowKey: string, bi: number }  (continent or subregion level)
-let selectedCountry = null; // { country: string, bi: number }
+// Article filter state
+let selectedCell = null; // { rowKey: string, bi: number }
 
 function buildGeo(geoData) {
-  const bySubregion = new Map();
+  const bySubregion    = new Map();
   const subToContinent = new Map();
 
   for (const entry of geoData.countries) {
@@ -50,7 +48,6 @@ function buildGeo(geoData) {
   SUBREGION_COUNTRIES = bySubregion;
   SUBREGION_CONTINENT = subToContinent;
 
-  // Build continent → sorted subregions
   const contSubMap = new Map();
   for (const [sub, cont] of subToContinent) {
     if (!contSubMap.has(cont)) contSubMap.set(cont, []);
@@ -62,7 +59,7 @@ function buildGeo(geoData) {
   CONTINENTS = [...CONTINENT_ORDER.filter(c => contSubMap.has(c)), 'Global/Comparative'];
 }
 
-// ── Color scale ──────────────────────────────────────────────────────────────
+// ── Color scale ───────────────────────────────────────────────────────────────
 
 function cellColor(count, max) {
   if (count === 0) return '#eef0f5';
@@ -79,8 +76,17 @@ function entryOverlapsBucket(entry, bucket) {
   return ps <= bucket.end && pe >= bucket.start;
 }
 
-function countsByRows(rows, keyFn) {
-  // rows: array of row-key strings; returns counts[rowIndex][bucketIndex]
+function entryMatchesKey(entry, key) {
+  if (key === 'Global/Comparative') return entry.regions.includes('Global/Comparative');
+  if (CONTINENT_SUBREGIONS.has(key)) {
+    const subs = CONTINENT_SUBREGIONS.get(key) || [];
+    return subs.some(s => entry.regions.includes(s));
+  }
+  if (SUBREGION_COUNTRIES.has(key)) return entry.regions.includes(key);
+  return (entry.countries || []).includes(key);
+}
+
+function countsByRows(rows) {
   const counts = rows.map(() => BUCKETS.map(() => 0));
   for (const entry of allData) {
     BUCKETS.forEach((b, bi) => {
@@ -93,19 +99,6 @@ function countsByRows(rows, keyFn) {
   return counts;
 }
 
-function entryMatchesKey(entry, key) {
-  if (key === 'Global/Comparative') return entry.regions.includes('Global/Comparative');
-  // Is it a continent?
-  if (CONTINENT_SUBREGIONS.has(key)) {
-    const subs = CONTINENT_SUBREGIONS.get(key) || [];
-    return subs.some(s => entry.regions.includes(s));
-  }
-  // Is it a subregion?
-  if (SUBREGION_COUNTRIES.has(key)) return entry.regions.includes(key);
-  // Otherwise treat as a country name
-  return entry.countries.includes(key);
-}
-
 // ── Heatmap rendering ─────────────────────────────────────────────────────────
 
 function buildHeatmap() {
@@ -116,26 +109,45 @@ function buildHeatmap() {
   if (heatmapLevel === 0) renderContinentView(container);
   else if (heatmapLevel === 1) renderSubregionView(container);
   else renderCountryView(container);
+
+  // Restart fade-in animation on every rebuild
+  container.classList.remove('hm-fade-in');
+  void container.offsetHeight; // force reflow
+  container.classList.add('hm-fade-in');
 }
 
-function renderBreadcrumb(container, parts) {
-  if (!parts.length) return;
+function renderBreadcrumb(container) {
   const bc = document.createElement('div');
-  bc.className   = 'hm-breadcrumb';
-  bc.style.gridColumn = `1 / -1`;
-  bc.innerHTML = parts.map((p, i) =>
-    i < parts.length - 1
-      ? `<span class="hm-bc-link" data-level="${i}">${escapeHtml(p)}</span>`
-      : `<span>${escapeHtml(p)}</span>`
-  ).join(' › ');
-  bc.querySelectorAll('.hm-bc-link').forEach(el => {
-    el.addEventListener('click', () => {
-      const level = parseInt(el.dataset.level || '0');
-      if (level === 0) { heatmapLevel = 0; focusContinent = null; focusSubregion = null; }
-      clearSelection();
-      buildHeatmap();
+  bc.className = 'hm-breadcrumb';
+  bc.style.gridColumn = '1 / -1';
+
+  // Build trail: all non-current items are clickable links
+  const items = [
+    {
+      label:  'All continents',
+      action: () => { heatmapLevel = 0; focusContinent = null; focusSubregion = null; clearSelection(); buildHeatmap(); },
+    },
+  ];
+  if (focusContinent && heatmapLevel === 2) {
+    items.push({
+      label:  focusContinent,
+      action: () => { heatmapLevel = 1; focusSubregion = null; clearSelection(); buildHeatmap(); },
     });
+  }
+  // Current level — not a link
+  items.push({ label: heatmapLevel === 1 ? focusContinent : focusSubregion, action: null });
+
+  bc.innerHTML = items.map((item, i) =>
+    item.action
+      ? `<span class="hm-bc-link" data-idx="${i}">${escapeHtml(item.label)}</span>`
+      : `<span class="hm-bc-current">${escapeHtml(item.label)}</span>`
+  ).join(' › ');
+
+  bc.querySelectorAll('.hm-bc-link').forEach(el => {
+    const idx = parseInt(el.dataset.idx);
+    el.addEventListener('click', items[idx].action);
   });
+
   container.appendChild(bc);
 }
 
@@ -150,12 +162,13 @@ function renderColumnHeaders(container) {
   });
 }
 
-function renderRows(container, rows, maxCount, counts, onLabelClick, labelClass = 'hm-row-label') {
+function renderRows(container, rows, maxCount, counts, onLabelClick, labelClassFn = 'hm-row-label') {
+  const getClass = typeof labelClassFn === 'function' ? labelClassFn : () => labelClassFn;
   rows.forEach((key, ri) => {
     if (counts[ri].every(c => c === 0)) return;
 
     const rowLabel = document.createElement('div');
-    rowLabel.className   = labelClass;
+    rowLabel.className   = getClass(key);
     rowLabel.id          = `hm-row-${CSS.escape(key)}`;
     rowLabel.textContent = key;
     rowLabel.addEventListener('click', () => onLabelClick(key));
@@ -173,7 +186,6 @@ function renderRows(container, rows, maxCount, counts, onLabelClick, labelClass 
         cell.addEventListener('click', () => toggleCell(key, bi));
       }
       if (selectedCell?.rowKey === key && selectedCell?.bi === bi) cell.classList.add('active');
-      if (selectedCountry?.bi === bi && key === selectedCountry?.country) cell.classList.add('active');
       container.appendChild(cell);
     });
   });
@@ -181,7 +193,7 @@ function renderRows(container, rows, maxCount, counts, onLabelClick, labelClass 
 
 function renderContinentView(container) {
   renderColumnHeaders(container);
-  const counts   = countsByRows(CONTINENTS, k => k);
+  const counts   = countsByRows(CONTINENTS);
   const maxCount = Math.max(1, ...counts.flat());
   renderRows(container, CONTINENTS, maxCount, counts, key => {
     if (key === 'Global/Comparative') { toggleCell(key, selectedCell?.bi ?? -1); return; }
@@ -193,70 +205,71 @@ function renderContinentView(container) {
 }
 
 function renderSubregionView(container) {
-  renderBreadcrumb(container, [focusContinent]);
+  renderBreadcrumb(container);
   renderColumnHeaders(container);
-  const subs   = CONTINENT_SUBREGIONS.get(focusContinent) || [];
-  const counts = countsByRows(subs, k => k);
+
+  const allSubs = CONTINENT_SUBREGIONS.get(focusContinent) || [];
+
+  // Build flat row list: subregions with ≤2 active countries are replaced by their country rows
+  const rows       = [];
+  const autoExpanded = new Set(); // keys that are inlined country names
+
+  for (const sub of allSubs) {
+    if (!allData.some(e => entryMatchesKey(e, sub))) continue;
+    const activeCountries = (SUBREGION_COUNTRIES.get(sub) || []).filter(c =>
+      allData.some(e => (e.countries || []).includes(c))
+    );
+    if (activeCountries.length > 0 && activeCountries.length <= 2) {
+      for (const c of activeCountries) { rows.push(c); autoExpanded.add(c); }
+    } else {
+      rows.push(sub);
+    }
+  }
+
+  const counts = countsByRows(rows);
   const max    = Math.max(1, ...counts.flat());
-  renderRows(container, subs, max, counts, key => {
+
+  renderRows(container, rows, max, counts, key => {
+    if (autoExpanded.has(key)) return; // no drill-down from auto-expanded country rows
     focusSubregion = key;
     heatmapLevel   = 2;
     clearSelection();
     buildHeatmap();
-  });
+  }, key => autoExpanded.has(key) ? 'hm-row-label hm-country-label' : 'hm-row-label');
 }
 
 function renderCountryView(container) {
-  renderBreadcrumb(container, [focusContinent, focusSubregion]);
+  renderBreadcrumb(container);
   renderColumnHeaders(container);
-  const allCountries = SUBREGION_COUNTRIES.get(focusSubregion) || [];
-  // Only show countries that have at least one article
-  const activeCountries = allCountries.filter(c =>
-    allData.some(e => e.countries.includes(c))
-  );
+
+  const allCountries    = SUBREGION_COUNTRIES.get(focusSubregion) || [];
+  const activeCountries = allCountries.filter(c => allData.some(e => (e.countries || []).includes(c)));
+
   if (!activeCountries.length) {
     const msg = document.createElement('div');
-    msg.style.gridColumn = `1 / -1`;
-    msg.style.padding = '.5rem';
-    msg.style.color = 'var(--muted)';
-    msg.style.fontSize = '.8rem';
+    msg.style.gridColumn = '1 / -1';
+    msg.style.padding    = '.5rem';
+    msg.style.color      = 'var(--muted)';
+    msg.style.fontSize   = '.8rem';
     msg.textContent = 'No datasets with country data in this sub-region yet.';
     container.appendChild(msg);
     return;
   }
-  const counts = countsByRows(activeCountries, c => c);
+
+  const counts = countsByRows(activeCountries);
   const max    = Math.max(1, ...counts.flat());
-  renderRows(container, activeCountries, max, counts,
-    () => {}, // no drill-down from country level
-    'hm-row-label hm-country-label'
-  );
+  renderRows(container, activeCountries, max, counts, () => {}, 'hm-row-label hm-country-label');
 }
 
 // ── Selection ─────────────────────────────────────────────────────────────────
 
 function clearSelection() {
-  selectedCell    = null;
-  selectedCountry = null;
+  selectedCell = null;
 }
 
 function toggleCell(rowKey, bi) {
-  if (selectedCell?.rowKey === rowKey && selectedCell?.bi === bi) {
-    selectedCell = null;
-  } else {
-    selectedCell    = { rowKey, bi };
-    selectedCountry = null;
-  }
+  selectedCell = (selectedCell?.rowKey === rowKey && selectedCell?.bi === bi) ? null : { rowKey, bi };
   buildHeatmap();
-  applyFilters();
-}
-
-function toggleCountryCell(country, bi) {
-  if (selectedCountry?.country === country && selectedCountry?.bi === bi) {
-    selectedCountry = null;
-  } else {
-    selectedCountry = { country, bi };
-    selectedCell    = null;
-  }
   applyFilters();
 }
 
@@ -264,17 +277,9 @@ function toggleCountryCell(country, bi) {
 
 function applyFilters() {
   const filtered = allData.filter(entry => {
-    if (selectedCell !== null) {
-      const { rowKey, bi } = selectedCell;
-      if (!entryMatchesKey(entry, rowKey)) return false;
-      if (!entryOverlapsBucket(entry, BUCKETS[bi])) return false;
-    }
-    if (selectedCountry !== null) {
-      const { country, bi } = selectedCountry;
-      if (!entry.countries.includes(country)) return false;
-      if (!entryOverlapsBucket(entry, BUCKETS[bi])) return false;
-    }
-    return true;
+    if (selectedCell === null) return true;
+    const { rowKey, bi } = selectedCell;
+    return entryMatchesKey(entry, rowKey) && entryOverlapsBucket(entry, BUCKETS[bi]);
   });
 
   document.getElementById('results-count').textContent =

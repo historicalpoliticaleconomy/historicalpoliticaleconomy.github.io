@@ -58,6 +58,7 @@ def main() -> None:
         for article, authors in rows:
             upsert_article(conn, article)
             upsert_authors(conn, article["doi"], authors)
+        conn.commit()
         print(f"  {abbrev}: {len(rows)} articles stored.")
         time.sleep(1)
 

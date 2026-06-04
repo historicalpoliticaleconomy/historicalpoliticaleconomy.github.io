@@ -142,6 +142,19 @@ def test_parse_unknown_countries_kept_with_warning(capsys: Any) -> None:
     assert "Holy Roman Empire" in captured.out
 
 
+def test_parse_country_alias_normalized() -> None:
+    raw = json.dumps({"is_hpe": True, "period_start": 1900, "period_end": 2000,
+                      "regions": ["Western Asia"],
+                      "countries": ["Turkey", "Russia", "Czech Republic", "United States of America"]})
+    rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
+    assert rec is not None
+    countries = json.loads(rec["countries"])
+    assert "Türkiye" in countries
+    assert "Russian Federation" in countries
+    assert "Czechia" in countries
+    assert "United States" in countries
+
+
 def test_parse_countries_empty_for_global() -> None:
     raw = json.dumps({"is_hpe": True, "period_start": 1800, "period_end": 1900,
                       "regions": ["Global/Comparative"], "countries": []})
