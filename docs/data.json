@@ -25,7 +25,7 @@
     "period_start": 1977,
     "period_end": 1992,
     "regions": [
-      "Southern Africa"
+      "Eastern Africa"
     ],
     "countries": [
       "Mozambique"
@@ -43,7 +43,11 @@
     "period_end": 1900,
     "regions": [
       "Eastern Asia",
-      "Global/Comparative"
+      "Eastern Europe",
+      "Northern America",
+      "Northern Europe",
+      "Southern Asia",
+      "Western Europe"
     ],
     "countries": [
       "Japan",
@@ -72,7 +76,8 @@
     "period_end": 1800,
     "regions": [
       "Eastern Europe",
-      "Western Asia"
+      "Western Asia",
+      "Southern Europe"
     ],
     "countries": [
       "Ukraine",
@@ -113,7 +118,9 @@
     "abstract": null,
     "period_start": 1965,
     "period_end": 1970,
-    "regions": [],
+    "regions": [
+      "Northern America"
+    ],
     "countries": [
       "United States"
     ],
@@ -212,7 +219,8 @@
     "period_start": 1815,
     "period_end": 1834,
     "regions": [
-      "Western Europe"
+      "Western Europe",
+      "Northern Europe"
     ],
     "countries": [
       "Germany",
@@ -248,7 +256,7 @@
     "period_start": 1913,
     "period_end": 1913,
     "regions": [
-      "Western Europe"
+      "Northern Europe"
     ],
     "countries": [
       "United Kingdom"
@@ -265,8 +273,7 @@
     "period_start": 1600,
     "period_end": 1800,
     "regions": [
-      "Southern Europe",
-      "Global/Comparative"
+      "Southern Europe"
     ],
     "countries": [
       "Spain"
@@ -283,7 +290,9 @@
     "period_start": 919,
     "period_end": 1519,
     "regions": [
-      "Western Europe"
+      "Western Europe",
+      "Eastern Europe",
+      "Southern Europe"
     ],
     "countries": [
       "Germany",
@@ -460,8 +469,7 @@
     "period_start": 1939,
     "period_end": 1945,
     "regions": [
-      "Western Europe",
-      "Northern Europe"
+      "Western Europe"
     ],
     "countries": [
       "France",
@@ -598,7 +606,7 @@
     "period_start": 1945,
     "period_end": 1989,
     "regions": [
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany"
@@ -732,7 +740,8 @@
     "period_start": 1978,
     "period_end": 2020,
     "regions": [
-      "Eastern Asia"
+      "Eastern Asia",
+      "South-eastern Asia"
     ],
     "countries": [
       "China",
@@ -767,12 +776,10 @@
     "period_start": 1600,
     "period_end": 1914,
     "regions": [
-      "Northern Europe",
-      "Western Europe",
-      "Southern Europe",
-      "Eastern Europe",
       "Northern America",
-      "Global/Comparative"
+      "Northern Europe",
+      "Southern Europe",
+      "Western Europe"
     ],
     "countries": [
       "United Kingdom",
@@ -903,7 +910,8 @@
     "period_end": 1929,
     "regions": [
       "South America",
-      "Northern Europe"
+      "Northern Europe",
+      "Western Europe"
     ],
     "countries": [
       "Peru",
@@ -977,10 +985,10 @@
     "period_start": 1776,
     "period_end": 1920,
     "regions": [
-      "Northern America",
       "Eastern Europe",
-      "Western Europe",
-      "Southern Europe"
+      "Northern America",
+      "Northern Europe",
+      "Western Europe"
     ],
     "countries": [
       "United States",
@@ -1002,7 +1010,9 @@
     "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Election results act as powerful signals, shaping social behavior in ways that can be dramatic and even violent. This article shows how racial violence in the post-Reconstruction U.S. South was tied to the local performance of the anti-Black Democratic Party in presidential elections. Using a regression discontinuity design based on close presidential vote shares, we find that Southern counties where Democrats lost the popular vote between 1880 and 1900 were nearly twice as likely to experience Black lynchings in the following four years. Despite no corresponding changes in local office holding, these defeats were salient among local elites. We show that Southern newspapers, closely aligned with the Democratic Party, amplified narratives of Black criminality in the aftermath of Democratic losses. Such accusations were, in turn, frequently invoked by lynch mobs. These findings point to the strategic use of racial violence by Democratic elites, foreshadowing the institutionalized vote suppression of Jim Crow.</jats:p>",
     "period_start": 1880,
     "period_end": 1904,
-    "regions": [],
+    "regions": [
+      "Northern America"
+    ],
     "countries": [
       "United States"
     ],
@@ -1086,12 +1096,11 @@
     "period_start": 1000,
     "period_end": 1799,
     "regions": [
-      "Eastern Europe",
-      "Eastern Asia",
       "Central Asia",
+      "Eastern Asia",
+      "Eastern Europe",
       "Southern Asia",
-      "Western Asia",
-      "Global/Comparative"
+      "Western Asia"
     ],
     "countries": [
       "Russian Federation",
@@ -1123,9 +1132,10 @@
     "period_start": 1917,
     "period_end": 1991,
     "regions": [
+      "Caribbean",
       "Eastern Asia",
       "Eastern Europe",
-      "Global/Comparative"
+      "South-eastern Asia"
     ],
     "countries": [
       "China",
@@ -1396,9 +1406,8 @@
     "period_start": -500,
     "period_end": 300,
     "regions": [
-      "Southern Europe",
-      "Western Asia",
-      "Northern Africa"
+      "Northern Africa",
+      "Southern Europe"
     ],
     "countries": [
       "Greece",
@@ -1920,10 +1929,9 @@
     "period_start": 1930,
     "period_end": 1939,
     "regions": [
-      "Western Europe",
+      "Northern America",
       "Northern Europe",
-      "Southern Europe",
-      "Global/Comparative"
+      "Western Europe"
     ],
     "countries": [
       "Germany",
@@ -1995,7 +2003,9 @@
     "period_start": 1385,
     "period_end": 1520,
     "regions": [
-      "Western Europe"
+      "Western Europe",
+      "Eastern Europe",
+      "Southern Europe"
     ],
     "countries": [
       "Germany",
@@ -2053,7 +2063,9 @@
     "abstract": "<jats:p> We explore how access to modern hospitals and medicine affects mortality by leveraging efforts of the Duke Endowment to modernize hospitals in the early twentieth century. The Endowment helped communities build and expand hospitals, obtain state-of-the-art medical technology, attract qualified medical personnel, and refine management practices. We find that Duke support increased the size and quality of the medical sector, fostering growth in not-for-profit hospitals and high-quality physicians. Duke funding reduced both infant mortality—with larger effects for Black infants than White infants—and long-run mortality. Finally, we find that communities aided by Duke benefited more from medical innovations. (JEL I11, I12, J13, J15, L31, N32, O31) </jats:p>",
     "period_start": 1900,
     "period_end": 1950,
-    "regions": [],
+    "regions": [
+      "Northern America"
+    ],
     "countries": [
       "United States"
     ],
@@ -2171,7 +2183,8 @@
     "period_start": 1850,
     "period_end": 1920,
     "regions": [
-      "Northern Europe"
+      "Northern Europe",
+      "Northern America"
     ],
     "countries": [
       "Denmark",
@@ -2445,7 +2458,8 @@
     "period_end": 1930,
     "regions": [
       "Northern Europe",
-      "Australia and New Zealand"
+      "Australia and New Zealand",
+      "Western Europe"
     ],
     "countries": [
       "Norway",
@@ -2599,10 +2613,8 @@
     "period_start": 1075,
     "period_end": 1122,
     "regions": [
-      "Northern Europe",
       "Southern Europe",
-      "Western Europe",
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany",
@@ -2933,11 +2945,10 @@
     "period_start": 1883,
     "period_end": 1975,
     "regions": [
+      "Northern America",
       "Northern Europe",
       "Southern Europe",
-      "Western Europe",
-      "Eastern Europe",
-      "Northern America"
+      "Western Europe"
     ],
     "countries": [
       "Austria",
@@ -3152,10 +3163,9 @@
     "period_start": -3500,
     "period_end": 2018,
     "regions": [
-      "Southern Asia",
-      "South-eastern Asia",
       "Eastern Africa",
-      "Global/Comparative"
+      "South-eastern Asia",
+      "Southern Asia"
     ],
     "countries": [
       "India",
@@ -3313,10 +3323,9 @@
     "period_end": 1900,
     "regions": [
       "Northern Europe",
+      "South America",
       "Southern Europe",
-      "Western Europe",
-      "Eastern Europe",
-      "South America"
+      "Western Europe"
     ],
     "countries": [
       "Chile",
@@ -3341,9 +3350,8 @@
     "period_start": 1870,
     "period_end": 2010,
     "regions": [
-      "Northern America",
       "Central America",
-      "Global/Comparative"
+      "Northern America"
     ],
     "countries": [
       "United States",
@@ -3360,7 +3368,9 @@
     "abstract": "<jats:p>The 1965 Voting Rights Act (VRA) fundamentally changed the distribution of electoral power in the US South. We examine the consequences of this mass enfranchisement of Black people for the use of the carceral state—police, the courts, and the prison system. We study the extent to which white communities in the US South responded to the end of Jim Crow by increasing the incarceration of Black people. We test this with new historical data on state and county prison intake data by race (~1940–1985) in a series of difference-in-differences designs. We find that states covered by Section 5 of the VRA experienced a differential increase in Black prison admissions relative to those that were not covered and that incarceration varied systematically in proportion to the electoral threat posed by Black voters. Our findings indicate the potentially perverse consequences of enfranchisement when establishment power seeks—and finds—other outlets of social and political control.</jats:p>",
     "period_start": 1940,
     "period_end": 1985,
-    "regions": [],
+    "regions": [
+      "Northern America"
+    ],
     "countries": [
       "United States"
     ],
@@ -3512,7 +3522,7 @@
     "period_start": 1848,
     "period_end": 1874,
     "regions": [
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany"
@@ -3742,7 +3752,9 @@
     "period_start": 1990,
     "period_end": 2020,
     "regions": [
-      "Eastern Europe"
+      "Eastern Europe",
+      "Northern Europe",
+      "Southern Europe"
     ],
     "countries": [
       "Albania",
@@ -3788,7 +3800,7 @@
     "period_start": 1866,
     "period_end": 1906,
     "regions": [
-      "Global/Comparative"
+      "Northern Europe"
     ],
     "countries": [
       "United Kingdom"
@@ -3888,7 +3900,8 @@
     "period_start": 1880,
     "period_end": 1910,
     "regions": [
-      "Northern Europe"
+      "Northern Europe",
+      "Western Europe"
     ],
     "countries": [
       "United Kingdom",
@@ -4173,10 +4186,9 @@
     "period_start": 1880,
     "period_end": 2010,
     "regions": [
-      "Western Africa",
       "Eastern Africa",
       "Middle Africa",
-      "Southern Africa"
+      "Western Africa"
     ],
     "countries": [
       "Benin",
@@ -4425,7 +4437,7 @@
     "period_start": 1907,
     "period_end": 1907,
     "regions": [
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Austria"
@@ -4478,8 +4490,7 @@
     "period_start": 1850,
     "period_end": 2007,
     "regions": [
-      "Northern America",
-      "Global/Comparative"
+      "Northern America"
     ],
     "countries": [
       "United States"
@@ -4514,7 +4525,7 @@
     "period_end": 1917,
     "regions": [
       "Eastern Europe",
-      "Western Asia"
+      "Western Europe"
     ],
     "countries": [
       "Russian Federation",
@@ -4565,7 +4576,9 @@
     "abstract": "<jats:p>Southern states have used a variety of methods to disenfranchise African American voters. Empirical data on the effectiveness of these measures is rare. We present a unique data source from Louisiana that allows us to empirically document voter registration rates from the end of Reconstruction to the present. Using basic time series data, we document how voter registration rates changed over time in response to state restrictions. We then conduct a second analysis, which focuses on Louisiana’s use of the Understanding Clause to reduce voter registration among Blacks. We show that in parishes that used the Understanding Clause, Black registration rates dropped by nearly 30 percentage points, with little effect on white registration. The findings of this paper have important implications for understanding the potential for discrimination in the enforcement of modern, ostensibly nonracial, voter eligibility requirements, such as voter ID laws, which grant substantial discretion to local officials in determining voter eligibility.</jats:p>",
     "period_start": 1867,
     "period_end": 2023,
-    "regions": [],
+    "regions": [
+      "Northern America"
+    ],
     "countries": [
       "United States"
     ],
@@ -4682,7 +4695,9 @@
     "abstract": "<jats:p>The nullification of slave wealth after the US Civil War (1861–1865) was one of the largest episodes of wealth compression in history. We document that White Southern households that owned more slaves in 1860 lost substantially more wealth by 1870, relative to Southern households that had been equally wealthy before the war. Yet, their sons almost entirely recovered from this wealth shock by 1900, and their grandsons completely converged by 1940. Marriage networks and connections to other elite families may have aided in recovery, whereas transmission of entrepreneurship and skills appear less central. (JEL D31, G51, J15, J24, N31, N32)</jats:p>",
     "period_start": 1861,
     "period_end": 1940,
-    "regions": [],
+    "regions": [
+      "Northern America"
+    ],
     "countries": [
       "United States"
     ],
@@ -4698,8 +4713,7 @@
     "period_start": 1921,
     "period_end": 1956,
     "regions": [
-      "Middle Africa",
-      "Eastern Africa"
+      "Middle Africa"
     ],
     "countries": [
       "Cameroon",
@@ -4720,8 +4734,7 @@
     "period_start": 1535,
     "period_end": 1900,
     "regions": [
-      "Northern Europe",
-      "Western Europe"
+      "Northern Europe"
     ],
     "countries": [
       "United Kingdom"
@@ -4755,7 +4768,7 @@
     "period_start": 1962,
     "period_end": 1990,
     "regions": [
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany"
@@ -5228,10 +5241,10 @@
     "period_start": 800,
     "period_end": 1600,
     "regions": [
+      "Central Asia",
       "Eastern Asia",
-      "Western Asia",
       "Southern Asia",
-      "Global/Comparative"
+      "Western Asia"
     ],
     "countries": [
       "China",
@@ -5306,13 +5319,13 @@
     "period_start": 1600,
     "period_end": 1900,
     "regions": [
-      "Northern America",
+      "Australia and New Zealand",
       "Caribbean",
-      "South America",
-      "Southern Africa",
-      "Western Africa",
+      "Central America",
       "Eastern Africa",
-      "Global/Comparative"
+      "Northern America",
+      "Southern Africa",
+      "Western Africa"
     ],
     "countries": [
       "United States",
@@ -5527,7 +5540,7 @@
     "period_start": 1994,
     "period_end": 2024,
     "regions": [
-      "Western Asia"
+      "Eastern Europe"
     ],
     "countries": [
       "Russian Federation"
@@ -5593,8 +5606,7 @@
     "period_start": 1939,
     "period_end": 1945,
     "regions": [
-      "Western Europe",
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany"
@@ -5626,7 +5638,7 @@
     "period_start": 1989,
     "period_end": 1989,
     "regions": [
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany"
@@ -5642,7 +5654,9 @@
     "abstract": "<jats:p>This paper investigates the opportunities for non-democratic regimes to rely on fraud by documenting the alteration of vote tallies during the 1988 presidential election in Mexico. In particular, I study how the alteration of vote returns came after an electoral reform that centralized the vote-counting process. Using an original image database of the vote-tally sheets for that election and applying Convolutional Neural Networks (CNN) to analyze the sheets, I find evidence of blatant alterations in about a third of the tallies in the country. This empirical analysis shows that altered tallies were more prevalent in polling stations where the opposition was not present and in states controlled by governors with grassroots experience of managing the electoral operation. This research has implications for understanding the ways in which autocrats control elections as well as for introducing a new methodology to audit the integrity of vote tallies.</jats:p>",
     "period_start": 1988,
     "period_end": 1988,
-    "regions": [],
+    "regions": [
+      "Central America"
+    ],
     "countries": [
       "Mexico"
     ],
@@ -5677,7 +5691,8 @@
     "regions": [
       "Western Europe",
       "Southern Europe",
-      "Western Asia"
+      "Western Asia",
+      "Northern Europe"
     ],
     "countries": [
       "Türkiye",
@@ -5819,7 +5834,9 @@
     "abstract": "<jats:p>International wars and interstate rivalry have been at the center of our understanding of the origin and expansion of state capacity. This article describes an alternative path to the development of state capacity rooted in domestic political conflict. Under conditions of intra-elite conflict, political rulers seize upon the temporary weakness of their rivals, expropriate their assets, and consolidate authority. Because this political consolidation increases rulers’ chances of surviving an economic elite’s challenge, it enhances their incentives to develop state capacity. These ideas are evaluated in post-revolutionary Mexico, where commodity price shocks induced by the Great Depression affected the local economic elite differentially. Negative shocks lead to increased asset expropriation and substantially higher investments in state capacity, which persist to the present.</jats:p>",
     "period_start": 1920,
     "period_end": 2020,
-    "regions": [],
+    "regions": [
+      "Central America"
+    ],
     "countries": [
       "Mexico"
     ],
@@ -5985,8 +6002,7 @@
     "period_start": 1919,
     "period_end": 1939,
     "regions": [
-      "Northern Africa",
-      "Western Asia"
+      "Northern Africa"
     ],
     "countries": [
       "Egypt"
@@ -6038,7 +6054,8 @@
     "period_end": 1963,
     "regions": [
       "Eastern Europe",
-      "Northern America"
+      "Northern America",
+      "Western Europe"
     ],
     "countries": [
       "Germany",
@@ -6137,7 +6154,7 @@
     "period_end": 1920,
     "regions": [
       "Northern America",
-      "Western Europe"
+      "Northern Europe"
     ],
     "countries": [
       "United States",
@@ -6172,11 +6189,12 @@
     "period_start": 1000,
     "period_end": 1750,
     "regions": [
-      "Northern Europe",
-      "Southern Europe",
-      "Western Europe",
+      "Eastern Asia",
       "Eastern Europe",
-      "Global/Comparative"
+      "Northern Europe",
+      "Southern Asia",
+      "Southern Europe",
+      "Western Europe"
     ],
     "countries": [
       "United Kingdom",
@@ -6222,7 +6240,8 @@
       "Northern America",
       "Caribbean",
       "South America",
-      "Western Europe"
+      "Western Europe",
+      "Southern Europe"
     ],
     "countries": [
       "United States",
@@ -6299,7 +6318,8 @@
     "period_end": 2003,
     "regions": [
       "Eastern Africa",
-      "Middle Africa"
+      "Middle Africa",
+      "Southern Africa"
     ],
     "countries": [
       "Congo, The Democratic Republic of the",
@@ -6373,7 +6393,6 @@
     "period_start": 1944,
     "period_end": 2014,
     "regions": [
-      "Western Asia",
       "Eastern Europe"
     ],
     "countries": [
@@ -6443,8 +6462,7 @@
     "period_start": 1832,
     "period_end": 1915,
     "regions": [
-      "Northern Europe",
-      "Western Europe"
+      "Northern Europe"
     ],
     "countries": [
       "United Kingdom"
@@ -6563,8 +6581,7 @@
     "period_start": 1961,
     "period_end": 1989,
     "regions": [
-      "Western Europe",
-      "Eastern Europe"
+      "Western Europe"
     ],
     "countries": [
       "Germany"
@@ -6783,8 +6800,7 @@
     "period_start": 1992,
     "period_end": 1995,
     "regions": [
-      "Southern Europe",
-      "Eastern Europe"
+      "Southern Europe"
     ],
     "countries": [
       "Bosnia and Herzegovina"

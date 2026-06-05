@@ -28,6 +28,7 @@ hpedb-supplement = "hpedb.supplement:main"
 hpedb-classify   = "hpedb.classify:main"
 hpedb-enrich     = "hpedb.enrich:main"
 hpedb-export     = "hpedb.export:main"
+hpedb-overrides  = "hpedb.overrides:main"
 
 [build-system]
 requires = ["poetry-core"]

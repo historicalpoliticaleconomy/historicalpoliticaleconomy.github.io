@@ -13,7 +13,13 @@
     <a class="btn-add" href="submit.html">Add your dataset</a>
   </header>
   <main>
-    <div id="heatmap"></div>
+    <div class="search-panel">
+      <div class="search-row">
+        <input type="search" id="search-input"
+               placeholder="Search title, author, or tag…" autocomplete="off">
+      </div>
+      <div id="heatmap"></div>
+    </div>
     <p class="results-count" id="results-count"></p>
     <ul id="results" class="results-list"></ul>
   </main>

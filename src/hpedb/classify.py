@@ -147,6 +147,7 @@ _COUNTRY_ALIASES: dict[str, str] = {
     # Ecclesiastical / disputed / renamed
     "Vatican City":          "Holy See (Vatican City State)",
     "Palestine":             "Palestine, State of",
+    "Taiwan":                "Taiwan, Province of China",
     # Note: 'United States of America' resolves via pycountry.lookup() (official_name match)
 }
 
@@ -406,6 +407,48 @@ def validate_prompt(
     print(f"\n{passed} passed  {failed} failed  {skipped} skipped  (of {len(CASES)} cases)")
 
 
+def fix_region_country_mismatch(
+    conn: sqlite3.Connection, geo_path: str = "docs/geo.json"
+) -> int:
+    """
+    For each classification with countries, replace regions with the M.49 subregions
+    derived from those countries via geo.json. Papers with no countries (e.g.
+    Global/Comparative) are skipped. Papers whose countries have no geo.json match
+    are also skipped (regions left unchanged).
+    """
+    with open(geo_path, encoding="utf-8") as f:
+        geo_data = json.load(f)
+    country_to_subregion: dict[str, str] = {
+        c["name"]: c["subregion"]
+        for c in geo_data["countries"]
+        if c.get("name") and c.get("subregion")
+    }
+
+    rows = conn.execute("SELECT doi, regions, countries FROM classifications").fetchall()
+    updated = 0
+    for doi, regions_json, countries_json in rows:
+        regions   = json.loads(regions_json or "[]")
+        countries = json.loads(countries_json or "[]")
+        if not countries:
+            continue
+        derived = sorted({
+            sub
+            for c in countries
+            if (sub := country_to_subregion.get(c)) and sub in VALID_REGIONS
+        })
+        if not derived:
+            continue
+        if set(derived) != set(regions):
+            conn.execute(
+                "UPDATE classifications SET regions = ? WHERE doi = ?",
+                (json.dumps(derived), str(doi)),
+            )
+            updated += 1
+
+    conn.commit()
+    return updated
+
+
 def fix_many_countries(conn: sqlite3.Connection, threshold: int = 25) -> int:
     """
     For classifications with more than `threshold` countries, clear countries
@@ -486,6 +529,10 @@ def main() -> None:
                         help="Reclassify already-classified articles")
     parser.add_argument("--normalize-countries", action="store_true",
                         help="Re-normalize country names in existing classifications (no API calls)")
+    parser.add_argument("--fix-region-country-mismatch", action="store_true",
+                        help="Replace regions with M.49 subregions derived from countries via geo.json (no API calls)")
+    parser.add_argument("--geo", default="docs/geo.json", metavar="PATH",
+                        help="Path to geo.json for --fix-region-country-mismatch (default: docs/geo.json)")
     parser.add_argument("--fix-many-countries", action="store_true",
                         help="Set countries=[] and region=Global/Comparative for papers exceeding threshold (no API calls)")
     parser.add_argument("--country-threshold", type=int, default=25, metavar="N",
@@ -508,6 +555,12 @@ def main() -> None:
         n = normalize_stored_countries(conn)
         conn.close()
         print(f"Updated country names in {n} classifications.")
+        return
+
+    if args.fix_region_country_mismatch:
+        n = fix_region_country_mismatch(conn, geo_path=args.geo)
+        conn.close()
+        print(f"Replaced regions from countries in {n} classifications.")
         return
 
     if args.fix_many_countries:

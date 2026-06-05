@@ -1,17 +1,38 @@
 /** @type {Array<Object>} */
 let allData = [];
 
-// Geo data built from geo.json at init time
-/** @type {Map<string, string[]>} subregion → country names */
+/** @type {Map<string, string[]>} */
 let SUBREGION_COUNTRIES = new Map();
-/** @type {Map<string, string>} subregion → continent */
+/** @type {Map<string, string>} */
 let SUBREGION_CONTINENT = new Map();
-/** @type {string[]} ordered continent names */
+/** @type {string[]} */
 let CONTINENTS = [];
-/** @type {Map<string, string[]>} continent → subregion names */
+/** @type {Map<string, string[]>} */
 let CONTINENT_SUBREGIONS = new Map();
+/** @type {Map<string, string>} geo.json country name → its canonical subregion */
+let COUNTRY_CANONICAL_SUBREGION = new Map();
 
 const CONTINENT_ORDER = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+const COUNTRY_DISPLAY_NAMES = new Map([
+  ['Congo, The Democratic Republic of the', 'DR Congo'],
+  ['Korea, Republic of',                    'South Korea'],
+  ['Korea, Democratic People\'s Republic of', 'North Korea'],
+  ['Russian Federation',                    'Russia'],
+  ['Iran, Islamic Republic of',             'Iran'],
+  ['Syrian Arab Republic',                  'Syria'],
+  ['Viet Nam',                              'Vietnam'],
+  ['Taiwan, Province of China',             'Taiwan'],
+  ['Palestine, State of',                   'Palestine'],
+  ['Lao People\'s Democratic Republic',     'Laos'],
+  ['Bolivia, Plurinational State of',       'Bolivia'],
+  ['Venezuela, Bolivarian Republic of',     'Venezuela'],
+  ['Tanzania, United Republic of',          'Tanzania'],
+  ['Moldova, Republic of',                  'Moldova'],
+  ['Holy See (Vatican City State)',          'Vatican City'],
+]);
+
+const displayCountry = name => COUNTRY_DISPLAY_NAMES.get(name) ?? name;
 
 const BUCKETS = [
   { label: 'Pre-1000',  start: -Infinity, end: 999   },
@@ -25,13 +46,15 @@ const BUCKETS = [
   { label: '1945+',     start: 1945,      end: Infinity },
 ];
 
-// Heatmap drill-down state: 0=continents, 1=subregions, 2=countries
+// Heatmap drill-down state
 let heatmapLevel   = 0;
 let focusContinent = null;
 let focusSubregion = null;
 
-// Article filter state
-let selectedCell = null; // { rowKey: string, bi: number }
+// Two-level filter state
+let searchQuery  = '';   // top-level: text
+let selectedCell = null; // lower-level: { rowKey, bi }
+
 
 function buildGeo(geoData) {
   const bySubregion    = new Map();
@@ -57,6 +80,12 @@ function buildGeo(geoData) {
   CONTINENT_SUBREGIONS = contSubMap;
 
   CONTINENTS = [...CONTINENT_ORDER.filter(c => contSubMap.has(c)), 'Global/Comparative'];
+
+  const canonMap = new Map();
+  for (const [sub, countries] of bySubregion) {
+    for (const c of countries) canonMap.set(c, sub);
+  }
+  COUNTRY_CANONICAL_SUBREGION = canonMap;
 }
 
 // ── Color scale ───────────────────────────────────────────────────────────────
@@ -67,7 +96,7 @@ function cellColor(count, max) {
   return `rgb(${Math.round(208 - 179 * t)},${Math.round(218 - 166 * t)},${Math.round(240 - 143 * t)})`;
 }
 
-// ── Count helpers ─────────────────────────────────────────────────────────────
+// ── Pure filter helpers (also tested in tests/test_app_logic.mjs) ─────────────
 
 function entryOverlapsBucket(entry, bucket) {
   const ps = entry.period_start ?? entry.period_end;
@@ -75,6 +104,7 @@ function entryOverlapsBucket(entry, bucket) {
   if (ps == null) return false;
   return ps <= bucket.end && pe >= bucket.start;
 }
+
 
 function entryMatchesKey(entry, key) {
   if (key === 'Global/Comparative') return entry.regions.includes('Global/Comparative');
@@ -86,9 +116,27 @@ function entryMatchesKey(entry, key) {
   return (entry.countries || []).includes(key);
 }
 
-function countsByRows(rows) {
+// Returns allData filtered by the top-level text + date inputs.
+// The heatmap and cell filter operate on this subset.
+function entryMatchesText(entry, query) {
+  const terms    = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const haystack = [
+    entry.title    || '',
+    entry.authors  || '',
+    ...(entry.regions    || []),
+    ...(entry.countries  || []),
+    ...(entry._continents || []),
+  ].join(' ').toLowerCase();
+  return terms.every(t => haystack.includes(t));
+}
+
+function getSearchCandidates() {
+  return searchQuery ? allData.filter(e => entryMatchesText(e, searchQuery)) : allData;
+}
+
+function countsByRows(rows, data) {
   const counts = rows.map(() => BUCKETS.map(() => 0));
-  for (const entry of allData) {
+  for (const entry of data) {
     BUCKETS.forEach((b, bi) => {
       if (!entryOverlapsBucket(entry, b)) return;
       rows.forEach((key, ri) => {
@@ -97,6 +145,44 @@ function countsByRows(rows) {
     });
   }
   return counts;
+}
+
+// Countries visible in a subregion drill-down.
+// Canonical (geo.json) countries appear only under their canonical subregion.
+// Non-canonical countries (historical polities, territories) are "anchored" to
+// whichever of an entry's subregions has the most canonical countries — preventing
+// them from bleeding into unrelated subregions on multi-region comparative papers.
+function countriesForSubregion(sub, data) {
+  return [...new Set(
+    data
+      .filter(e => e.regions.includes(sub))
+      .flatMap(e => {
+        const regions   = e.regions   || [];
+        const countries = e.countries || [];
+
+        // Compute anchor regions for non-canonical countries: the region(s) in
+        // this entry with the highest count of geo.json-canonical countries.
+        let anchorRegions;
+        if (regions.length <= 1) {
+          anchorRegions = new Set(regions);
+        } else {
+          const counts = regions.map(r => ({
+            r, n: countries.filter(c => COUNTRY_CANONICAL_SUBREGION.get(c) === r).length,
+          }));
+          const max = Math.max(...counts.map(x => x.n));
+          // No canonical countries at all → can't determine anchor, allow all regions.
+          anchorRegions = new Set(
+            max === 0 ? regions : counts.filter(x => x.n === max).map(x => x.r)
+          );
+        }
+
+        return countries.filter(c => {
+          if (!c) return false;
+          const canonical = COUNTRY_CANONICAL_SUBREGION.get(c);
+          return canonical ? canonical === sub : anchorRegions.has(sub);
+        });
+      })
+  )];
 }
 
 // ── Heatmap rendering ─────────────────────────────────────────────────────────
@@ -110,9 +196,8 @@ function buildHeatmap() {
   else if (heatmapLevel === 1) renderSubregionView(container);
   else renderCountryView(container);
 
-  // Restart fade-in animation on every rebuild
   container.classList.remove('hm-fade-in');
-  void container.offsetHeight; // force reflow
+  void container.offsetHeight;
   container.classList.add('hm-fade-in');
 }
 
@@ -121,20 +206,21 @@ function renderBreadcrumb(container) {
   bc.className = 'hm-breadcrumb';
   bc.style.gridColumn = '1 / -1';
 
-  // Build trail: all non-current items are clickable links
   const items = [
     {
       label:  'All continents',
-      action: () => { heatmapLevel = 0; focusContinent = null; focusSubregion = null; clearSelection(); buildHeatmap(); },
+      action: () => {
+        heatmapLevel = 0; focusContinent = null; focusSubregion = null;
+        selectedCell = null; buildHeatmap(); applyFilters();
+      },
     },
   ];
   if (focusContinent && heatmapLevel === 2) {
     items.push({
       label:  focusContinent,
-      action: () => { heatmapLevel = 1; focusSubregion = null; clearSelection(); buildHeatmap(); },
+      action: () => { heatmapLevel = 1; focusSubregion = null; selectedCell = null; buildHeatmap(); applyFilters(); },
     });
   }
-  // Current level — not a link
   items.push({ label: heatmapLevel === 1 ? focusContinent : focusSubregion, action: null });
 
   bc.innerHTML = items.map((item, i) =>
@@ -170,7 +256,7 @@ function renderRows(container, rows, maxCount, counts, onLabelClick, labelClassF
     const rowLabel = document.createElement('div');
     rowLabel.className   = getClass(key);
     rowLabel.id          = `hm-row-${CSS.escape(key)}`;
-    rowLabel.textContent = key;
+    rowLabel.textContent = displayCountry(key);
     rowLabel.addEventListener('click', () => onLabelClick(key));
     container.appendChild(rowLabel);
 
@@ -191,50 +277,122 @@ function renderRows(container, rows, maxCount, counts, onLabelClick, labelClassF
   });
 }
 
-function renderContinentView(container) {
-  renderColumnHeaders(container);
-  const counts   = countsByRows(CONTINENTS);
-  const maxCount = Math.max(1, ...counts.flat());
-  renderRows(container, CONTINENTS, maxCount, counts, key => {
-    if (key === 'Global/Comparative') { toggleCell(key, selectedCell?.bi ?? -1); return; }
-    focusContinent = key;
-    heatmapLevel   = 1;
-    clearSelection();
-    buildHeatmap();
-  });
-}
+// Returns the flat row list for a continent after subregion auto-expansion.
+// Greedily expands the smallest subregions first while total rows stays ≤ 10.
+function effectiveSubregionRows(continent, data) {
+  const rows         = [];
+  const autoExpanded = new Set();
 
-function renderSubregionView(container) {
-  renderBreadcrumb(container);
-  renderColumnHeaders(container);
+  const subregionData = [];
+  for (const sub of (CONTINENT_SUBREGIONS.get(continent) || [])) {
+    if (!data.some(e => entryMatchesKey(e, sub))) continue;
+    const activeCountries = countriesForSubregion(sub, data);
+    subregionData.push({ sub, activeCountries });
+  }
 
-  const allSubs = CONTINENT_SUBREGIONS.get(focusContinent) || [];
+  let totalRows = subregionData.length;
+  const expanded = new Set();
+  const bySize = [...subregionData]
+    .filter(d => d.activeCountries.length > 0)
+    .sort((a, b) => a.activeCountries.length - b.activeCountries.length);
 
-  // Build flat row list: subregions with ≤2 active countries are replaced by their country rows
-  const rows       = [];
-  const autoExpanded = new Set(); // keys that are inlined country names
+  for (const { sub, activeCountries } of bySize) {
+    if (totalRows + (activeCountries.length - 1) <= 10) {
+      expanded.add(sub);
+      totalRows += activeCountries.length - 1;
+    }
+  }
 
-  for (const sub of allSubs) {
-    if (!allData.some(e => entryMatchesKey(e, sub))) continue;
-    const activeCountries = (SUBREGION_COUNTRIES.get(sub) || []).filter(c =>
-      allData.some(e => (e.countries || []).includes(c))
-    );
-    if (activeCountries.length > 0 && activeCountries.length <= 2) {
+  for (const { sub, activeCountries } of subregionData) {
+    if (expanded.has(sub)) {
       for (const c of activeCountries) { rows.push(c); autoExpanded.add(c); }
     } else {
       rows.push(sub);
     }
   }
 
-  const counts = countsByRows(rows);
-  const max    = Math.max(1, ...counts.flat());
+  return { rows, autoExpanded };
+}
+
+function renderContinentView(container) {
+  renderColumnHeaders(container);
+  const data = getSearchCandidates();
+
+  // Compute effective rows per active continent
+  const continentData = [];
+  for (const continent of CONTINENTS) {
+    if (continent === 'Global/Comparative') {
+      if (data.some(e => (e.regions || []).includes('Global/Comparative'))) {
+        continentData.push({ continent, effRows: ['Global/Comparative'], isGlobal: true });
+      }
+      continue;
+    }
+    const { rows: effRows } = effectiveSubregionRows(continent, data);
+    if (effRows.length === 0) continue;
+    continentData.push({ continent, effRows, isGlobal: false });
+  }
+
+  // Greedily expand continents (smallest first) while total rows ≤ 10
+  let totalRows = continentData.length;
+  const expandedContinents = new Set();
+  const bySize = [...continentData]
+    .filter(d => !d.isGlobal)
+    .sort((a, b) => a.effRows.length - b.effRows.length);
+
+  for (const { continent, effRows } of bySize) {
+    if (totalRows + (effRows.length - 1) <= 10) {
+      expandedContinents.add(continent);
+      totalRows += effRows.length - 1;
+    }
+  }
+
+  // Build flat row list in CONTINENTS order
+  const rows         = [];
+  const autoExpanded = new Set();
+  for (const { continent, effRows, isGlobal } of continentData) {
+    if (isGlobal || !expandedContinents.has(continent)) {
+      rows.push(continent);
+    } else {
+      for (const r of effRows) {
+        rows.push(r);
+        if (!SUBREGION_COUNTRIES.has(r)) autoExpanded.add(r);
+      }
+    }
+  }
+
+  const counts   = countsByRows(rows, data);
+  const maxCount = Math.max(1, ...counts.flat());
+  renderRows(container, rows, maxCount, counts, key => {
+    if (autoExpanded.has(key)) return;
+    if (key === 'Global/Comparative') { toggleCell(key, -1); return; }
+    if (SUBREGION_COUNTRIES.has(key)) {
+      focusContinent = SUBREGION_CONTINENT.get(key) ?? null;
+      focusSubregion = key;
+      heatmapLevel   = 2; selectedCell = null;
+      buildHeatmap(); applyFilters(); return;
+    }
+    focusContinent = key;
+    heatmapLevel   = 1; selectedCell = null;
+    buildHeatmap(); applyFilters();
+  }, key => autoExpanded.has(key) ? 'hm-row-label hm-country-label' : 'hm-row-label');
+}
+
+function renderSubregionView(container) {
+  renderBreadcrumb(container);
+  renderColumnHeaders(container);
+
+  const data                     = getSearchCandidates();
+  const { rows, autoExpanded }   = effectiveSubregionRows(focusContinent, data);
+  const counts                   = countsByRows(rows, data);
+  const max                      = Math.max(1, ...counts.flat());
 
   renderRows(container, rows, max, counts, key => {
-    if (autoExpanded.has(key)) return; // no drill-down from auto-expanded country rows
+    if (autoExpanded.has(key)) return;
     focusSubregion = key;
     heatmapLevel   = 2;
-    clearSelection();
+    selectedCell   = null;
     buildHeatmap();
+    applyFilters();
   }, key => autoExpanded.has(key) ? 'hm-row-label hm-country-label' : 'hm-row-label');
 }
 
@@ -242,8 +400,8 @@ function renderCountryView(container) {
   renderBreadcrumb(container);
   renderColumnHeaders(container);
 
-  const allCountries    = SUBREGION_COUNTRIES.get(focusSubregion) || [];
-  const activeCountries = allCountries.filter(c => allData.some(e => (e.countries || []).includes(c)));
+  const data            = getSearchCandidates();
+  const activeCountries = countriesForSubregion(focusSubregion, data);
 
   if (!activeCountries.length) {
     const msg = document.createElement('div');
@@ -256,19 +414,17 @@ function renderCountryView(container) {
     return;
   }
 
-  const counts = countsByRows(activeCountries);
+  const counts = countsByRows(activeCountries, data);
   const max    = Math.max(1, ...counts.flat());
   renderRows(container, activeCountries, max, counts, () => {}, 'hm-row-label hm-country-label');
 }
 
 // ── Selection ─────────────────────────────────────────────────────────────────
 
-function clearSelection() {
-  selectedCell = null;
-}
-
 function toggleCell(rowKey, bi) {
-  selectedCell = (selectedCell?.rowKey === rowKey && selectedCell?.bi === bi) ? null : { rowKey, bi };
+  selectedCell = (selectedCell?.rowKey === rowKey && selectedCell?.bi === bi)
+    ? null
+    : { rowKey, bi };
   buildHeatmap();
   applyFilters();
 }
@@ -276,11 +432,13 @@ function toggleCell(rowKey, bi) {
 // ── Filtering ─────────────────────────────────────────────────────────────────
 
 function applyFilters() {
-  const filtered = allData.filter(entry => {
-    if (selectedCell === null) return true;
-    const { rowKey, bi } = selectedCell;
-    return entryMatchesKey(entry, rowKey) && entryOverlapsBucket(entry, BUCKETS[bi]);
-  });
+  const candidates = getSearchCandidates();
+  const filtered   = selectedCell === null
+    ? candidates
+    : candidates.filter(entry =>
+        entryMatchesKey(entry, selectedCell.rowKey) &&
+        (selectedCell.bi < 0 || entryOverlapsBucket(entry, BUCKETS[selectedCell.bi]))
+      );
 
   document.getElementById('results-count').textContent =
     `${filtered.length} dataset${filtered.length !== 1 ? 's' : ''}`;
@@ -311,8 +469,10 @@ function errorHref(doi) {
 
 function renderCard(entry) {
   const period      = formatPeriod(entry.period_start, entry.period_end);
-  const regionTags  = entry.regions.map(r => `<span class="tag">${escapeHtml(r)}</span>`).join('');
-  const countryTags = (entry.countries || []).map(c => `<span class="country-tag">${escapeHtml(c)}</span>`).join('');
+  const regionTags  = entry.regions.map(r =>
+    `<span class="tag" data-region="${escapeHtml(r)}">${escapeHtml(r)}</span>`).join('');
+  const countryTags = (entry.countries || []).map(c =>
+    `<span class="country-tag" data-country="${escapeHtml(c)}">${escapeHtml(displayCountry(c))}</span>`).join('');
 
   return `
     <li class="card">
@@ -343,6 +503,46 @@ async function init() {
   allData = await dataResp.json();
   buildGeo(await geoResp.json());
 
+  for (const entry of allData) {
+    entry._continents = (entry.regions || [])
+      .map(r => SUBREGION_CONTINENT.get(r)).filter(Boolean);
+  }
+
+  document.getElementById('search-input').addEventListener('input', e => {
+    searchQuery  = e.target.value.trim();
+    selectedCell = null;
+    buildHeatmap();
+    applyFilters();
+  });
+
+  document.getElementById('results').addEventListener('click', e => {
+    const regionEl  = e.target.closest('[data-region]');
+    const countryEl = e.target.closest('[data-country]');
+    if (!regionEl && !countryEl) return;
+    e.stopPropagation();
+
+    if (regionEl) {
+      const r = regionEl.dataset.region;
+      if (r === 'Global/Comparative') return;
+      focusSubregion = r;
+      focusContinent = SUBREGION_CONTINENT.get(r) ?? null;
+      heatmapLevel   = 2;
+      selectedCell   = { rowKey: r, bi: -1 };
+    } else {
+      const c   = countryEl.dataset.country;
+      const sub = COUNTRY_CANONICAL_SUBREGION.get(c)
+        ?? [...SUBREGION_COUNTRIES.keys()].find(s => countriesForSubregion(s, allData).includes(c));
+      if (!sub) return;
+      focusSubregion = sub;
+      focusContinent = SUBREGION_CONTINENT.get(sub) ?? null;
+      heatmapLevel   = 2;
+      selectedCell   = { rowKey: c, bi: -1 };
+    }
+
+    buildHeatmap();
+    applyFilters();
+  });
+
   buildHeatmap();
   applyFilters();
 }
@@ -351,3 +551,45 @@ init().catch(err => {
   document.getElementById('results-count').textContent = 'Failed to load data.';
   console.error(err);
 });
+
+// ── Debug helpers (call from browser console) ─────────────────────────────────
+// debugSubregion("party", "Caribbean") — shows which countries appear and why
+window.debugSubregion = function(query, sub) {
+  const data = query
+    ? allData.filter(e => entryMatchesText(e, query))
+    : allData;
+  const entries = data.filter(e => e.regions.includes(sub));
+  console.group(`countriesForSubregion("${sub}") with query="${query}" — ${entries.length} entries`);
+  for (const e of entries) {
+    const regions   = e.regions   || [];
+    const countries = e.countries || [];
+    const counts = regions.map(r => ({
+      r, n: countries.filter(c => COUNTRY_CANONICAL_SUBREGION.get(c) === r).length,
+    }));
+    const max = Math.max(...counts.map(x => x.n));
+    const anchors = max === 0 ? regions : counts.filter(x => x.n === max).map(x => x.r);
+    const shown = countries.filter(c => {
+      const canon = COUNTRY_CANONICAL_SUBREGION.get(c);
+      return canon ? canon === sub : anchors.includes(sub);
+    });
+    console.log(e.doi, '|', e.title?.slice(0, 60));
+    console.log('  regions:', regions.join(', '));
+    console.log('  countries:', countries.join(', '));
+    console.log('  canonical counts:', counts.map(x => `${x.r}:${x.n}`).join(', '));
+    console.log('  anchors:', anchors.join(', '), '| shown here:', shown.join(', '));
+  }
+  console.groupEnd();
+};
+
+// debugContinent("party") — shows what the continent view would render
+window.debugContinent = function(query) {
+  const data = query ? allData.filter(e => entryMatchesText(e, query)) : allData;
+  console.group(`continent view for query="${query}"`);
+  for (const continent of CONTINENTS) {
+    if (continent === 'Global/Comparative') continue;
+    const { rows: effRows } = effectiveSubregionRows(continent, data);
+    if (effRows.length === 0) continue;
+    console.log(continent, '→', effRows.join(', '), `(${effRows.length} rows)`);
+  }
+  console.groupEnd();
+};
