@@ -3,6 +3,21 @@ description: Suggest a dataset for inclusion
 labels: [new-entry]
 body:
   - type: input
+    id: title
+    attributes:
+      label: Paper title
+    validations:
+      required: true
+
+  - type: input
+    id: authors
+    attributes:
+      label: Authors
+      description: Last, First; Last, First
+    validations:
+      required: true
+
+  - type: input
     id: doi
     attributes:
       label: DOI
@@ -10,9 +25,23 @@ body:
       required: true
 
   - type: input
+    id: journal
+    attributes:
+      label: Journal
+    validations:
+      required: true
+
+  - type: input
+    id: year
+    attributes:
+      label: Publication year
+    validations:
+      required: true
+
+  - type: input
     id: replication_url
     attributes:
-      label: Replication URL
+      label: Data link
       description: Direct link to dataset or replication archive.
     validations:
       required: true
@@ -20,8 +49,8 @@ body:
   - type: input
     id: regions
     attributes:
-      label: Regions
-      description: UN M.49 subregion names, comma-separated (e.g. Western Europe, South-eastern Asia).
+      label: Geographic coverage
+      description: Subregion(s), comma-separated (e.g. Western Europe, South-eastern Asia).
     validations:
       required: true
 
@@ -29,7 +58,7 @@ body:
     id: countries
     attributes:
       label: Countries
-      description: ISO 3166-1 English short names, comma-separated. Leave blank if global/comparative.
+      description: Comma-separated. Leave blank if global/comparative.
 
   - type: input
     id: period_start

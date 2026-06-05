@@ -1,5 +1,5 @@
 name: Data correction
-description: Report an error in an existing entry's classification
+description: Report an error in an existing entry
 labels: [correction]
 body:
   - type: input
@@ -9,26 +9,53 @@ body:
     validations:
       required: true
 
-  - type: checkboxes
-    id: fields
-    attributes:
-      label: Field(s) to correct
-      options:
-        - label: regions
-        - label: countries
-        - label: period_start / period_end
-        - label: replication_url
-        - label: is_hpe
-
   - type: textarea
-    id: correction
+    id: what_is_wrong
     attributes:
-      label: Corrected value(s)
-      description: Use UN M.49 subregion names for regions; ISO 3166-1 English short names for countries.
+      label: What is wrong?
+      description: Describe the error in plain terms.
     validations:
       required: true
+
+  - type: input
+    id: regions
+    attributes:
+      label: Corrected geographic coverage
+      description: >
+        If the subregion(s) are wrong, provide the correct ones here
+        (e.g. Western Europe, South-eastern Asia).
+
+  - type: input
+    id: countries
+    attributes:
+      label: Corrected countries
+      description: >
+        If the country list is wrong, provide the correct ones here, comma-separated
+        (e.g. Germany, France).
+
+  - type: input
+    id: period
+    attributes:
+      label: Corrected time period
+      description: If the time period is wrong, provide the correct range (e.g. 1800–1870).
+
+  - type: input
+    id: replication_url
+    attributes:
+      label: Corrected data link
+      description: If the data link is wrong or missing, provide the correct URL here.
+
+  - type: dropdown
+    id: exclude
+    attributes:
+      label: Should this paper be excluded from the database?
+      options:
+        - "No"
+        - "Yes — not an HPE dataset"
 
   - type: textarea
     id: justification
     attributes:
       label: Source / justification
+    validations:
+      required: true
