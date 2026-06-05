@@ -26,25 +26,35 @@ jobs:
       - name: Install Poetry and dependencies
         run: |
           pip install poetry
-          poetry install --no-root
+          poetry install
 
       - name: Detect issue type
         id: meta
         env:
-          LABELS: ${{ toJson(github.event.issue.labels.*.name) }}
+          LABELS:     ${{ toJson(github.event.issue.labels.*.name) }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           python - <<'EOF'
           import json, os, sys
-          labels = json.loads(os.environ["LABELS"])
+          # Primary: labels (requires 'correction'/'new-entry' labels to exist in repo)
+          labels = json.loads(os.environ.get("LABELS", "[]"))
           if "correction" in labels:
               t = "correction"
           elif "new-entry" in labels:
               t = "new-entry"
           else:
-              print("Neither 'correction' nor 'new-entry' label found — skipping.", file=sys.stderr)
-              sys.exit(1)
+              # Fallback: detect from form body (always reliable)
+              body = os.environ.get("ISSUE_BODY", "")
+              if "### What is wrong?" in body:
+                  t = "correction"
+              elif "### Paper title" in body:
+                  t = "new-entry"
+              else:
+                  print("Cannot determine issue type from labels or body.", file=sys.stderr)
+                  sys.exit(1)
           with open(os.environ["GITHUB_OUTPUT"], "a") as f:
               f.write(f"type={t}\n")
+          print(f"Issue type: {t}")
           EOF
 
       - name: Parse issue body
