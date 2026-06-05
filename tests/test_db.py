@@ -4,7 +4,7 @@ from typing import Generator
 
 import pytest
 
-from hpedb.db import init_db, upsert_article, upsert_authors, wipe_db
+from hpedb.db import init_classifications, init_db, upsert_article, upsert_authors, wipe_db
 from hpedb.types import ArticleRecord, AuthorRecord
 
 SAMPLE_ARTICLE: ArticleRecord = {
@@ -105,6 +105,44 @@ def test_upsert_authors_empty_list_clears_authors(conn: sqlite3.Connection) -> N
     upsert_authors(conn, doi, [])
 
     assert conn.execute("SELECT COUNT(*) FROM authors WHERE doi = ?", (doi,)).fetchone()[0] == 0
+
+
+# ── Schema migration paths ────────────────────────────────────────────────────
+
+_CREATE_CLASSIFICATIONS_NO_EXTRA_COLS = """
+CREATE TABLE classifications (
+    doi           TEXT PRIMARY KEY REFERENCES articles(doi) ON DELETE CASCADE,
+    is_hpe        INTEGER NOT NULL,
+    period_start  INTEGER,
+    period_end    INTEGER,
+    regions       TEXT NOT NULL,
+    backend       TEXT NOT NULL,
+    model         TEXT NOT NULL,
+    classified_at TEXT NOT NULL
+)
+"""
+
+
+def test_init_classifications_adds_replication_url_to_old_schema(tmp_path: Path) -> None:
+    conn = sqlite3.connect(str(tmp_path / "old.db"))
+    conn.execute("PRAGMA foreign_keys = OFF")
+    conn.execute(_CREATE_CLASSIFICATIONS_NO_EXTRA_COLS)
+    conn.commit()
+
+    init_classifications(conn)
+
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(classifications)").fetchall()}
+    assert "replication_url" in cols
+    assert "countries" in cols
+    conn.close()
+
+
+def test_init_classifications_idempotent_on_current_schema(conn: sqlite3.Connection) -> None:
+    init_classifications(conn)
+    init_classifications(conn)  # calling twice must not raise
+    cols = {row[1] for row in conn.execute("PRAGMA table_info(classifications)").fetchall()}
+    assert "replication_url" in cols
+    assert "countries" in cols
 
 
 def test_wipe_db(conn: sqlite3.Connection) -> None:

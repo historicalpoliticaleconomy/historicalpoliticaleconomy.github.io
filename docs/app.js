@@ -547,12 +547,27 @@ async function init() {
   applyFilters();
 }
 
-init().catch(err => {
-  document.getElementById('results-count').textContent = 'Failed to load data.';
-  console.error(err);
-});
+// Guard browser-only code so this module can be imported in Node.js (tests).
+if (typeof document !== 'undefined') {
+  init().catch(err => {
+    document.getElementById('results-count').textContent = 'Failed to load data.';
+    console.error(err);
+  });
+}
+
+// ── Exports (used by Node.js test runner) ────────────────────────────────────
+export {
+  displayCountry, buildGeo, cellColor,
+  entryOverlapsBucket, entryMatchesKey, entryMatchesText,
+  countsByRows, countriesForSubregion, effectiveSubregionRows,
+  applyFilters, formatPeriod, escapeHtml, errorHref,
+  BUCKETS, CONTINENTS, CONTINENT_ORDER, CONTINENT_SUBREGIONS,
+  SUBREGION_COUNTRIES, SUBREGION_CONTINENT,
+  COUNTRY_CANONICAL_SUBREGION, COUNTRY_DISPLAY_NAMES,
+};
 
 // ── Debug helpers (call from browser console) ─────────────────────────────────
+if (typeof window === 'undefined') { /* skip in Node */ } else {
 // debugSubregion("party", "Caribbean") — shows which countries appear and why
 window.debugSubregion = function(query, sub) {
   const data = query
@@ -593,3 +608,4 @@ window.debugContinent = function(query) {
   }
   console.groupEnd();
 };
+} // end typeof window check

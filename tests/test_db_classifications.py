@@ -63,7 +63,7 @@ def test_merchant_towns_is_hpe() -> None:
 @pytest.mark.db
 def test_merchant_towns_region_and_country() -> None:
     c = _require("10.1257/aer.20200885")
-    assert "Western Europe" in c["regions"]
+    assert "Northern Europe" in c["regions"]   # UK is UN M.49 Northern Europe
     assert "United Kingdom" in c["countries"]
     assert len(c["regions"]) == 1
     assert len(c["countries"]) == 1
@@ -93,7 +93,7 @@ def test_great_reform_act_is_hpe() -> None:
 @pytest.mark.db
 def test_great_reform_act_region_and_country() -> None:
     c = _require("10.3982/ecta11484")
-    assert "Western Europe" in c["regions"]
+    assert "Northern Europe" in c["regions"]   # UK is UN M.49 Northern Europe
     assert "United Kingdom" in c["countries"]
 
 

@@ -5,6 +5,9 @@ from typing import Any, Generator
 from unittest.mock import MagicMock, patch
 
 from hpedb.classify import (
+    _extract_json,
+    _normalize_country,
+    _normalize_region,
     _user_message,
     classify_articles,
     parse_classification_response,
@@ -183,6 +186,71 @@ def test_parse_non_list_regions_field() -> None:
     rec = parse_classification_response(raw, "10.1086/x", "openai", "gpt-4o-mini")
     assert rec is not None
     assert json.loads(rec["regions"]) == []
+
+
+# ---------------------------------------------------------------------------
+# _extract_json
+# ---------------------------------------------------------------------------
+
+def test_extract_json_plain() -> None:
+    raw = '{"is_hpe": true}'
+    assert _extract_json(raw) == '{"is_hpe": true}'
+
+
+def test_extract_json_with_markdown_fence() -> None:
+    raw = '```json\n{"is_hpe": true}\n```'
+    result = _extract_json(raw)
+    assert json.loads(result) == {"is_hpe": True}
+
+
+def test_extract_json_fence_without_closing_backticks() -> None:
+    raw = '```\n{"is_hpe": false}'
+    result = _extract_json(raw)
+    assert json.loads(result) == {"is_hpe": False}
+
+
+def test_extract_json_with_surrounding_prose() -> None:
+    raw = 'Here is the result: {"is_hpe": true, "regions": []} — done.'
+    result = _extract_json(raw)
+    assert json.loads(result) == {"is_hpe": True, "regions": []}
+
+
+def test_extract_json_no_braces_returns_stripped_input() -> None:
+    raw = "  no json here  "
+    assert _extract_json(raw) == "no json here"
+
+
+# ---------------------------------------------------------------------------
+# _normalize_region / _normalize_country
+# ---------------------------------------------------------------------------
+
+def test_normalize_region_valid_passthrough() -> None:
+    assert _normalize_region("Western Europe") == "Western Europe"
+
+
+def test_normalize_region_known_alias() -> None:
+    assert _normalize_region("North America") == "Northern America"
+
+
+def test_normalize_region_unknown_passthrough() -> None:
+    assert _normalize_region("Mid-Atlantic Region") == "Mid-Atlantic Region"
+
+
+def test_normalize_country_known_passthrough() -> None:
+    assert _normalize_country("France") == "France"
+
+
+def test_normalize_country_alias() -> None:
+    assert _normalize_country("Russia") == "Russian Federation"
+
+
+def test_normalize_country_pycountry_fallback() -> None:
+    # "Czech Republic" is the old name; pycountry resolves it to the current official name "Czechia"
+    assert _normalize_country("Czech Republic") == "Czechia"
+
+
+def test_normalize_country_unknown_returns_original() -> None:
+    assert _normalize_country("Westeros") == "Westeros"
 
 
 # ---------------------------------------------------------------------------

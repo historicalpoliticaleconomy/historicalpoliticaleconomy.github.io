@@ -2,101 +2,48 @@
  * Unit tests for pure app.js logic.
  * Run with: node --test tests/test_app_logic.mjs
  *
- * These tests duplicate the relevant pure functions from app.js so they can
- * run in Node without a DOM. Any logic change in app.js must be mirrored here.
+ * Functions are imported directly from docs/app.js (ES module).
+ * buildGeo() is called with the real geo.json so the global Maps are populated.
  */
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 
-// ── Replicated pure functions ─────────────────────────────────────────────────
+import {
+  entryMatchesText, entryOverlapsBucket, entryMatchesKey,
+  countsByRows, effectiveSubregionRows, countriesForSubregion,
+  displayCountry, escapeHtml, formatPeriod, errorHref, cellColor,
+  buildGeo,
+  BUCKETS, COUNTRY_CANONICAL_SUBREGION,
+} from '../docs/app.js';
 
-const BUCKETS = [
-  { label: 'Pre-1000',  start: -Infinity, end: 999   },
-  { label: '1000–1499', start: 1000,      end: 1499  },
-  { label: '1500–1599', start: 1500,      end: 1599  },
-  { label: '1600–1699', start: 1600,      end: 1699  },
-  { label: '1700–1799', start: 1700,      end: 1799  },
-  { label: '1800–1849', start: 1800,      end: 1849  },
-  { label: '1850–1899', start: 1850,      end: 1899  },
-  { label: '1900–1944', start: 1900,      end: 1944  },
-  { label: '1945+',     start: 1945,      end: Infinity },
-];
+// Populate global geo Maps from the shipped geo.json
+const __filename = fileURLToPath(import.meta.url);
+const __dirname  = dirname(__filename);
+buildGeo(JSON.parse(readFileSync(join(__dirname, '../docs/geo.json'), 'utf8')));
 
-function entryOverlapsBucket(entry, bucket) {
-  const ps = entry.period_start ?? entry.period_end;
-  const pe = entry.period_end   ?? entry.period_start;
-  if (ps == null) return false;
-  return ps <= bucket.end && pe >= bucket.start;
-}
-
-
-// Minimal geo mock for entryMatchesKey
-const MOCK_CONTINENT_SUBREGIONS = new Map([
-  ['Europe', ['Western Europe', 'Eastern Europe']],
-  ['Americas', ['South America', 'Northern America']],
-]);
-const MOCK_SUBREGION_COUNTRIES = new Map([
-  ['Western Europe', ['Germany', 'France', 'United Kingdom']],
-  ['Eastern Europe', ['Poland', 'Hungary']],
-  ['South America',  ['Brazil', 'Argentina']],
-]);
-
-function entryMatchesKey(entry, key, continentSubregions, subregionCountries) {
-  if (key === 'Global/Comparative') return entry.regions.includes('Global/Comparative');
-  if (continentSubregions.has(key)) {
-    const subs = continentSubregions.get(key) || [];
-    return subs.some(s => entry.regions.includes(s));
-  }
-  if (subregionCountries.has(key)) return entry.regions.includes(key);
-  return (entry.countries || []).includes(key);
-}
-
-function applyFilters(allData, selectedCell) {
-  if (selectedCell === null) return allData;
-  const { rowKey, bi } = selectedCell;
-  return allData.filter(entry =>
-    entryMatchesKey(entry, rowKey, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES) &&
-    (bi < 0 || entryOverlapsBucket(entry, BUCKETS[bi]))
-  );
-}
-
-function countsByRows(rows, data, continentSubregions, subregionCountries) {
-  const counts = rows.map(() => BUCKETS.map(() => 0));
-  for (const entry of data) {
-    BUCKETS.forEach((b, bi) => {
-      if (!entryOverlapsBucket(entry, b)) return;
-      rows.forEach((key, ri) => {
-        if (entryMatchesKey(entry, key, continentSubregions, subregionCountries)) counts[ri][bi]++;
-      });
-    });
-  }
-  return counts;
-}
-
-// ── Fixtures ──────────────────────────────────────────────────────────────────
+// ── Fixtures (use real subregion/country names from geo.json) ─────────────────
 
 const ENTRIES = [
-  { doi: 'a', regions: ['Western Europe'], countries: ['Germany'],       period_start: 1800, period_end: 1850 },
-  { doi: 'b', regions: ['Western Europe'], countries: ['France'],        period_start: 1700, period_end: 1799 },
-  { doi: 'c', regions: ['Eastern Europe'], countries: ['Poland'],        period_start: 1900, period_end: 1944 },
-  { doi: 'd', regions: ['South America'],  countries: ['Brazil'],        period_start: 1500, period_end: 1600 },
-  { doi: 'e', regions: ['Global/Comparative'], countries: [],            period_start: 1800, period_end: 1900 },
-  { doi: 'f', regions: ['Western Europe'], countries: ['Germany'],       period_start: null, period_end: null },
+  { doi: 'a', title: 'A', authors: '', regions: ['Western Europe'], countries: ['Germany'],       period_start: 1800, period_end: 1850 },
+  { doi: 'b', title: 'B', authors: '', regions: ['Western Europe'], countries: ['France'],        period_start: 1700, period_end: 1799 },
+  { doi: 'c', title: 'C', authors: '', regions: ['Eastern Europe'], countries: ['Poland'],        period_start: 1900, period_end: 1944 },
+  { doi: 'd', title: 'D', authors: '', regions: ['South America'],  countries: ['Brazil'],        period_start: 1500, period_end: 1600 },
+  { doi: 'e', title: 'E', authors: '', regions: ['Global/Comparative'], countries: [],            period_start: 1800, period_end: 1900 },
+  { doi: 'f', title: 'F', authors: '', regions: ['Western Europe'], countries: ['Germany'],       period_start: null, period_end: null },
 ];
 
-// ── Replicated entryMatchesText ───────────────────────────────────────────────
-
-function entryMatchesText(entry, query) {
-  const terms    = query.toLowerCase().split(/\s+/).filter(Boolean);
-  const haystack = [
-    entry.title    || '',
-    entry.authors  || '',
-    ...(entry.regions    || []),
-    ...(entry.countries  || []),
-    ...(entry._continents || []),
-  ].join(' ').toLowerCase();
-  return terms.every(t => haystack.includes(t));
+// applyFilters has DOM side effects — replicate the filtering logic for tests.
+function filterEntries(data, selectedCell) {
+  if (selectedCell === null) return data;
+  const { rowKey, bi } = selectedCell;
+  return data.filter(e =>
+    entryMatchesKey(e, rowKey) &&
+    (bi < 0 || entryOverlapsBucket(e, BUCKETS[bi]))
+  );
 }
 
 // ── entryMatchesText ──────────────────────────────────────────────────────────
@@ -158,7 +105,6 @@ describe('entryMatchesText', () => {
   });
 
   test('empty query matches everything', () => {
-    // empty query → no terms → every([]) = true
     assert.ok(entryMatchesText(entry, ''));
   });
 });
@@ -199,152 +145,72 @@ describe('entryOverlapsBucket', () => {
   });
 });
 
-
 // ── entryMatchesKey ───────────────────────────────────────────────────────────
 
 describe('entryMatchesKey', () => {
-  const match = (entry, key) =>
-    entryMatchesKey(entry, key, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES);
-
   test('Global/Comparative matches correctly', () => {
-    assert.ok(match(ENTRIES[4], 'Global/Comparative'));
-    assert.ok(!match(ENTRIES[0], 'Global/Comparative'));
+    assert.ok(entryMatchesKey(ENTRIES[4], 'Global/Comparative'));
+    assert.ok(!entryMatchesKey(ENTRIES[0], 'Global/Comparative'));
   });
 
   test('continent key matches via subregion', () => {
-    assert.ok(match(ENTRIES[0], 'Europe'));  // Western Europe ∈ Europe
-    assert.ok(match(ENTRIES[2], 'Europe'));  // Eastern Europe ∈ Europe
-    assert.ok(!match(ENTRIES[3], 'Europe')); // South America ∉ Europe
+    assert.ok(entryMatchesKey(ENTRIES[0], 'Europe'));   // Western Europe ∈ Europe
+    assert.ok(entryMatchesKey(ENTRIES[2], 'Europe'));   // Eastern Europe ∈ Europe
+    assert.ok(!entryMatchesKey(ENTRIES[3], 'Europe'));  // South America ∉ Europe
   });
 
   test('subregion key matches exactly', () => {
-    assert.ok(match(ENTRIES[0], 'Western Europe'));
-    assert.ok(!match(ENTRIES[0], 'Eastern Europe'));
+    assert.ok(entryMatchesKey(ENTRIES[0], 'Western Europe'));
+    assert.ok(!entryMatchesKey(ENTRIES[0], 'Eastern Europe'));
   });
 
   test('country key matches via countries array', () => {
-    assert.ok(match(ENTRIES[0], 'Germany'));
-    assert.ok(!match(ENTRIES[0], 'France'));
+    assert.ok(entryMatchesKey(ENTRIES[0], 'Germany'));
+    assert.ok(!entryMatchesKey(ENTRIES[0], 'France'));
   });
 });
 
-// ── applyFilters (without Fuse.js) ────────────────────────────────────────────
+// ── filter logic (replaces applyFilters which has DOM side effects) ───────────
 
 describe('applyFilters', () => {
   test('no selectedCell — returns all', () => {
-    const result = applyFilters(ENTRIES, null);
-    assert.equal(result.length, ENTRIES.length);
+    assert.equal(filterEntries(ENTRIES, null).length, ENTRIES.length);
   });
 
   test('selectedCell filters by region + bucket', () => {
     // Western Europe, bucket 5 (1800–1849) — should match entry a only
-    const result = applyFilters(ENTRIES, { rowKey: 'Western Europe', bi: 5 });
+    const result = filterEntries(ENTRIES, { rowKey: 'Western Europe', bi: 5 });
     assert.equal(result.length, 1);
     assert.equal(result[0].doi, 'a');
   });
 
   test('selectedCell bi=-1 (Global/Comparative label click) — no bucket filter', () => {
-    const result = applyFilters(ENTRIES, { rowKey: 'Global/Comparative', bi: -1 });
+    const result = filterEntries(ENTRIES, { rowKey: 'Global/Comparative', bi: -1 });
     assert.equal(result.length, 1);
     assert.equal(result[0].doi, 'e');
   });
 
   test('null-period entries pass when bi=-1 (no bucket filter)', () => {
-    const result = applyFilters(ENTRIES, { rowKey: 'Europe', bi: -1 });
-    const dois = result.map(e => e.doi).sort();
-    // a, b, c, f are European; d is South America; e is Global/Comparative
+    const result = filterEntries(ENTRIES, { rowKey: 'Europe', bi: -1 });
+    const dois   = result.map(e => e.doi).sort();
     assert.deepEqual(dois, ['a', 'b', 'c', 'f']);
   });
 });
 
 // ── effectiveSubregionRows ────────────────────────────────────────────────────
 
-function countriesForSubregion(sub, data, countryCanonicalSubregion) {
-  return [...new Set(
-    data
-      .filter(e => e.regions.includes(sub))
-      .flatMap(e => {
-        const regions   = e.regions   || [];
-        const countries = e.countries || [];
-
-        let anchorRegions;
-        if (regions.length <= 1) {
-          anchorRegions = new Set(regions);
-        } else {
-          const counts = regions.map(r => ({
-            r, n: countries.filter(c => countryCanonicalSubregion.get(c) === r).length,
-          }));
-          const max = Math.max(...counts.map(x => x.n));
-          anchorRegions = new Set(
-            max === 0 ? regions : counts.filter(x => x.n === max).map(x => x.r)
-          );
-        }
-
-        return countries.filter(c => {
-          if (!c) return false;
-          const canonical = countryCanonicalSubregion.get(c);
-          return canonical ? canonical === sub : anchorRegions.has(sub);
-        });
-      })
-  )];
-}
-
-function effectiveSubregionRows(continent, data, continentSubregions, subregionCountries) {
-  // Build canonical map from the provided subregionCountries mock
-  const countryCanonicalSubregion = new Map();
-  for (const [sub, countries] of subregionCountries) {
-    for (const c of countries) countryCanonicalSubregion.set(c, sub);
-  }
-
-  const rows         = [];
-  const autoExpanded = new Set();
-
-  const subregionData = [];
-  for (const sub of (continentSubregions.get(continent) || [])) {
-    if (!data.some(e => entryMatchesKey(e, sub, continentSubregions, subregionCountries))) continue;
-    const activeCountries = countriesForSubregion(sub, data, countryCanonicalSubregion);
-    subregionData.push({ sub, activeCountries });
-  }
-
-  let totalRows = subregionData.length;
-  const expanded = new Set();
-  const bySize = [...subregionData]
-    .filter(d => d.activeCountries.length > 0)
-    .sort((a, b) => a.activeCountries.length - b.activeCountries.length);
-
-  for (const { sub, activeCountries } of bySize) {
-    if (totalRows + (activeCountries.length - 1) <= 10) {
-      expanded.add(sub);
-      totalRows += activeCountries.length - 1;
-    }
-  }
-
-  for (const { sub, activeCountries } of subregionData) {
-    if (expanded.has(sub)) {
-      for (const c of activeCountries) { rows.push(c); autoExpanded.add(c); }
-    } else {
-      rows.push(sub);
-    }
-  }
-
-  return { rows, autoExpanded };
-}
-
 describe('effectiveSubregionRows', () => {
   test('single active country → auto-expands to country row', () => {
     const data = [ENTRIES[0]]; // only Germany / Western Europe
-    const { rows, autoExpanded } = effectiveSubregionRows(
-      'Europe', data, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES
-    );
-    assert.deepEqual(rows, ['Germany']);
+    const { rows, autoExpanded } = effectiveSubregionRows('Europe', data);
+    assert.ok(rows.includes('Germany'));
     assert.ok(autoExpanded.has('Germany'));
+    assert.ok(!rows.includes('Western Europe'));
   });
 
   test('two active countries in same subregion → both inlined', () => {
     const data = [ENTRIES[0], ENTRIES[1]]; // Germany + France, both Western Europe
-    const { rows, autoExpanded } = effectiveSubregionRows(
-      'Europe', data, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES
-    );
+    const { rows, autoExpanded } = effectiveSubregionRows('Europe', data);
     assert.ok(rows.includes('Germany'));
     assert.ok(rows.includes('France'));
     assert.ok(autoExpanded.has('Germany'));
@@ -353,107 +219,74 @@ describe('effectiveSubregionRows', () => {
   });
 
   test('greedy: smaller subregion expands first; larger blocked when limit reached', () => {
-    // SmallSub has 2 countries, BigSub has 10 — start totalRows=2.
-    // Expanding SmallSub: delta=1 → 3 ≤ 10 → expand.
-    // Expanding BigSub: delta=9 → 12 > 10 → blocked.
-    const bigSubCountries = Array.from({ length: 10 }, (_, i) => `Country${i + 1}`);
-    const localSubregionCountries  = new Map([['SmallSub', ['A', 'B']], ['BigSub', bigSubCountries]]);
-    const localContinentSubregions = new Map([['TestContinent', ['SmallSub', 'BigSub']]]);
+    // Three European subregions; Western Europe (9 canonical countries) stays collapsed
+    // because by the time smaller regions expand, totalRows would exceed 10.
+    // NE(1) + EE(2) + WE(9): start=3; expand NE→3; expand EE→4; WE: 4+8=12>10 → blocked.
     const data = [
-      { doi: 'x1', regions: ['SmallSub'], countries: ['A'], period_start: 1800, period_end: 1900 },
-      { doi: 'x2', regions: ['SmallSub'], countries: ['B'], period_start: 1800, period_end: 1900 },
-      ...bigSubCountries.map((c, i) => ({
-        doi: `z${i}`, regions: ['BigSub'], countries: [c], period_start: 1800, period_end: 1900,
+      { doi: 'ne1', title: '', authors: '', regions: ['Northern Europe'], countries: ['Norway'],  period_start: 1800, period_end: 1900 },
+      { doi: 'ee1', title: '', authors: '', regions: ['Eastern Europe'],  countries: ['Poland'],  period_start: 1800, period_end: 1900 },
+      { doi: 'ee2', title: '', authors: '', regions: ['Eastern Europe'],  countries: ['Hungary'], period_start: 1800, period_end: 1900 },
+      ...['Germany', 'France', 'Austria', 'Belgium', 'Switzerland',
+          'Netherlands', 'Luxembourg', 'Monaco', 'Liechtenstein'].map((c, i) => ({
+        doi: `we${i}`, title: '', authors: '', regions: ['Western Europe'], countries: [c],
+        period_start: 1800, period_end: 1900,
       })),
     ];
-    const { rows, autoExpanded } = effectiveSubregionRows(
-      'TestContinent', data, localContinentSubregions, localSubregionCountries
-    );
-    assert.ok(rows.includes('A') && rows.includes('B'));
-    assert.ok(autoExpanded.has('A') && autoExpanded.has('B'));
-    assert.ok(rows.includes('BigSub'));
-    assert.ok(!rows.includes('SmallSub'));
-    assert.equal(rows.length, 3); // A, B, BigSub
+    const { rows, autoExpanded } = effectiveSubregionRows('Europe', data);
+    // Smaller subregions auto-expand
+    assert.ok(rows.includes('Norway'));
+    assert.ok(autoExpanded.has('Norway'));
+    assert.ok(rows.includes('Poland') && rows.includes('Hungary'));
+    // Western Europe stays as subregion label (too many countries to expand)
+    assert.ok(rows.includes('Western Europe'));
+    assert.ok(!rows.includes('Germany'));
   });
 
-  test('non-geo.json country (e.g. historical polity) appears in drill-down', () => {
-    // "Prussia" is not in any geo.json subregion list, so it has no canonical subregion.
-    // It should still appear in the Eastern Europe drill-down because it's not
-    // canonical to any *other* subregion either.
+  test('non-geo.json country (historical polity) appears in drill-down', () => {
     const data = [
-      { doi: 'h', regions: ['Eastern Europe'], countries: ['Prussia'], period_start: 1700, period_end: 1800 },
+      { doi: 'h', title: '', authors: '', regions: ['Eastern Europe'], countries: ['Prussia'],
+        period_start: 1700, period_end: 1800 },
     ];
-    const { rows, autoExpanded } = effectiveSubregionRows(
-      'Europe', data, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES
-    );
+    const { rows, autoExpanded } = effectiveSubregionRows('Europe', data);
     assert.ok(rows.includes('Prussia'));
     assert.ok(autoExpanded.has('Prussia'));
     assert.ok(!rows.includes('Eastern Europe'));
   });
 
   test('anchor logic: non-canonical country placed in dominant canonical region only', () => {
-    // Paper spans Caribbean + Eastern Europe. Eastern Europe has 3 canonical countries,
-    // Caribbean has 1. "OldEmpire" (non-canonical) anchors to Eastern Europe only.
-    const localSubregionCountries = new Map([
-      ['Caribbean',    ['Cuba']],
-      ['Eastern Europe', ['Bulgaria', 'Poland', 'Romania']],
-    ]);
-    const localContinentSubregions = new Map([
-      ['TestContinent', ['Caribbean', 'Eastern Europe']],
-    ]);
-    const canonMap = new Map();
-    for (const [s, cs] of localSubregionCountries) for (const c of cs) canonMap.set(c, s);
-
     const entry = {
-      doi: 'multi',
-      regions: ['Caribbean', 'Eastern Europe'],
+      doi: 'multi', title: '', authors: '',
+      regions:   ['Caribbean', 'Eastern Europe'],
       countries: ['Cuba', 'Bulgaria', 'Poland', 'Romania', 'OldEmpire'],
       period_start: 1900, period_end: 1991,
     };
-
-    const caribbean  = countriesForSubregion('Caribbean',     [entry], canonMap);
-    const easternEu  = countriesForSubregion('Eastern Europe', [entry], canonMap);
-
-    // Cuba in Caribbean; OldEmpire anchors to Eastern Europe (dominant canonical region)
+    const caribbean = countriesForSubregion('Caribbean',     [entry]);
+    const easternEu = countriesForSubregion('Eastern Europe', [entry]);
     assert.ok(caribbean.includes('Cuba'));
     assert.ok(!caribbean.includes('OldEmpire'));
-    assert.ok(easternEu.includes('Bulgaria') && easternEu.includes('Poland') && easternEu.includes('Romania'));
+    assert.ok(easternEu.includes('Bulgaria') && easternEu.includes('Poland'));
     assert.ok(easternEu.includes('OldEmpire'));
     assert.ok(!easternEu.includes('Cuba'));
   });
 
   test('cross-contamination: country canonical to another subregion is excluded', () => {
-    // A paper tagged Western Europe + Eastern Europe with Germany (Western) and Poland (Eastern).
-    // Each should only appear under its own subregion, not bleed across.
-    const data = [
-      {
-        doi: 'i',
-        regions: ['Western Europe', 'Eastern Europe'],
-        countries: ['Germany', 'Poland'],
-        period_start: 1800, period_end: 1900,
-      },
-    ];
-    // Western Europe drill-down: Germany shown, Poland excluded (canonical Eastern Europe)
-    const weCountries = countriesForSubregion(
-      'Western Europe', data,
-      (() => { const m = new Map(); for (const [s, cs] of MOCK_SUBREGION_COUNTRIES) for (const c of cs) m.set(c, s); return m; })()
-    );
+    const data = [{
+      doi: 'i', title: '', authors: '',
+      regions:   ['Western Europe', 'Eastern Europe'],
+      countries: ['Germany', 'Poland'],
+      period_start: 1800, period_end: 1900,
+    }];
+    const weCountries = countriesForSubregion('Western Europe', data);
     assert.ok(weCountries.includes('Germany'));
     assert.ok(!weCountries.includes('Poland'));
 
-    // Eastern Europe drill-down: Poland shown, Germany excluded (canonical Western Europe)
-    const eeCountries = countriesForSubregion(
-      'Eastern Europe', data,
-      (() => { const m = new Map(); for (const [s, cs] of MOCK_SUBREGION_COUNTRIES) for (const c of cs) m.set(c, s); return m; })()
-    );
+    const eeCountries = countriesForSubregion('Eastern Europe', data);
     assert.ok(eeCountries.includes('Poland'));
     assert.ok(!eeCountries.includes('Germany'));
   });
 
   test('empty data → empty rows', () => {
-    const { rows } = effectiveSubregionRows(
-      'Europe', [], MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES
-    );
+    const { rows } = effectiveSubregionRows('Europe', []);
     assert.deepEqual(rows, []);
   });
 });
@@ -463,28 +296,95 @@ describe('effectiveSubregionRows', () => {
 describe('countsByRows', () => {
   test('counts Western Europe entries per bucket', () => {
     const rows   = ['Western Europe'];
-    const counts = countsByRows(rows, ENTRIES, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES);
-    // Entry a: 1800–1850 → spans bucket 5 (1800–1849) AND bucket 6 (1850–1899) (pe=1850 >= 1850)
-    // Entry b: 1700–1799 → bucket 4 (1700–1799)
-    // Entry f: null → no bucket
+    const counts = countsByRows(rows, ENTRIES);
     assert.equal(counts[0][4], 1); // bucket 4 (1700–1799): entry b
     assert.equal(counts[0][5], 1); // bucket 5 (1800–1849): entry a
-    assert.equal(counts[0][6], 1); // bucket 6 (1850–1899): entry a (straddles boundary)
+    assert.equal(counts[0][6], 1); // bucket 6 (1850–1899): entry a straddles
     assert.equal(counts[0].reduce((s, c) => s + c, 0), 3);
   });
 
-  test('counts reflect filtered data (heatmap as lower-level filter)', () => {
-    // Pass only entries with period_start >= 1800; bucket 4 (1700–1799) should be 0
+  test('counts reflect filtered data', () => {
     const filtered = ENTRIES.filter(e => e.period_start != null && e.period_start >= 1800);
-    const rows     = ['Western Europe'];
-    const counts   = countsByRows(rows, filtered, MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES);
+    const counts   = countsByRows(['Western Europe'], filtered);
     assert.equal(counts[0][4], 0); // entry b (1700–1799) excluded
     assert.equal(counts[0][5], 1); // entry a (1800–1850) included
   });
 
   test('empty data gives all-zero counts', () => {
-    const rows   = ['Western Europe', 'Eastern Europe'];
-    const counts = countsByRows(rows, [], MOCK_CONTINENT_SUBREGIONS, MOCK_SUBREGION_COUNTRIES);
+    const counts = countsByRows(['Western Europe', 'Eastern Europe'], []);
     assert.ok(counts.every(row => row.every(c => c === 0)));
+  });
+});
+
+// ── displayCountry ────────────────────────────────────────────────────────────
+
+describe('displayCountry', () => {
+  test('ugly ISO name gets a display alias', () => {
+    assert.equal(displayCountry('Congo, The Democratic Republic of the'), 'DR Congo');
+  });
+
+  test('normal name passes through unchanged', () => {
+    assert.equal(displayCountry('France'), 'France');
+  });
+
+  test('another alias: Korea, Republic of', () => {
+    assert.equal(displayCountry('Korea, Republic of'), 'South Korea');
+  });
+});
+
+// ── escapeHtml ────────────────────────────────────────────────────────────────
+
+describe('escapeHtml', () => {
+  test('escapes <', () => assert.equal(escapeHtml('<b>'), '&lt;b&gt;'));
+  test('escapes &', () => assert.equal(escapeHtml('a & b'), 'a &amp; b'));
+  test('plain text unchanged', () => assert.equal(escapeHtml('hello'), 'hello'));
+  test('falsy input returns empty string', () => assert.equal(escapeHtml(''), ''));
+});
+
+// ── formatPeriod ──────────────────────────────────────────────────────────────
+
+describe('formatPeriod', () => {
+  test('range',              () => assert.equal(formatPeriod(1800, 1900), '1800–1900'));
+  test('same start and end', () => assert.equal(formatPeriod(1850, 1850), '1850'));
+  test('start only',         () => assert.equal(formatPeriod(1800, null), '1800–?'));
+  test('end only',           () => assert.equal(formatPeriod(null, 1900), '?–1900'));
+  test('both null',          () => assert.equal(formatPeriod(null, null), null));
+  test('BCE displayed as "N BCE"', () => assert.equal(formatPeriod(-500, 500), '500 BCE–500'));
+});
+
+// ── errorHref ─────────────────────────────────────────────────────────────────
+
+describe('errorHref', () => {
+  test('returns a GitHub issues URL', () => {
+    const href = errorHref('10.1086/123');
+    assert.ok(href.startsWith('https://github.com/'));
+    assert.ok(href.includes('template=data-correction.yml'));
+  });
+
+  test('DOI is URL-encoded in query param', () => {
+    const href = errorHref('10.1086/123');
+    assert.ok(href.includes(`doi=${encodeURIComponent('10.1086/123')}`));
+  });
+});
+
+// ── cellColor ─────────────────────────────────────────────────────────────────
+
+describe('cellColor', () => {
+  test('zero count → background colour (not transparent)', () => {
+    const color = cellColor(0, 10);
+    assert.equal(color, '#eef0f5');
+  });
+
+  test('positive count → rgb color string', () => {
+    const color = cellColor(5, 10);
+    assert.ok(color.startsWith('rgb('));
+  });
+
+  test('color scales monotonically with count', () => {
+    // Higher count → lower blue channel value (darker / more saturated)
+    const blueChannel = c => parseInt(c.match(/rgb\(\d+,\d+,(\d+)\)/)?.[1] ?? '999');
+    const lo = blueChannel(cellColor(1, 10));
+    const hi = blueChannel(cellColor(9, 10));
+    assert.ok(hi < lo, 'higher count should produce lower blue channel (more saturated)');
   });
 });

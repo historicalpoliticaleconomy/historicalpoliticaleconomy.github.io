@@ -199,3 +199,63 @@ def test_correction_for_doi_only_in_additions_is_skipped(
     ).fetchone()
     # regions come from the addition, not the skipped correction
     assert json.loads(row[0]) == ["Western Europe"]
+
+
+# ── Uncovered branches ────────────────────────────────────────────────────────
+
+def test_correction_missing_doi_is_skipped(conn: sqlite3.Connection, tmp_path: Path) -> None:
+    path = _write_overrides(tmp_path, {"corrections": [{"regions": ["Eastern Europe"]}], "additions": []})
+    corr, adds = apply_overrides(conn, path)
+    assert corr == 0
+
+
+def test_correction_no_correctable_fields_is_noop(conn: sqlite3.Connection, tmp_path: Path) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(tmp_path, {"corrections": [
+        {"doi": _ARTICLE["doi"], "note": "No correctable field here"}
+    ], "additions": []})
+    corr, adds = apply_overrides(conn, path)
+    assert corr == 0
+
+
+def test_verbose_output_does_not_crash(conn: sqlite3.Connection, tmp_path: Path, capsys: pytest.CaptureFixture) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(tmp_path, {
+        "corrections": [{"doi": _ARTICLE["doi"], "period_end": 1850}],
+        "additions": [{
+            "doi": "10.1017/verbose001", "title": "Verbose Paper", "journal": "QJE", "year": 2020,
+            "is_hpe": True, "replication_url": _URL,
+            "regions": ["Western Europe"], "countries": ["France"],
+            "period_start": 1800, "period_end": 1900,
+        }],
+    })
+    corr, adds = apply_overrides(conn, path, verbose=True)
+    captured = capsys.readouterr()
+    assert corr == 1 and adds == 1
+    assert _ARTICLE["doi"] in captured.out
+    assert "10.1017/verbose001" in captured.out
+
+
+def test_addition_missing_doi_is_skipped(conn: sqlite3.Connection, tmp_path: Path) -> None:
+    path = _write_overrides(tmp_path, {"corrections": [], "additions": [
+        {"title": "No DOI Paper", "journal": "QJE", "year": 2020,
+         "is_hpe": True, "replication_url": _URL,
+         "regions": ["Western Europe"], "countries": [], "period_start": 1800, "period_end": 1900}
+    ]})
+    corr, adds = apply_overrides(conn, path)
+    assert adds == 0
+
+
+def test_addition_authors_not_list_does_not_crash(conn: sqlite3.Connection, tmp_path: Path) -> None:
+    path = _write_overrides(tmp_path, {"corrections": [], "additions": [{
+        "doi": "10.1017/badauthors", "title": "Bad Authors Paper", "journal": "QJE", "year": 2020,
+        "is_hpe": True, "replication_url": _URL,
+        "regions": ["Western Europe"], "countries": [],
+        "period_start": 1800, "period_end": 1900,
+        "authors": "Smith, John",   # string, not a list
+    }]})
+    corr, adds = apply_overrides(conn, path)
+    assert adds == 1   # addition still succeeds; authors field silently ignored
+    assert conn.execute("SELECT 1 FROM articles WHERE doi = ?", ("10.1017/badauthors",)).fetchone() is not None
