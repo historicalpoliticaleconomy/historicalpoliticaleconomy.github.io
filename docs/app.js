@@ -461,10 +461,9 @@ function escapeHtml(str) {
 }
 
 function errorHref(doi) {
-  const body = `DOI: ${doi}\n\nDescribe the error:\n`;
-  return `mailto:hmm2198@columbia.edu`
-    + `?subject=${encodeURIComponent('HPE Error Report')}`
-    + `&body=${encodeURIComponent(body)}`;
+  return `https://github.com/historicalpoliticaleconomy/historicalpoliticaleconomy.github.io/issues/new`
+    + `?template=data-correction.yml`
+    + `&doi=${encodeURIComponent(doi)}`;
 }
 
 function renderCard(entry) {

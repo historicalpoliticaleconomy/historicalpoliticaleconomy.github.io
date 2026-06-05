@@ -1,0 +1,34 @@
+name: Data correction
+description: Report an error in an existing entry's classification
+labels: [correction]
+body:
+  - type: input
+    id: doi
+    attributes:
+      label: DOI
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: fields
+    attributes:
+      label: Field(s) to correct
+      options:
+        - label: regions
+        - label: countries
+        - label: period_start / period_end
+        - label: replication_url
+        - label: is_hpe
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Corrected value(s)
+      description: Use UN M.49 subregion names for regions; ISO 3166-1 English short names for countries.
+    validations:
+      required: true
+
+  - type: textarea
+    id: justification
+    attributes:
+      label: Source / justification

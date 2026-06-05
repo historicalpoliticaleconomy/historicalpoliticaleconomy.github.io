@@ -1,0 +1,47 @@
+name: New dataset
+description: Suggest a dataset for inclusion
+labels: [new-entry]
+body:
+  - type: input
+    id: doi
+    attributes:
+      label: DOI
+    validations:
+      required: true
+
+  - type: input
+    id: replication_url
+    attributes:
+      label: Replication URL
+      description: Direct link to dataset or replication archive.
+    validations:
+      required: true
+
+  - type: input
+    id: regions
+    attributes:
+      label: Regions
+      description: UN M.49 subregion names, comma-separated (e.g. Western Europe, South-eastern Asia).
+    validations:
+      required: true
+
+  - type: input
+    id: countries
+    attributes:
+      label: Countries
+      description: ISO 3166-1 English short names, comma-separated. Leave blank if global/comparative.
+
+  - type: input
+    id: period_start
+    attributes:
+      label: Period start (year)
+
+  - type: input
+    id: period_end
+    attributes:
+      label: Period end (year)
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
