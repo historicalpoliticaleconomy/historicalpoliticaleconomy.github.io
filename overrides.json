@@ -1,4 +1,11 @@
 {
-  "corrections": [],
+  "corrections": [
+    {
+      "doi": "10.1016/j.eeh.2021.101435",
+      "period_start": 1916,
+      "period_end": 1918,
+      "note": "see paper"
+    }
+  ],
   "additions": []
 }
