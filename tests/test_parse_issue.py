@@ -263,3 +263,57 @@ def test_addition_blank_notes_absent() -> None:
 def test_addition_regions_parsed_as_list() -> None:
     result = p.build_addition(_addition_fields(**{"Geographic coverage": "Western Europe, Northern America"}))
     assert result["regions"] == ["Western Europe", "Northern America"]
+
+
+# ── apply_parsed (idempotency) ────────────────────────────────────────────────
+
+import importlib.util
+import json as _json
+import types
+
+
+def _load_apply_parsed() -> types.ModuleType:
+    spec = importlib.util.spec_from_file_location(
+        "apply_parsed",
+        Path(__file__).parent.parent / "scripts" / "apply_parsed.py",
+    )
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)  # type: ignore[union-attr]
+    return mod
+
+
+def test_apply_parsed_appends(tmp_path: Path) -> None:
+    overrides = tmp_path / "overrides.json"
+    overrides.write_text('{"corrections": [], "additions": []}')
+    parsed = tmp_path / "parsed.json"
+    parsed.write_text('{"doi": "10.1/test", "regions": ["Western Europe"]}')
+
+    mod = _load_apply_parsed()
+    mod.OVERRIDES_PATH = overrides  # type: ignore[attr-defined]
+
+    import sys
+    sys.argv = ["apply_parsed.py", str(parsed), "correction"]
+    mod.main()
+
+    result = _json.loads(overrides.read_text())
+    assert len(result["corrections"]) == 1
+    assert result["corrections"][0]["doi"] == "10.1/test"
+
+
+def test_apply_parsed_idempotent(tmp_path: Path) -> None:
+    overrides = tmp_path / "overrides.json"
+    overrides.write_text('{"corrections": [{"doi": "10.1/test", "regions": ["Western Europe"]}], "additions": []}')
+    parsed = tmp_path / "parsed.json"
+    parsed.write_text('{"doi": "10.1/test", "regions": ["Northern Europe"]}')
+
+    mod = _load_apply_parsed()
+    mod.OVERRIDES_PATH = overrides  # type: ignore[attr-defined]
+
+    import sys
+    sys.argv = ["apply_parsed.py", str(parsed), "correction"]
+    mod.main()
+
+    result = _json.loads(overrides.read_text())
+    assert len(result["corrections"]) == 1  # not duplicated
+    assert result["corrections"][0]["regions"] == ["Western Europe"]  # original unchanged

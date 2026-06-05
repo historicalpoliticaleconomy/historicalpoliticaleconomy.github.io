@@ -25,12 +25,18 @@ def main() -> None:
     overrides = json.loads(OVERRIDES_PATH.read_text(encoding="utf-8"))
     entry     = json.loads(parsed_path.read_text(encoding="utf-8"))
 
-    overrides.setdefault(key, []).append(entry)
+    doi      = entry.get("doi")
+    existing = overrides.setdefault(key, [])
+    if doi and any(e.get("doi") == doi for e in existing):
+        print(f"Already in overrides.json[{key!r}]: {doi} — skipping.")
+        return
+
+    existing.append(entry)
     OVERRIDES_PATH.write_text(
         json.dumps(overrides, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    print(f"Appended to overrides.json[{key!r}]: {entry.get('doi', '(no doi)')}")
+    print(f"Appended to overrides.json[{key!r}]: {doi or '(no doi)'}")
 
 
 if __name__ == "__main__":
