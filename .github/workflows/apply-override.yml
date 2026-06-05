@@ -1,0 +1,103 @@
+name: Apply approved override
+
+on:
+  issues:
+    types: [labeled]
+
+concurrency:
+  group: overrides
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.event.label.name == 'approved'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry and dependencies
+        run: |
+          pip install poetry
+          poetry install --no-root
+
+      - name: Detect issue type
+        id: meta
+        env:
+          LABELS: ${{ toJson(github.event.issue.labels.*.name) }}
+        run: |
+          python - <<'EOF'
+          import json, os, sys
+          labels = json.loads(os.environ["LABELS"])
+          if "correction" in labels:
+              t = "correction"
+          elif "new-entry" in labels:
+              t = "new-entry"
+          else:
+              print("Neither 'correction' nor 'new-entry' label found — skipping.", file=sys.stderr)
+              sys.exit(1)
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"type={t}\n")
+          EOF
+
+      - name: Parse issue body
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          printf '%s' "$ISSUE_BODY" \
+            | python scripts/parse_issue.py --type ${{ steps.meta.outputs.type }} \
+            > /tmp/parsed.json
+          echo "Parsed entry:"
+          cat /tmp/parsed.json
+
+      - name: Apply to database
+        run: |
+          python scripts/apply_parsed.py /tmp/parsed.json ${{ steps.meta.outputs.type }}
+          poetry run hpedb-overrides overrides.json --db articles.db --verbose
+          poetry run hpedb-export --db articles.db --out docs/data.json
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add overrides.json articles.db docs/data.json
+          git diff --cached --quiet && echo "No changes to commit." && exit 0
+          git commit -m "Apply override from issue #${{ github.event.issue.number }}"
+          git push
+
+      - name: Comment and close issue
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: context.issue.number,
+              body:         "Applied and deployed. The site will update shortly.",
+            });
+            await github.rest.issues.update({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: context.issue.number,
+              state:        "closed",
+            });
+
+      - name: Comment on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: context.issue.number,
+              body:         "⚠️ Workflow failed — check the [Actions run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.",
+            });
