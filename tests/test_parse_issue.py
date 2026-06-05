@@ -283,37 +283,63 @@ def _load_apply_parsed() -> types.ModuleType:
     return mod
 
 
+def _run(mod: types.ModuleType, overrides: Path, parsed: Path,
+         entry_type: str, issue: str | None = None) -> None:
+    import sys
+    mod.OVERRIDES_PATH = overrides  # type: ignore[attr-defined]
+    sys.argv = ["apply_parsed.py", str(parsed), entry_type] + ([issue] if issue else [])
+    mod.main()
+
+
 def test_apply_parsed_appends(tmp_path: Path) -> None:
     overrides = tmp_path / "overrides.json"
     overrides.write_text('{"corrections": [], "additions": []}')
     parsed = tmp_path / "parsed.json"
     parsed.write_text('{"doi": "10.1/test", "regions": ["Western Europe"]}')
 
-    mod = _load_apply_parsed()
-    mod.OVERRIDES_PATH = overrides  # type: ignore[attr-defined]
-
-    import sys
-    sys.argv = ["apply_parsed.py", str(parsed), "correction"]
-    mod.main()
+    _run(_load_apply_parsed(), overrides, parsed, "correction", "42")
 
     result = _json.loads(overrides.read_text())
     assert len(result["corrections"]) == 1
     assert result["corrections"][0]["doi"] == "10.1/test"
+    assert result["corrections"][0]["_issue"] == "42"
 
 
-def test_apply_parsed_idempotent(tmp_path: Path) -> None:
+def test_apply_parsed_same_issue_idempotent(tmp_path: Path) -> None:
+    """Re-triggering from label remove/re-add on the same issue is a no-op."""
     overrides = tmp_path / "overrides.json"
-    overrides.write_text('{"corrections": [{"doi": "10.1/test", "regions": ["Western Europe"]}], "additions": []}')
+    overrides.write_text('{"corrections": [{"doi": "10.1/test", "_issue": "42"}], "additions": []}')
     parsed = tmp_path / "parsed.json"
     parsed.write_text('{"doi": "10.1/test", "regions": ["Northern Europe"]}')
 
-    mod = _load_apply_parsed()
-    mod.OVERRIDES_PATH = overrides  # type: ignore[attr-defined]
-
-    import sys
-    sys.argv = ["apply_parsed.py", str(parsed), "correction"]
-    mod.main()
+    _run(_load_apply_parsed(), overrides, parsed, "correction", "42")
 
     result = _json.loads(overrides.read_text())
     assert len(result["corrections"]) == 1  # not duplicated
-    assert result["corrections"][0]["regions"] == ["Western Europe"]  # original unchanged
+
+
+def test_apply_parsed_different_issue_same_doi_allowed(tmp_path: Path) -> None:
+    """Two separate issues correcting the same DOI both get applied."""
+    overrides = tmp_path / "overrides.json"
+    overrides.write_text('{"corrections": [{"doi": "10.1/test", "regions": ["Western Europe"], "_issue": "42"}], "additions": []}')
+    parsed = tmp_path / "parsed.json"
+    parsed.write_text('{"doi": "10.1/test", "period_end": 1900}')
+
+    _run(_load_apply_parsed(), overrides, parsed, "correction", "99")
+
+    result = _json.loads(overrides.read_text())
+    assert len(result["corrections"]) == 2
+    assert result["corrections"][1]["_issue"] == "99"
+
+
+def test_apply_parsed_no_issue_number_falls_back_to_doi(tmp_path: Path) -> None:
+    """Without an issue number, DOI is used as idempotency key (manual runs)."""
+    overrides = tmp_path / "overrides.json"
+    overrides.write_text('{"corrections": [{"doi": "10.1/test"}], "additions": []}')
+    parsed = tmp_path / "parsed.json"
+    parsed.write_text('{"doi": "10.1/test", "regions": ["Northern Europe"]}')
+
+    _run(_load_apply_parsed(), overrides, parsed, "correction")
+
+    result = _json.loads(overrides.read_text())
+    assert len(result["corrections"]) == 1  # blocked by DOI fallback

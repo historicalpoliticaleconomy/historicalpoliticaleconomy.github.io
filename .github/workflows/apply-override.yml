@@ -71,7 +71,7 @@ jobs:
 
       - name: Apply to database
         run: |
-          python scripts/apply_parsed.py /tmp/parsed.json ${{ steps.meta.outputs.type }}
+          python scripts/apply_parsed.py /tmp/parsed.json ${{ steps.meta.outputs.type }} ${{ github.event.issue.number }}
           poetry run hpedb-overrides overrides.json --db articles.db --verbose
           poetry run hpedb-export --db articles.db --out docs/data.json
 
