@@ -123,6 +123,7 @@ function entryMatchesText(entry, query) {
   const haystack = [
     entry.title    || '',
     entry.authors  || '',
+    entry.doi      || '',
     ...(entry.regions    || []),
     ...(entry.countries  || []),
     ...(entry._continents || []),
