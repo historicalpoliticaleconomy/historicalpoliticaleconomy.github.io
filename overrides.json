@@ -7,5 +7,51 @@
       "note": "see paper"
     }
   ],
-  "additions": []
+  "additions": [
+    {
+      "is_hpe": true,
+      "title": "The Slave Trade and the Origins of Mistrust in Africa",
+      "doi": "10.1257/aer.101.7.3221",
+      "journal": "American Economic Review",
+      "replication_url": "https://nathannunn.sites.olt.ubc.ca/files/2022/02/DATA-The-Slave-Trade22-.zip",
+      "regions": [
+        "Eastern Africa",
+        "Middle Africa",
+        "Southern Africa",
+        "Western Africa"
+      ],
+      "countries": [
+        "Benin",
+        "Botswana",
+        "Cameroon",
+        "Ghana",
+        "Kenya",
+        "Lesotho",
+        "Madagascar",
+        "Malawi",
+        "Mali",
+        "Mozambique",
+        "Namibia",
+        "Nigeria",
+        "Senegal",
+        "South Africa",
+        "Tanzania",
+        "Uganda",
+        "Zambia"
+      ],
+      "year": 2011,
+      "authors": [
+        {
+          "family": "Nunn",
+          "given": "Nathan"
+        },
+        {
+          "family": "Wantchekon",
+          "given": "Leonard"
+        }
+      ],
+      "period_start": 1400,
+      "period_end": 1900
+    }
+  ]
 }

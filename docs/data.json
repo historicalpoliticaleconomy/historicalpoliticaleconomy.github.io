@@ -6792,6 +6792,42 @@
     "authors": "Capoccia, G.; Sáez, L.; de Rooij, E."
   },
   {
+    "doi": "10.1257/aer.101.7.3221",
+    "title": "The Slave Trade and the Origins of Mistrust in Africa",
+    "journal": "American Economic Review",
+    "year": 2011,
+    "abstract": null,
+    "period_start": 1400,
+    "period_end": 1900,
+    "regions": [
+      "Eastern Africa",
+      "Middle Africa",
+      "Southern Africa",
+      "Western Africa"
+    ],
+    "countries": [
+      "Benin",
+      "Botswana",
+      "Cameroon",
+      "Ghana",
+      "Kenya",
+      "Lesotho",
+      "Madagascar",
+      "Malawi",
+      "Mali",
+      "Mozambique",
+      "Namibia",
+      "Nigeria",
+      "Senegal",
+      "South Africa",
+      "Tanzania",
+      "Uganda",
+      "Zambia"
+    ],
+    "replication_url": "https://nathannunn.sites.olt.ubc.ca/files/2022/02/DATA-The-Slave-Trade22-.zip",
+    "authors": "Nunn, N.; Wantchekon, L."
+  },
+  {
     "doi": "10.1017/s0022381611000831",
     "title": "Violence “from above” or “from below”? The Role of Ethnicity in Bosnia’s Civil War",
     "journal": "JOP",
