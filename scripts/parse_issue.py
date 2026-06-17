@@ -95,14 +95,14 @@ def build_correction(fields: dict[str, str]) -> dict:
 def build_addition(fields: dict[str, str]) -> dict:
     # Only these are required: a dataset may be posted online with no associated
     # journal/paper, so Journal / Publication year / Geographic coverage are optional.
-    required = ("Paper title", "Authors", "DOI", "Data link")
+    required = ("Title (paper or dataset)", "Authors", "DOI", "Data link")
     missing = [f for f in required if not fields.get(f, "").strip()]
     if missing:
         raise ValueError(f"Missing required fields: {', '.join(missing)}")
 
     entry: dict = {
         "is_hpe": True,
-        "title": fields["Paper title"].strip(),
+        "title": fields["Title (paper or dataset)"].strip(),
         "doi": fields["DOI"].strip(),
         "replication_url": fields["Data link"].strip(),
         "countries": parse_list(fields.get("Countries", "")),

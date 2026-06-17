@@ -221,7 +221,7 @@ def test_correction_note_included() -> None:
 
 def _addition_fields(**kwargs: str) -> dict[str, str]:
     defaults: dict[str, str] = {
-        "Paper title": "Taxation and State Capacity",
+        "Title (paper or dataset)": "Taxation and State Capacity",
         "Authors": "Acemoglu, Daron; Robinson, James",
         "DOI": "10.1093/qje/qjt001",
         "Journal": "Quarterly Journal of Economics",
@@ -256,7 +256,7 @@ def test_addition_full() -> None:
 
 
 def test_addition_missing_required_raises() -> None:
-    for field in ("Paper title", "Authors", "DOI", "Data link"):
+    for field in ("Title (paper or dataset)", "Authors", "DOI", "Data link"):
         with pytest.raises(ValueError):
             p.build_addition(_addition_fields(**{field: ""}))
 

@@ -5,7 +5,8 @@ body:
   - type: input
     id: title
     attributes:
-      label: Paper title
+      label: Title (paper or dataset)
+      description: Title of the paper, or of the dataset itself if it is not tied to a paper.
     validations:
       required: true
 

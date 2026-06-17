@@ -49,7 +49,7 @@ jobs:
               body = os.environ.get("ISSUE_BODY", "")
               if "### What is wrong?" in body:
                   t = "correction"
-              elif "### Paper title" in body:
+              elif "### Title (paper or dataset)" in body:
                   t = "new-entry"
               else:
                   print("Cannot determine issue type from labels or body.", file=sys.stderr)
