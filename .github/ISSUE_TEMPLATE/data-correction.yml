@@ -18,6 +18,31 @@ body:
       required: true
 
   - type: input
+    id: title
+    attributes:
+      label: Corrected title
+      description: If the title is wrong, provide the correct one here.
+
+  - type: input
+    id: year
+    attributes:
+      label: Corrected publication year
+
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Corrected abstract
+      description: If the abstract / short description is wrong or missing, provide the correct text here.
+
+  - type: input
+    id: authors
+    attributes:
+      label: Corrected authors
+      description: >
+        If the author list is wrong, provide the full corrected list, semicolon-separated
+        (Last, First; Last, First). This replaces the existing list.
+
+  - type: input
     id: regions
     attributes:
       label: Corrected geographic coverage

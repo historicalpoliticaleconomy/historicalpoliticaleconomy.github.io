@@ -65,6 +65,21 @@ def build_correction(fields: dict[str, str]) -> dict:
         raise ValueError("DOI is required")
     entry: dict = {"doi": doi}
 
+    if v := fields.get("Corrected title", "").strip():
+        entry["title"] = v
+
+    if v := fields.get("Corrected publication year", "").strip():
+        try:
+            entry["year"] = int(v)
+        except ValueError:
+            pass  # optional: a malformed year is dropped, not a hard failure
+
+    if v := fields.get("Corrected abstract", ""):
+        entry["abstract"] = v
+
+    if v := fields.get("Corrected authors", ""):
+        entry["authors"] = parse_authors(v)
+
     if v := fields.get("Corrected geographic coverage", ""):
         entry["regions"] = parse_list(v)
 

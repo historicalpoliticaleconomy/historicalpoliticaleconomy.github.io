@@ -16,7 +16,9 @@ from hpedb.db import (
 )
 from hpedb.types import ArticleRecord, AuthorRecord, ClassificationRecord
 
-_CORRECTION_FIELDS = frozenset(
+# Correctable columns, split by the table they live in. Corrections to existing
+# records touch classifications, articles, and the authors table independently.
+_CLASS_CORRECTION_FIELDS = frozenset(
     {
         "is_hpe",
         "period_start",
@@ -26,6 +28,19 @@ _CORRECTION_FIELDS = frozenset(
         "replication_url",
     }
 )
+_ARTICLE_CORRECTION_FIELDS = frozenset({"title", "year", "abstract"})
+
+
+def _update_row(
+    conn: sqlite3.Connection, table: str, updates: dict[str, Any], doi: str
+) -> None:
+    """UPDATE `table` SET col = ? ... WHERE doi = ?. `table` is a trusted literal."""
+    sets = ", ".join(f"{k} = ?" for k in updates)
+    conn.execute(
+        f"UPDATE {table} SET {sets} WHERE doi = ?",
+        list(updates.values()) + [doi],
+    )
+
 
 # Minimal gate: a dataset may be posted online with no associated journal/paper, so
 # everything except a stable identifier, a title, and a data link is optional and
@@ -58,19 +73,42 @@ def apply_overrides(
             print(f"  Warning: {doi} not in database, skipping correction")
             continue
 
-        updates = {k: v for k, v in corr.items() if k in _CORRECTION_FIELDS}
-        if not updates:
+        class_updates = {k: v for k, v in corr.items() if k in _CLASS_CORRECTION_FIELDS}
+        for lf in ("regions", "countries"):
+            if lf in class_updates and isinstance(class_updates[lf], list):
+                class_updates[lf] = json.dumps(class_updates[lf])
+        if "is_hpe" in class_updates:
+            class_updates["is_hpe"] = int(bool(class_updates["is_hpe"]))
+
+        article_updates = {
+            k: v for k, v in corr.items() if k in _ARTICLE_CORRECTION_FIELDS
+        }
+
+        # A full author list replaces the existing one; an empty list is not a correction.
+        new_authors = corr.get("authors")
+        replace_authors = isinstance(new_authors, list) and bool(new_authors)
+
+        if not (class_updates or article_updates or replace_authors):
             continue
 
-        for lf in ("regions", "countries"):
-            if lf in updates and isinstance(updates[lf], list):
-                updates[lf] = json.dumps(updates[lf])
-        if "is_hpe" in updates:
-            updates["is_hpe"] = int(bool(updates["is_hpe"]))
+        if class_updates:
+            _update_row(conn, "classifications", class_updates, doi)
+        if article_updates:
+            _update_row(conn, "articles", article_updates, doi)
+        if replace_authors:
+            upsert_authors(
+                conn,
+                doi,
+                [
+                    AuthorRecord(
+                        sequence=i,
+                        given=a.get("given"),
+                        family=a.get("family"),
+                    )
+                    for i, a in enumerate(new_authors)
+                ],
+            )
 
-        sets = ", ".join(f"{k} = ?" for k in updates)
-        values = list(updates.values()) + [doi]
-        conn.execute(f"UPDATE classifications SET {sets} WHERE doi = ?", values)
         corrections_applied += 1
         if verbose:
             print(f"  Corrected: {doi}")

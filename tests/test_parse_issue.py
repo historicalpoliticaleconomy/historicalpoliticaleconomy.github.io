@@ -131,6 +131,10 @@ def _correction_fields(**kwargs: str) -> dict[str, str]:
     defaults: dict[str, str] = {
         "DOI": "10.1017/test",
         "What is wrong?": "Regions are wrong.",
+        "Corrected title": "",
+        "Corrected publication year": "",
+        "Corrected abstract": "",
+        "Corrected authors": "",
         "Corrected geographic coverage": "",
         "Corrected countries": "",
         "Corrected time period": "",
@@ -214,6 +218,60 @@ def test_correction_note_included() -> None:
         _correction_fields(**{"Source / justification": "See Smith (2020)."})
     )
     assert result["note"] == "See Smith (2020)."
+
+
+def test_correction_title() -> None:
+    result = p.build_correction(
+        _correction_fields(**{"Corrected title": "The Right Title"})
+    )
+    assert result["title"] == "The Right Title"
+
+
+def test_correction_title_absent_when_blank() -> None:
+    assert "title" not in p.build_correction(_correction_fields())
+
+
+def test_correction_abstract() -> None:
+    result = p.build_correction(
+        _correction_fields(**{"Corrected abstract": "A better abstract."})
+    )
+    assert result["abstract"] == "A better abstract."
+
+
+def test_correction_abstract_absent_when_blank() -> None:
+    assert "abstract" not in p.build_correction(_correction_fields())
+
+
+def test_correction_year_parsed_as_int() -> None:
+    result = p.build_correction(
+        _correction_fields(**{"Corrected publication year": "1998"})
+    )
+    assert result["year"] == 1998
+
+
+def test_correction_year_malformed_dropped() -> None:
+    result = p.build_correction(
+        _correction_fields(**{"Corrected publication year": "not a year"})
+    )
+    assert "year" not in result
+
+
+def test_correction_year_absent_when_blank() -> None:
+    assert "year" not in p.build_correction(_correction_fields())
+
+
+def test_correction_authors_parsed_as_list() -> None:
+    result = p.build_correction(
+        _correction_fields(**{"Corrected authors": "Smith, John; Doe, Jane"})
+    )
+    assert result["authors"] == [
+        {"family": "Smith", "given": "John"},
+        {"family": "Doe", "given": "Jane"},
+    ]
+
+
+def test_correction_authors_absent_when_blank() -> None:
+    assert "authors" not in p.build_correction(_correction_fields())
 
 
 # ── build_addition ────────────────────────────────────────────────────────────

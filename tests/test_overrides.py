@@ -144,6 +144,186 @@ def test_correction_idempotent(conn: sqlite3.Connection, tmp_path: Path) -> None
     assert json.loads(row[0]) == ["Northern Europe"]
 
 
+def test_correction_updates_abstract(conn: sqlite3.Connection, tmp_path: Path) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [
+                {"doi": _ARTICLE["doi"], "abstract": "Corrected abstract text."}
+            ],
+            "additions": [],
+        },
+    )
+    corr, adds = apply_overrides(conn, path)
+    assert corr == 1
+    row = conn.execute(
+        "SELECT abstract FROM articles WHERE doi = ?", (_ARTICLE["doi"],)
+    ).fetchone()
+    assert row[0] == "Corrected abstract text."
+
+
+def test_correction_updates_title_and_year(
+    conn: sqlite3.Connection, tmp_path: Path
+) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [
+                {"doi": _ARTICLE["doi"], "title": "Fixed Title", "year": 1999}
+            ],
+            "additions": [],
+        },
+    )
+    corr, adds = apply_overrides(conn, path)
+    assert corr == 1
+    row = conn.execute(
+        "SELECT title, year FROM articles WHERE doi = ?", (_ARTICLE["doi"],)
+    ).fetchone()
+    assert row[0] == "Fixed Title"
+    assert row[1] == 1999
+
+
+def test_correction_article_field_leaves_classification_untouched(
+    conn: sqlite3.Connection, tmp_path: Path
+) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [{"doi": _ARTICLE["doi"], "title": "Fixed Title"}],
+            "additions": [],
+        },
+    )
+    apply_overrides(conn, path)
+    art = conn.execute(
+        "SELECT title, journal, abstract FROM articles WHERE doi = ?",
+        (_ARTICLE["doi"],),
+    ).fetchone()
+    assert art[0] == "Fixed Title"
+    assert art[1] == "APSR"  # unchanged
+    assert art[2] is None  # unchanged
+    cls = conn.execute(
+        "SELECT regions, period_start FROM classifications WHERE doi = ?",
+        (_ARTICLE["doi"],),
+    ).fetchone()
+    assert json.loads(cls[0]) == ["Western Europe"]  # unchanged
+    assert cls[1] == 1800  # unchanged
+
+
+def test_correction_combined_article_and_classification(
+    conn: sqlite3.Connection, tmp_path: Path
+) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [
+                {
+                    "doi": _ARTICLE["doi"],
+                    "title": "Fixed Title",
+                    "regions": ["Eastern Europe"],
+                }
+            ],
+            "additions": [],
+        },
+    )
+    corr, _ = apply_overrides(conn, path)
+    assert corr == 1
+    title = conn.execute(
+        "SELECT title FROM articles WHERE doi = ?", (_ARTICLE["doi"],)
+    ).fetchone()[0]
+    regions = conn.execute(
+        "SELECT regions FROM classifications WHERE doi = ?", (_ARTICLE["doi"],)
+    ).fetchone()[0]
+    assert title == "Fixed Title"
+    assert json.loads(regions) == ["Eastern Europe"]
+
+
+def test_correction_replaces_authors(conn: sqlite3.Connection, tmp_path: Path) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    conn.executemany(
+        "INSERT INTO authors (doi, sequence, given, family) VALUES (?, ?, ?, ?)",
+        [(_ARTICLE["doi"], 0, "Old", "Author")],
+    )
+    conn.commit()
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [
+                {
+                    "doi": _ARTICLE["doi"],
+                    "authors": [
+                        {"family": "Smith", "given": "John"},
+                        {"family": "Doe", "given": "Jane"},
+                    ],
+                }
+            ],
+            "additions": [],
+        },
+    )
+    corr, _ = apply_overrides(conn, path)
+    assert corr == 1
+    rows = conn.execute(
+        "SELECT family, given FROM authors WHERE doi = ? ORDER BY sequence",
+        (_ARTICLE["doi"],),
+    ).fetchall()
+    assert [(r[0], r[1]) for r in rows] == [("Smith", "John"), ("Doe", "Jane")]
+
+
+def test_correction_authors_only_counts_as_applied(
+    conn: sqlite3.Connection, tmp_path: Path
+) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [
+                {
+                    "doi": _ARTICLE["doi"],
+                    "authors": [{"family": "Solo", "given": "Han"}],
+                }
+            ],
+            "additions": [],
+        },
+    )
+    corr, _ = apply_overrides(conn, path)
+    assert corr == 1
+
+
+def test_correction_empty_authors_list_is_noop(
+    conn: sqlite3.Connection, tmp_path: Path
+) -> None:
+    upsert_article(conn, _ARTICLE)
+    upsert_classification(conn, _cls(_ARTICLE["doi"]))
+    conn.executemany(
+        "INSERT INTO authors (doi, sequence, given, family) VALUES (?, ?, ?, ?)",
+        [(_ARTICLE["doi"], 0, "Keep", "Me")],
+    )
+    conn.commit()
+    path = _write_overrides(
+        tmp_path,
+        {
+            "corrections": [{"doi": _ARTICLE["doi"], "authors": []}],
+            "additions": [],
+        },
+    )
+    corr, _ = apply_overrides(conn, path)
+    # An empty author list is not a correction; existing authors are preserved.
+    assert corr == 0
+    rows = conn.execute(
+        "SELECT family FROM authors WHERE doi = ?", (_ARTICLE["doi"],)
+    ).fetchall()
+    assert [r[0] for r in rows] == ["Me"]
+
+
 # ── Additions ─────────────────────────────────────────────────────────────────
 
 
