@@ -81,7 +81,9 @@ def build_correction(fields: dict[str, str]) -> dict:
     if v := fields.get("Corrected data link", ""):
         entry["replication_url"] = v
 
-    if fields.get("Should this paper be excluded from the database?", "").startswith("Yes"):
+    if fields.get("Should this paper be excluded from the database?", "").startswith(
+        "Yes"
+    ):
         entry["is_hpe"] = False
 
     if v := fields.get("Source / justification", ""):
@@ -91,25 +93,35 @@ def build_correction(fields: dict[str, str]) -> dict:
 
 
 def build_addition(fields: dict[str, str]) -> dict:
-    required = ("Paper title", "DOI", "Journal", "Publication year", "Data link", "Geographic coverage")
-    missing  = [f for f in required if not fields.get(f, "").strip()]
+    # Only these are required: a dataset may be posted online with no associated
+    # journal/paper, so Journal / Publication year / Geographic coverage are optional.
+    required = ("Paper title", "Authors", "DOI", "Data link")
+    missing = [f for f in required if not fields.get(f, "").strip()]
     if missing:
         raise ValueError(f"Missing required fields: {', '.join(missing)}")
 
     entry: dict = {
-        "is_hpe":          True,
-        "title":           fields["Paper title"].strip(),
-        "doi":             fields["DOI"].strip(),
-        "journal":         fields["Journal"].strip(),
+        "is_hpe": True,
+        "title": fields["Paper title"].strip(),
+        "doi": fields["DOI"].strip(),
         "replication_url": fields["Data link"].strip(),
-        "regions":         parse_list(fields["Geographic coverage"]),
-        "countries":       parse_list(fields.get("Countries", "")),
+        "countries": parse_list(fields.get("Countries", "")),
     }
 
-    try:
-        entry["year"] = int(fields["Publication year"].strip())
-    except ValueError as e:
-        raise ValueError(f"Invalid publication year: {fields['Publication year']}") from e
+    if v := fields.get("Journal", "").strip():
+        entry["journal"] = v
+
+    if v := fields.get("Publication year", "").strip():
+        try:
+            entry["year"] = int(v)
+        except ValueError:
+            pass  # optional: a malformed year is dropped, not a hard failure
+
+    if v := fields.get("Geographic coverage", "").strip():
+        entry["regions"] = parse_list(v)
+
+    if v := fields.get("Abstract / Short Description", ""):
+        entry["abstract"] = v
 
     if v := fields.get("Authors", ""):
         entry["authors"] = parse_authors(v)
@@ -138,7 +150,11 @@ def main() -> None:
     args = parser.parse_args()
 
     fields = parse_body(sys.stdin.read())
-    entry  = build_correction(fields) if args.type == "correction" else build_addition(fields)
+    entry = (
+        build_correction(fields)
+        if args.type == "correction"
+        else build_addition(fields)
+    )
     json.dump(entry, sys.stdout, indent=2, ensure_ascii=False)
     sys.stdout.write("\n")
 

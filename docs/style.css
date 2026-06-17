@@ -351,6 +351,45 @@ main {
   margin-bottom: .18rem;
 }
 
+.card-abstract {
+  font-size: .76rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin-bottom: .2rem;
+}
+
+/* Collapsed: single line, abruptly clipped; the "…" button is the clip indicator. */
+.card-abstract[data-collapsed="true"] {
+  display: flex;
+  align-items: baseline;
+  gap: .25rem;
+}
+
+.card-abstract[data-collapsed="true"] .abstract-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.card-abstract[data-collapsed="false"] .abstract-text {
+  white-space: normal;
+}
+
+.abstract-toggle {
+  flex: 0 0 auto;
+  background: none;
+  border: none;
+  padding: 0 0 0 .15rem;
+  cursor: pointer;
+  color: var(--primary);
+  font-size: .76rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.abstract-toggle:hover { text-decoration: underline; }
+
 .card-footer {
   display: flex;
   justify-content: space-between;

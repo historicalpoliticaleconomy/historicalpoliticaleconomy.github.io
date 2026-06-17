@@ -124,6 +124,7 @@ function entryMatchesText(entry, query) {
     entry.title    || '',
     entry.authors  || '',
     entry.doi      || '',
+    stripJats(entry.abstract),
     ...(entry.regions    || []),
     ...(entry.countries  || []),
     ...(entry._continents || []),
@@ -461,6 +462,19 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
+// Crossref abstracts often carry JATS/XML markup (<jats:p>, <jats:title>Abstract</jats:title>,
+// <jats:italic>, …). Strip the tags to plain text and drop the redundant leading "Abstract"
+// heading. The result is still passed through escapeHtml before insertion.
+function stripJats(str) {
+  if (!str) return '';
+  return str
+    .replace(/<[^>]+>/g, ' ')          // remove any XML/JATS tags
+    .replace(/\s+/g, ' ')              // collapse whitespace
+    .trim()
+    .replace(/^abstract[\s:.\-]+/i, '') // drop a leading "Abstract" section title
+    .trim();
+}
+
 function errorHref(doi) {
   return `https://github.com/historicalpoliticaleconomy/historicalpoliticaleconomy.github.io/issues/new`
     + `?template=data-correction.yml`
@@ -474,6 +488,17 @@ function renderCard(entry) {
   const countryTags = (entry.countries || []).map(c =>
     `<span class="country-tag" data-country="${escapeHtml(c)}">${escapeHtml(displayCountry(c))}</span>`).join('');
 
+  // Abstract / short description: collapsed to one line with a clickable "…" that
+  // expands the full text in place (toggle wired in the #results click handler).
+  const abstractText = stripJats(entry.abstract);
+  const abstract = abstractText
+    ? `<div class="card-abstract" data-collapsed="true">`
+        + `<span class="abstract-text">${escapeHtml(abstractText)}</span>`
+        + `<button class="abstract-toggle" type="button" aria-expanded="false"`
+        + ` aria-label="Show full description">…</button>`
+      + `</div>`
+    : '';
+
   return `
     <li class="card">
       <div class="card-top">
@@ -482,6 +507,7 @@ function renderCard(entry) {
       </div>
       ${countryTags ? `<div class="country-tags">${countryTags}</div>` : ''}
       <div class="card-title">${escapeHtml(entry.title || '(no title)')}</div>
+      ${abstract}
       <div class="card-footer">
         <span class="card-authors">${escapeHtml(entry.authors || '')}</span>
         <div class="card-links">
@@ -516,6 +542,16 @@ async function init() {
   });
 
   document.getElementById('results').addEventListener('click', e => {
+    const toggleEl = e.target.closest('.abstract-toggle');
+    if (toggleEl) {
+      const box       = toggleEl.closest('.card-abstract');
+      const collapsed = box.getAttribute('data-collapsed') === 'true';
+      box.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
+      toggleEl.setAttribute('aria-expanded', collapsed ? 'true' : 'false');
+      toggleEl.textContent = collapsed ? 'less' : '…';
+      return;
+    }
+
     const regionEl  = e.target.closest('[data-region]');
     const countryEl = e.target.closest('[data-country]');
     if (!regionEl && !countryEl) return;
@@ -560,7 +596,7 @@ export {
   displayCountry, buildGeo, cellColor,
   entryOverlapsBucket, entryMatchesKey, entryMatchesText,
   countsByRows, countriesForSubregion, effectiveSubregionRows,
-  applyFilters, formatPeriod, escapeHtml, errorHref,
+  applyFilters, formatPeriod, escapeHtml, stripJats, errorHref,
   BUCKETS, CONTINENTS, CONTINENT_ORDER, CONTINENT_SUBREGIONS,
   SUBREGION_COUNTRIES, SUBREGION_CONTINENT,
   COUNTRY_CANONICAL_SUBREGION, COUNTRY_DISPLAY_NAMES,

@@ -20,12 +20,13 @@ DOCS = Path(__file__).parent.parent / "docs"
 
 # ── Fixtures ──────────────────────────────────────────────────────────────────
 
+
 @pytest.fixture(scope="session")
 def live_server() -> str:  # type: ignore[misc]
     handler = partial(SimpleHTTPRequestHandler, directory=str(DOCS))
-    server  = HTTPServer(("127.0.0.1", 0), handler)
-    port    = server.server_address[1]
-    thread  = threading.Thread(target=server.serve_forever, daemon=True)
+    server = HTTPServer(("127.0.0.1", 0), handler)
+    port = server.server_address[1]
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
     yield f"http://127.0.0.1:{port}"  # type: ignore[misc]
     server.shutdown()
@@ -54,6 +55,7 @@ def _result_count(page: Page) -> int:
 
 
 # ── Tests ─────────────────────────────────────────────────────────────────────
+
 
 @pytest.mark.frontend
 def test_page_loads_and_cards_render(page: Page) -> None:
@@ -191,11 +193,38 @@ def test_heatmap_cell_click_filters_results(page: Page) -> None:
 
 
 @pytest.mark.frontend
+def test_abstract_expands_on_toggle(page: Page) -> None:
+    page.locator(".card").first.wait_for()
+
+    # Find the first card that carries an abstract; skip if the dataset has none.
+    box = page.locator(".card-abstract").first
+    if box.count() == 0:
+        pytest.skip("no abstracts in the exported dataset")
+    box.wait_for()
+
+    assert box.get_attribute("data-collapsed") == "true"
+    collapsed_rect = box.bounding_box()
+    assert collapsed_rect is not None
+
+    box.locator(".abstract-toggle").click()
+    page.wait_for_timeout(100)
+
+    assert box.get_attribute("data-collapsed") == "false"
+    expanded_rect = box.bounding_box()
+    assert expanded_rect is not None
+    # Expanding wraps the full text, so the box should grow (or at worst stay equal
+    # for a very short abstract that already fit on one line).
+    assert expanded_rect["height"] >= collapsed_rect["height"]
+
+
+@pytest.mark.frontend
 def test_doi_search_works(page: Page) -> None:
     page.locator(".card").first.wait_for()
 
     # Use the first DOI actually present in the exported dataset
-    first_doi = page.locator(".card").first.locator(".btn-article").get_attribute("href")
+    first_doi = (
+        page.locator(".card").first.locator(".btn-article").get_attribute("href")
+    )
     assert first_doi is not None
     doi = first_doi.replace("https://doi.org/", "")
 

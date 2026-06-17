@@ -16,14 +16,25 @@ from hpedb.db import (
 )
 from hpedb.types import ArticleRecord, AuthorRecord, ClassificationRecord
 
-_CORRECTION_FIELDS = frozenset({
-    "is_hpe", "period_start", "period_end", "regions", "countries", "replication_url",
-})
+_CORRECTION_FIELDS = frozenset(
+    {
+        "is_hpe",
+        "period_start",
+        "period_end",
+        "regions",
+        "countries",
+        "replication_url",
+    }
+)
 
-_REQUIRED_ARTICLE = frozenset({"doi", "title", "journal", "year"})
-_REQUIRED_CLASS   = frozenset({
-    "is_hpe", "replication_url", "regions", "countries", "period_start", "period_end",
-})
+# Minimal gate: a dataset may be posted online with no associated journal/paper, so
+# everything except a stable identifier, a title, and a data link is optional and
+# defaulted below (journal -> placeholder; is_hpe -> True; regions/countries -> []).
+_REQUIRED_ARTICLE = frozenset({"doi", "title"})
+_REQUIRED_CLASS = frozenset({"replication_url"})
+
+# articles.journal is NOT NULL; stand in for additions that carry no journal.
+_MISSING_JOURNAL = "Unpublished"
 
 
 def apply_overrides(
@@ -31,11 +42,9 @@ def apply_overrides(
     overrides_path: str,
     verbose: bool = False,
 ) -> tuple[int, int]:
-    data: dict[str, Any] = json.loads(
-        Path(overrides_path).read_text(encoding="utf-8")
-    )
+    data: dict[str, Any] = json.loads(Path(overrides_path).read_text(encoding="utf-8"))
     corrections_applied = 0
-    additions_applied   = 0
+    additions_applied = 0
 
     # ── Corrections ────────────────────────────────────────────────────────────
     for corr in data.get("corrections", []):
@@ -59,7 +68,7 @@ def apply_overrides(
         if "is_hpe" in updates:
             updates["is_hpe"] = int(bool(updates["is_hpe"]))
 
-        sets   = ", ".join(f"{k} = ?" for k in updates)
+        sets = ", ".join(f"{k} = ?" for k in updates)
         values = list(updates.values()) + [doi]
         conn.execute(f"UPDATE classifications SET {sets} WHERE doi = ?", values)
         corrections_applied += 1
@@ -75,42 +84,54 @@ def apply_overrides(
 
         missing_fields = (_REQUIRED_ARTICLE | _REQUIRED_CLASS) - set(add.keys())
         if missing_fields:
-            print(f"  Error: {doi} missing required fields: {sorted(missing_fields)}, skipping")
+            print(
+                f"  Error: {doi} missing required fields: {sorted(missing_fields)}, skipping"
+            )
             continue
 
-        upsert_article(conn, ArticleRecord(
-            doi     = doi,
-            journal = add["journal"],
-            title   = add.get("title"),
-            year    = add.get("year"),
-            month   = None,
-            volume  = None,
-            issue   = None,
-            pages   = None,
-            abstract = add.get("abstract"),
-        ))
+        upsert_article(
+            conn,
+            ArticleRecord(
+                doi=doi,
+                journal=add.get("journal") or _MISSING_JOURNAL,
+                title=add.get("title"),
+                year=add.get("year"),
+                month=None,
+                volume=None,
+                issue=None,
+                pages=None,
+                abstract=add.get("abstract"),
+            ),
+        )
 
         if "authors" in add and isinstance(add["authors"], list):
-            upsert_authors(conn, doi, [
-                AuthorRecord(
-                    sequence = i,
-                    given    = a.get("given"),
-                    family   = a.get("family"),
-                )
-                for i, a in enumerate(add["authors"])
-            ])
+            upsert_authors(
+                conn,
+                doi,
+                [
+                    AuthorRecord(
+                        sequence=i,
+                        given=a.get("given"),
+                        family=a.get("family"),
+                    )
+                    for i, a in enumerate(add["authors"])
+                ],
+            )
 
-        upsert_classification(conn, ClassificationRecord(
-            doi          = doi,
-            is_hpe       = bool(add["is_hpe"]),
-            period_start = add.get("period_start"),
-            period_end   = add.get("period_end"),
-            regions      = json.dumps(add.get("regions", [])),
-            countries    = json.dumps(add.get("countries", [])),
-            backend      = "manual",
-            model        = "override",
-            classified_at = datetime.now(timezone.utc).isoformat(),
-        ))
+        upsert_classification(
+            conn,
+            ClassificationRecord(
+                doi=doi,
+                is_hpe=bool(add.get("is_hpe", True)),
+                period_start=add.get("period_start"),
+                period_end=add.get("period_end"),
+                regions=json.dumps(add.get("regions", [])),
+                countries=json.dumps(add.get("countries", [])),
+                backend="manual",
+                model="override",
+                classified_at=datetime.now(timezone.utc).isoformat(),
+            ),
+        )
         # upsert_classification uses INSERT OR REPLACE and doesn't include replication_url;
         # set it explicitly after so it's always applied correctly.
         update_replication_url(conn, doi, add["replication_url"])
@@ -128,7 +149,7 @@ def main() -> None:
         description="Apply manual corrections and additions from an overrides JSON file."
     )
     parser.add_argument("overrides", metavar="PATH", help="Path to overrides.json")
-    parser.add_argument("--db",      default="articles.db", metavar="PATH")
+    parser.add_argument("--db", default="articles.db", metavar="PATH")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args()
 

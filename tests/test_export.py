@@ -16,28 +16,40 @@ from hpedb.export import export_hpe_articles
 from hpedb.types import ArticleRecord, ClassificationRecord
 
 _HPE: ArticleRecord = {
-    "doi": "10.1017/hpe001", "journal": "APSR",
-    "title": "State Formation in Europe", "year": 2020,
-    "month": 3, "volume": "114", "issue": "2", "pages": "1-20",
+    "doi": "10.1017/hpe001",
+    "journal": "APSR",
+    "title": "State Formation in Europe",
+    "year": 2020,
+    "month": 3,
+    "volume": "114",
+    "issue": "2",
+    "pages": "1-20",
     "abstract": "We study state formation.",
 }
 
 _NON_HPE: ArticleRecord = {
-    "doi": "10.1017/nothpe001", "journal": "APSR",
-    "title": "Contemporary Voting Behavior", "year": 2021,
-    "month": 1, "volume": "115", "issue": "1", "pages": "1-10",
+    "doi": "10.1017/nothpe001",
+    "journal": "APSR",
+    "title": "Contemporary Voting Behavior",
+    "year": 2021,
+    "month": 1,
+    "volume": "115",
+    "issue": "1",
+    "pages": "1-10",
     "abstract": "We study contemporary voting.",
 }
 
 
 def _cls(doi: str, is_hpe: bool) -> ClassificationRecord:
     return ClassificationRecord(
-        doi=doi, is_hpe=is_hpe,
+        doi=doi,
+        is_hpe=is_hpe,
         period_start=1800 if is_hpe else None,
         period_end=1900 if is_hpe else None,
         regions='["Western Europe"]' if is_hpe else "[]",
         countries='["United Kingdom"]' if is_hpe else "[]",
-        backend="claude", model="claude-haiku-4-5-20251001",
+        backend="claude",
+        model="claude-haiku-4-5-20251001",
         classified_at="2026-01-01T00:00:00+00:00",
     )
 
@@ -90,6 +102,12 @@ def test_export_replication_url_present(conn: sqlite3.Connection) -> None:
     _setup_hpe_with_url(conn)
     entries = export_hpe_articles(conn)
     assert entries[0]["replication_url"] == _URL
+
+
+def test_export_abstract_present(conn: sqlite3.Connection) -> None:
+    _setup_hpe_with_url(conn)
+    entries = export_hpe_articles(conn)
+    assert entries[0]["abstract"] == _HPE["abstract"]
 
 
 def test_export_countries_parsed_as_list(conn: sqlite3.Connection) -> None:

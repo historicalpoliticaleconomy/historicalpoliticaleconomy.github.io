@@ -25,20 +25,6 @@ body:
       required: true
 
   - type: input
-    id: journal
-    attributes:
-      label: Journal
-    validations:
-      required: true
-
-  - type: input
-    id: year
-    attributes:
-      label: Publication year
-    validations:
-      required: true
-
-  - type: input
     id: replication_url
     attributes:
       label: Data link
@@ -46,13 +32,28 @@ body:
     validations:
       required: true
 
+  - type: textarea
+    id: abstract
+    attributes:
+      label: Abstract / Short Description
+      description: Add the abstract, and/or describe the main variables included in the dataset.
+
+  - type: input
+    id: journal
+    attributes:
+      label: Journal
+      description: Leave blank if the dataset is not tied to a published paper.
+
+  - type: input
+    id: year
+    attributes:
+      label: Publication year
+
   - type: input
     id: regions
     attributes:
       label: Geographic coverage
       description: Subregion(s), comma-separated (e.g. Western Europe, South-eastern Asia).
-    validations:
-      required: true
 
   - type: input
     id: countries

@@ -15,7 +15,7 @@ import { dirname, join } from 'node:path';
 import {
   entryMatchesText, entryOverlapsBucket, entryMatchesKey,
   countsByRows, effectiveSubregionRows, countriesForSubregion,
-  displayCountry, escapeHtml, formatPeriod, errorHref, cellColor,
+  displayCountry, escapeHtml, stripJats, formatPeriod, errorHref, cellColor,
   buildGeo,
   BUCKETS, COUNTRY_CANONICAL_SUBREGION,
 } from '../docs/app.js';
@@ -81,6 +81,22 @@ describe('entryMatchesText', () => {
     assert.ok(entryMatchesText(entry, 'europe'));
   });
 
+  test('abstract substring matches', () => {
+    const withAbstract = { ...entry, abstract: 'Grain prices and tariff schedules, 1815-1870.' };
+    assert.ok(entryMatchesText(withAbstract, 'tariff'));
+  });
+
+  test('JATS-markup abstract matches on real words, not tag names', () => {
+    const jats = { ...entry, abstract: '<jats:title>Abstract</jats:title><jats:p>Tariff schedules.</jats:p>' };
+    assert.ok(entryMatchesText(jats, 'tariff'));
+    assert.ok(!entryMatchesText(jats, 'jats'));   // tag names are stripped before indexing
+  });
+
+  test('missing abstract does not break matching', () => {
+    assert.ok(entryMatchesText(entry, 'prussia'));        // entry has no abstract key
+    assert.ok(!entryMatchesText(entry, 'tariff'));
+  });
+
   test('multi-term AND — all terms must match', () => {
     assert.ok(entryMatchesText(entry, 'prussia germany'));
   });
@@ -106,6 +122,38 @@ describe('entryMatchesText', () => {
 
   test('empty query matches everything', () => {
     assert.ok(entryMatchesText(entry, ''));
+  });
+});
+
+// ── stripJats ─────────────────────────────────────────────────────────────────
+
+describe('stripJats', () => {
+  test('removes JATS tags', () => {
+    assert.equal(stripJats('<jats:p>We study trade.</jats:p>'), 'We study trade.');
+  });
+
+  test('drops the redundant leading "Abstract" heading', () => {
+    assert.equal(
+      stripJats('<jats:title>Abstract</jats:title> <jats:p>We study trade.</jats:p>'),
+      'We study trade.',
+    );
+  });
+
+  test('collapses whitespace left by stripped tags', () => {
+    assert.equal(stripJats('<jats:p>a</jats:p>\n<jats:p>b</jats:p>'), 'a b');
+  });
+
+  test('keeps a word that merely starts with "abstract"', () => {
+    assert.equal(stripJats('Abstracting away from detail.'), 'Abstracting away from detail.');
+  });
+
+  test('null / empty input → empty string', () => {
+    assert.equal(stripJats(null), '');
+    assert.equal(stripJats(''), '');
+  });
+
+  test('plain text passes through unchanged', () => {
+    assert.equal(stripJats('Grain prices, 1500-1800.'), 'Grain prices, 1500-1800.');
   });
 });
 
