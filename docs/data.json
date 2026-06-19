@@ -145,6 +145,23 @@
     "authors": "BOWLES, J."
   },
   {
+    "doi": "https://doi.org/10.34810/DATA3274",
+    "title": "Electoral Atlas of the Spanish Second Republic",
+    "journal": "Unpublished",
+    "year": 2026,
+    "abstract": "This atlas presents the results of the three general elections held during the Spanish Second Republic (1931–1939) at the municipality level. By mapping electoral geography across all of Spain, it reveals the territorial patterns of political support — and the profound divisions that shaped the Republic's fate.\n\nThe data covers over 9,000 municipalities across the three elections of April 1931, November 1933, and February 1936, allowing comparison of political shifts across regions, coalitions, and time.",
+    "period_start": 1931,
+    "period_end": 1936,
+    "regions": [
+      "Western Europe"
+    ],
+    "countries": [
+      "Spain"
+    ],
+    "replication_url": "https://www.tonirodon.cat/second-republic-atlas/en/",
+    "authors": "Rodon, T.; Vall-Prat, P.; Martín-Álvarez, D."
+  },
+  {
     "doi": "10.1177/00104140261448430",
     "title": "Electoral Rules, Programmatic Competition, and Redistribution: Evidence From Interwar France",
     "journal": "CPS",
